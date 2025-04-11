@@ -24,19 +24,22 @@ class MembersScreen extends GetView<MembersController> {
       () {
         controller.filteredItems.length;
         return Scaffold(
-        key: _scaffoldKey,
-        drawer: DrawerWidget(),
+        // key: _scaffoldKey,
+        // drawer: DrawerWidget(),
+          appBar: CustomAppBar(
+            appBarTitleText: keyMembers.tr,
+          ),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              _topBanner(),
+              // _topBanner(),
               _searchBar(),
               _membersList(),
             ]
           
           ),
         ),
-        bottomNavigationBar:controller.searchTextController.text.isEmpty?_bottomAppBar():null,
+        // bottomNavigationBar:controller.searchTextController.text.isEmpty?_bottomAppBar():null,
       );
       },
     );

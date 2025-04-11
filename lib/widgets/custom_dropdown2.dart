@@ -55,6 +55,7 @@ class CustomDropdown2<T> extends StatelessWidget {
       // ),
       hint: Row(
     children: [
+
     Image.asset(
       'assets/icons/member.png', // Replace with your placeholder icon
       width: 20,
@@ -75,21 +76,41 @@ class CustomDropdown2<T> extends StatelessWidget {
       style: Theme.of(context).textTheme.bodyMedium,
       validator: validate,
       items: dropdownItemsValues ??
-          dropdownItems.map<DropdownMenuItem<T>>((value) {
+          dropdownItems.asMap().entries.map<DropdownMenuItem<T>>((entry) {
+            final index = entry.key;
+            final value = entry.value;
+            final isLastItem = index == dropdownItems.length - 1;
+
             return DropdownMenuItem<T>(
               value: value,
               child: Column(
                 children: [
-                  Text(
-                    value.toString(),
-                    style: textStyleBodyMedium(),
-                    maxLines: 2,
+                  Row(
+                    children: [
+                      Image.asset(
+                        AppImages.iconsProfileImage,
+                        width: 20,
+                        height: 20,
+                      ).paddingOnly(right: 10.w),
+                      Text(
+                        "Alex Linderson",
+                        style: TextStyle(
+                          color: AppColors.primaryTextColor,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 12,
+                        ),
+                        maxLines: 2,
+                      ),
+                    ],
                   ),
-                  Divider(color: AppColors.containerGreyColor)
+                  if (!isLastItem)
+                    Divider(color: AppColors.containerGreyColor)
+                        .paddingOnly(top: 10.h),
                 ],
               ),
             );
           }).toList(),
+
     );
   }
 

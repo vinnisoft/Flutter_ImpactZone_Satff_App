@@ -13,12 +13,13 @@ class PosScreen extends GetView<PosController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
-      drawer: DrawerWidget(),
+      // key: _scaffoldKey,
+      // drawer: DrawerWidget(),
+      appBar: CustomAppBar(appBarTitleText: "POS",),
        body: SingleChildScrollView(
          child: Column(
            children: [
-             _topBanner(),
+             // _topBanner(),
              Padding(
                padding:  EdgeInsets.symmetric(horizontal:20.h,vertical: 15.h),
                child: Column(
@@ -39,7 +40,7 @@ class PosScreen extends GetView<PosController> {
            ],
          ),
        ),
-      bottomNavigationBar: _bottomAppBar(),
+      // bottomNavigationBar: _bottomAppBar(),
     );
   }
    _topBanner() => Stack(

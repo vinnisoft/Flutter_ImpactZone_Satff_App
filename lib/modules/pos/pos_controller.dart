@@ -8,10 +8,10 @@ class PosController extends GetxController{
       'icon': AppImages.iconsService,
       'title': keyServices.tr,
     },
-    {
-      'icon': AppImages.iconsAgreements,
-      'title': keyAgreements.tr,
-    },
+    // {
+    //   'icon': AppImages.iconsAgreements,
+    //   'title': keyAgreements.tr,
+    // },
     {
       'icon': AppImages.iconsProduct,
       'title':  keyProducts.tr,
