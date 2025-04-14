@@ -15,18 +15,24 @@ class CheckoutScreen extends GetView<CheckOutController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(appBarTitleText: keyCheckout.tr, actionWidget: [
+        AssetImageWidget(
+          AppImages.iconsNotification,
+          imageHeight: 20.h,
+        ),
+      ],),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            topBanner(title: keyCheckout.tr),
+            // topBanner(title: keyCheckout.tr),
         Padding(
           padding: const EdgeInsets.all(16),
           child:  GridView.count(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               crossAxisCount: 2,
-              crossAxisSpacing: 16,
-              mainAxisSpacing: 16,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
               childAspectRatio: 1,
               children: controller.checkOutTypeList.map((option) {
                 return InkWell(
@@ -35,19 +41,27 @@ class CheckoutScreen extends GetView<CheckOutController> {
                       Get.toNamed(AppRoutes.routePosCardOnFileScreen);
                       return;
                     }
-                    Get.toNamed(AppRoutes.routePosCheckoutDetailsScreen);
+                    if(option['title']=="Pre-Pay"){
+                      Get.toNamed(AppRoutes.routePrePayScreen);
+                      return;
+                    }
+                    Get.toNamed(AppRoutes.routePosCheckoutDetailsScreen,
+                      arguments: {
+                      "title":option["title"]
+                      }
+                    );
                   },
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Container(
-                        height: 137,
-                        width: 137,
+                        height: 130,
+                        width: 130,
                         decoration: BoxDecoration(
                           color:  Colors.white,
                           border: Border.all(
-                            color: Color(0xFF1B1E36),
-                            width: 1,
+                            color: AppColors.containerBorderGreyColor,
+                            // width: 1,
                           ),
                           borderRadius: BorderRadius.circular(12),
                         ),
@@ -56,7 +70,7 @@ class CheckoutScreen extends GetView<CheckOutController> {
                             option['icon'].toString(),
                             height: 40,
                             width: 40,
-                            color: Color(0xFF1B1E36),
+                            // color: Color(0xFF1B1E36),
                           ),
                         ),
                       ),
@@ -77,17 +91,22 @@ class CheckoutScreen extends GetView<CheckOutController> {
 
             Column(
               children: [
-                Container(
-                height: 137,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12.r),
-                    border: Border.all(color: AppColors.containerGreyColor)
-                  ),
-                  child: Image.asset(AppImages.iconsPayLaterIcon),
-                ).paddingSymmetric(horizontal: 40,vertical: 5.h),
+                InkWell(
+                  onTap: (){
+                    Get.toNamed(AppRoutes.routePayLaterScreen);
+                  },
+                  child: Container(
+                  height: 130,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12.r),
+                      border: Border.all(color: AppColors.containerGreyColor)
+                    ),
+                    child: Image.asset(AppImages.iconsPayLaterIcon),
+                  ).paddingSymmetric(horizontal: 40,vertical: 5.h),
+                ),
                 Text(
-                 "Pay Later",
+                 keyPayLater.tr,
                   style: TextStyle(
                     color: Color(0xFF1B1E36),
                     fontWeight: FontWeight.w500,

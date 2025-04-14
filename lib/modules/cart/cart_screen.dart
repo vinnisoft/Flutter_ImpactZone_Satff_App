@@ -12,10 +12,16 @@ class CartScreen extends GetView<CartController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(appBarTitleText: keyCart.tr, actionWidget: [
+        AssetImageWidget(
+          AppImages.iconsNotification,
+          imageHeight: 20.h,
+        ),
+      ],),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            _topBanner(),
+            // _topBanner(),
          _cart(),
           ],
         ),

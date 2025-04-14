@@ -1,23 +1,15 @@
 import 'package:get/get.dart';
 
-class PosCardOnFileController extends GetxController{
-
-
-  RxInt selectedIndex=0.obs;
+class PosPrePayController extends GetxController{
 
   @override
   void onInit() {
     // TODO: implement onInit
     super.onInit();
   }
-
   @override
   void onReady() {
     // TODO: implement onReady
     super.onReady();
-  }
-
-  void selectPaymentMethod(int index){
-    selectedIndex.value=index;
   }
 }

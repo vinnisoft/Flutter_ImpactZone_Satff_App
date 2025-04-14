@@ -23,6 +23,9 @@ class AppRoutes {
   static const String routeCheckOutScreen = '/route_checkout_screen';
   static const String routePosCheckoutDetailsScreen = '/route_pos_checkout_details_creen';
   static const String routePosCardOnFileScreen = '/route_pos_card_on_file_screen';
+  static const String routePosAddNewScreen = '/route_pos_add_new_card_screen';
+  static const String routePrePayScreen = '/route_pos_pre_pay_screen';
+  static const String routePayLaterScreen = '/route_pay_later_screen';
 
   // static const String routeTodoTask = '/route_todo_task';
 

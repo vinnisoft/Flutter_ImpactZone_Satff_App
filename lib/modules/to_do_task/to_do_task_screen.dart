@@ -9,10 +9,7 @@ class ToDoTaskScreen extends GetView<ToDoTaskController>{
       appBar: CustomAppBar(
         appBarTitleText: keyToDoTasks.tr,
         actionWidget: [
-          Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: Image.asset(AppImages.iconsBell),
-          )
+          Image.asset(AppImages.iconsBell)
         ],
       ),
        body:SingleChildScrollView(

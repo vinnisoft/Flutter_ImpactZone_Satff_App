@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:impact_zone/modules/pos_checkout_details/pos_checkout_details_controller.dart';
+import 'package:impact_zone/widgets/primary_bottom_button.dart';
 import 'package:impact_zone/widgets/top_banner.dart';
 
 import '../../app_values/app_colors.dart';
 import '../../app_values/app_images.dart';
+import '../../app_values/text_styles.dart';
+import '../../export.dart';
 import '../../translation/local_keys.dart';
 
 class PosCheckoutDetailsScreen extends GetView<PosCheckOutDetailsController> {
@@ -13,38 +16,51 @@ class PosCheckoutDetailsScreen extends GetView<PosCheckOutDetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          topBanner(title: "Check"),
-          _details()
-        ],
+
+    return Obx(
+      ()=> Scaffold(
+        appBar: CustomAppBar(appBarTitleText:controller.title.value, actionWidget: [
+          AssetImageWidget(
+            AppImages.iconsNotification,
+            imageHeight: 20.h,
+          ),
+        ],),
+        body: Column(
+          children: [
+            // topBanner(title: "Check"),
+            _details()
+          ],
+        ),
       ),
     );
   }
 
   _details() {
-    return Container(
-      padding: EdgeInsets.all(20.h),
-      height: Get.height*0.8,
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12.r),
-          boxShadow: [
-            BoxShadow(color: Colors.black12, spreadRadius: 2, blurRadius: 10)
-          ]),
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _detailsContainer(),
-          Divider(color: AppColors.containerGreyColor,).paddingSymmetric(vertical: 20.h),
-          Text("Check",style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w500,fontSize: 16),),
-          _checkTextField(),
-          Expanded(child: SizedBox()),
-          _bottomButton()
-      ],),
-    ).paddingAll(20.h);
+    return Obx(
+        ()=> Container(
+        padding: EdgeInsets.all(20.h),
+        height: Get.height*0.8,
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12.r),
+            boxShadow: [
+              BoxShadow(color: Colors.black12, spreadRadius: 2, blurRadius: 10)
+            ]),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _detailsContainer(),
+            controller.title.value=="Check"?Divider(color: AppColors.containerGreyColor,).paddingSymmetric(vertical: 20.h):SizedBox(),
+            controller.title.value=="Check"?Text("Check",style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w500,fontSize: 16),):SizedBox(),
+            controller.title.value=="Check"?_checkTextField():SizedBox(),
+            Expanded(child: SizedBox()),
+            PrimaryBottomButton(callBack: (){
+              _confirmPaymentSheet();
+            }, title:keyConfirmPayment.tr )
+        ],),
+      ).paddingAll(20.h),
+    );
   }
 
   _bottomButton({Function()? onClickCallBack}) {
@@ -62,7 +78,46 @@ class PosCheckoutDetailsScreen extends GetView<PosCheckOutDetailsController> {
     );
   }
 
-
+  _confirmPaymentSheet() => Get.bottomSheet(
+      Container(
+        width: Get.width,
+        padding: EdgeInsets.only(left: 20,right: 20,top: 5,bottom: 20),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              height: 6.h,
+              width: 120.w,
+              decoration: BoxDecoration(
+                  color: AppColors.bottomSheetBarColor,
+                  borderRadius: BorderRadius.circular(15.r)),
+            ),
+            Text(
+              keyConfirmPayment.tr,
+              style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w700,fontSize: 18),
+            ).paddingOnly(top: 15.h,),
+            Text(
+              keyOtpSendMessage.tr,
+              textAlign: TextAlign.center,
+              style:TextStyle(color: AppColors.secondaryTextColor,fontWeight: FontWeight.w400,fontSize: 14),
+            ).paddingOnly(top: 15.h, bottom: 30.h),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _form(),
+                Text(keyResendCode.tr+keyIN.tr,style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w700),).paddingOnly(bottom: 20.h,top: 10.h),
+              ],
+            ),
+            PrimaryBottomButton(callBack: (){
+              Get.back();
+              _congratulationSheet();
+            }, title: keyContinue.tr)
+          ],
+        ).paddingOnly(top: 5.h),
+      ),
+      barrierColor: Colors.black26,
+      backgroundColor: Colors.white);
   _detailsContainer() {
     return Container(
       padding: EdgeInsets.all(20.h),
@@ -126,4 +181,81 @@ class PosCheckoutDetailsScreen extends GetView<PosCheckOutDetailsController> {
       ),
     );
   }
+
+  _form() => Pinput(
+    // controller: controller.otpTextController,
+    // focusNode: controller.otpFocusNode,
+    length: 4,
+    onChanged: (value) {
+      // controller.otpCode.value = value;
+    },
+
+    defaultPinTheme: PinTheme(
+        width: 50.w,
+        height: 40.h,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(6.r),
+            color: Colors.white,
+            border: Border.all(
+                color: AppColors.textFieldBorderColor, width: 1.w))),
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    focusedPinTheme: PinTheme(
+        width: 50.w,
+        height: 40.h,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(6.r),
+            color: Colors.white,
+            border: Border.all(
+                color: AppColors.textFieldBorderColor, width: 1.w))),
+    errorPinTheme: PinTheme(
+        width: 50.w,
+        height: 40.h,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(6.r),
+            color: Colors.white,
+            border: Border.all(color: Colors.red, width: 1.w))),
+    disabledPinTheme: PinTheme(
+        width: 45.w,
+        height: 45.h,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(6.r),
+            color: Colors.white,
+            border: Border.all(
+                color: AppColors.textFieldBorderColor, width: 1.w))),
+    // validator: (value) => OtpFormValidator.validateOtpField(value: value!),
+  );
+
+
+  _congratulationSheet() => Get.bottomSheet(
+      Container(
+        width: Get.width,
+        padding: EdgeInsets.only(left: 20,right: 20,top: 5,bottom: 20),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              height: 6.h,
+              width: 120.w,
+              decoration: BoxDecoration(
+                  color: AppColors.bottomSheetBarColor,
+                  borderRadius: BorderRadius.circular(15.r)),
+            ),
+            Text(
+              keyCongratulation.tr,
+              style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w700,fontSize: 18),
+            ).paddingOnly(top: 15.h,),
+            Text(
+              keyPaymentConfirmMessage.tr,
+              textAlign: TextAlign.center,
+              style:TextStyle(color: AppColors.secondaryTextColor,fontWeight: FontWeight.w400,fontSize: 14),
+            ).paddingOnly(top: 15.h, bottom: 30.h),
+
+            PrimaryBottomButton(callBack: ()=> Get.back()
+            , title: keyGoBack.tr)
+          ],
+        ).paddingOnly(top: 5.h),
+      ),
+      barrierColor: Colors.black26,
+      backgroundColor: Colors.white);
 }

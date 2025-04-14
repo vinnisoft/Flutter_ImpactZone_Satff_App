@@ -9,6 +9,12 @@ class MemberDetailScreen extends GetView<MemberDetailController> {
       backgroundColor: Colors.white,
       appBar: CustomAppBar(
         appBarTitleText: keyMembers.tr,
+        actionWidget: [
+          AssetImageWidget(
+            AppImages.iconsNotification,
+            imageHeight: 20.h,
+          ),
+        ],
       ),
       body: Obx(
         () => SingleChildScrollView(

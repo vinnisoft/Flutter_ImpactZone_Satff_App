@@ -58,6 +58,9 @@ class AppImages {
   static const String iconsPayLaterIcon= 'assets/icons/pay_later.png';
   static const String iconsVisaIcon= 'assets/icons/visa.png';
   static const String iconsAddNewCardIcon= 'assets/icons/add_new_card.png';
+  static const String iconsSingleUserIcon= 'assets/icons/single_user.png';
+  static const String iconsCardIcon= 'assets/icons/card.png';
+  static const String iconsCvvIcon= 'assets/icons/cvv.png';
 
 
   static const String imagesAuthBg = 'assets/images/auth_bg.png';
