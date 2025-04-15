@@ -35,26 +35,26 @@ class CheckoutScreen extends GetView<CheckOutController> {
               mainAxisSpacing: 10,
               childAspectRatio: 1,
               children: controller.checkOutTypeList.map((option) {
-                return InkWell(
-                  onTap: (){
-                    if(option['title']=="Card on File"){
-                      Get.toNamed(AppRoutes.routePosCardOnFileScreen);
-                      return;
-                    }
-                    if(option['title']=="Pre-Pay"){
-                      Get.toNamed(AppRoutes.routePrePayScreen);
-                      return;
-                    }
-                    Get.toNamed(AppRoutes.routePosCheckoutDetailsScreen,
-                      arguments: {
-                      "title":option["title"]
-                      }
-                    );
-                  },
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Container(
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    InkWell(
+                      onTap: (){
+                        if(option['title']=="Card on File"){
+                          Get.toNamed(AppRoutes.routePosCardOnFileScreen);
+                          return;
+                        }
+                        if(option['title']=="Pre-Pay"){
+                          Get.toNamed(AppRoutes.routePrePayScreen);
+                          return;
+                        }
+                        Get.toNamed(AppRoutes.routePosCheckoutDetailsScreen,
+                            arguments: {
+                              "title":option["title"]
+                            }
+                        );
+                      },
+                      child: Container(
                         height: 130,
                         width: 130,
                         decoration: BoxDecoration(
@@ -74,16 +74,16 @@ class CheckoutScreen extends GetView<CheckOutController> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 8),
-                      Text(
-                        option['title'].toString(),
-                        style: TextStyle(
-                          color: Color(0xFF1B1E36),
-                          fontWeight: FontWeight.w500,
-                        ),
-                      )
-                    ],
-                  ),
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      option['title'].toString(),
+                      style: TextStyle(
+                        color: Color(0xFF1B1E36),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    )
+                  ],
                 );
               }).toList(),
             ),

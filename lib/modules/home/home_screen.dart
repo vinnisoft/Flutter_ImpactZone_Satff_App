@@ -14,18 +14,16 @@ class HomeScreen extends GetView<HomeController> {
       extendBodyBehindAppBar: true,
       drawer: DrawerWidget(),
       floatingActionButton: _floatingActionButton(context),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _topBanner(),
-            _myAppointmentsHeading(),
-            _appointmentData(),
-            _todoListHeading(),
-            _todoTasks()
-          ],
-        ).paddingOnly(bottom: 30.h),
-      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _topBanner(),
+          _myAppointmentsHeading(),
+          _appointmentData(),
+          _todoListHeading(),
+          _todoTasks()
+        ],
+      ).paddingOnly(bottom: 30.h),
     );
   }
 
@@ -107,9 +105,14 @@ class HomeScreen extends GetView<HomeController> {
                       imageHeight: 20.h,
                     ),
                   ),
-                  AssetImageWidget(
-                    AppImages.iconsNotification,
-                    imageHeight: 20.h,
+                  InkWell(
+                    onTap: (){
+                      Get.toNamed(AppRoutes.routeNotificationScreen);
+                    },
+                    child: AssetImageWidget(
+                      AppImages.iconsNotification,
+                      imageHeight: 20.h,
+                    ),
                   ),
                 ],
               ),
@@ -237,74 +240,76 @@ class HomeScreen extends GetView<HomeController> {
 
   _todoTasks() {
     return Obx(
-        ()=> Container(
-        padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 15.h),
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12.r),
-            boxShadow: [
-              BoxShadow(color: Colors.black12, spreadRadius: 2, blurRadius: 10)
-            ]),
-        child:  ListView.separated(
-          itemCount: controller.isTaskLoading.value ? 2 :(controller.myTodoList.isEmpty?1:controller.myTodoList.length),
-          physics: NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 15.h),
-          itemBuilder: (BuildContext context, int index) => Obx(() => InkWell(
-            onTap: controller.isTaskLoading.value
-                ? () {}
-                : () {
-              if(controller.myTodoList.isNotEmpty){
-                Get.toNamed(AppRoutes.routeTodoDescription,
-                    arguments: {
-                  'task_id':controller.myTodoList[index].id.toString()
+        ()=> Flexible(
+          child: Container(
+          padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 15.h),
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12.r),
+              boxShadow: [
+                BoxShadow(color: Colors.black12, spreadRadius: 2, blurRadius: 10)
+              ]),
+          child:  ListView.separated(
+            itemCount: controller.isTaskLoading.value ? 2 :(controller.myTodoList.isEmpty?1:controller.myTodoList.length),
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 15.h),
+            itemBuilder: (BuildContext context, int index) => Obx(() => InkWell(
+              onTap: controller.isTaskLoading.value
+                  ? () {}
+                  : () {
+                if(controller.myTodoList.isNotEmpty){
+                  Get.toNamed(AppRoutes.routeTodoDescription,
+                      arguments: {
+                    'task_id':controller.myTodoList[index].id.toString()
+                  }
+                  );
                 }
-                );
-              }
-            },
-            child: controller.isTaskLoading.value
-                ? ShimmerEffect.shimmerTaskListContent()
-                :controller.myTodoList.isEmpty?Center(child: Text(keyTodoListEmpty.tr,style: TextStyle(color: Color(0xff1F1F21),fontWeight: FontWeight.w700),)):  Row(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: AppColors.blueBgColor,
-                    borderRadius: BorderRadius.circular(5.r),
-                  ),
-                  child: AssetImageWidget(
-                    AppImages.iconsTask,
-                    imageHeight: 20.h,
-                  ).paddingAll(10.h),
-                ).paddingOnly(right: 8.h),
-                Flexible(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        controller.myTodoList[index].taskTitle.toString(),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: textStyleLabelMedium(),
-                      ).paddingOnly(bottom: 2.h),
-                      Text(
-                        controller.myTodoList[index].member.toString(),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: textStyleBodyMedium()
-                            .copyWith(color: AppColors.secondaryTextColor),
-                      ).paddingOnly(bottom: 5.h)
-                    ],
-                  ),
-                )
-              ],
-            ),
+              },
+              child: controller.isTaskLoading.value
+                  ? ShimmerEffect.shimmerTaskListContent()
+                  :controller.myTodoList.isEmpty?Center(child: Text(keyTodoListEmpty.tr,style: TextStyle(color: Color(0xff1F1F21),fontWeight: FontWeight.w700),)):  Row(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.blueBgColor,
+                      borderRadius: BorderRadius.circular(5.r),
+                    ),
+                    child: AssetImageWidget(
+                      AppImages.iconsTask,
+                      imageHeight: 20.h,
+                    ).paddingAll(10.h),
+                  ).paddingOnly(right: 8.h),
+                  Flexible(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          controller.myTodoList[index].taskTitle.toString(),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: textStyleLabelMedium(),
+                        ).paddingOnly(bottom: 2.h),
+                        Text(
+                          controller.myTodoList[index].member.toString(),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: textStyleBodyMedium()
+                              .copyWith(color: AppColors.secondaryTextColor),
+                        ).paddingOnly(bottom: 5.h)
+                      ],
+                    ),
+                  )
+                ],
+              ),
 
-          )),
-          separatorBuilder: (BuildContext context, int index) => SizedBox(
-            height: 12.h,
-          ),
-        )
-        ).paddingSymmetric(horizontal: 15.h),
+            )),
+            separatorBuilder: (BuildContext context, int index) => SizedBox(
+              height: 12.h,
+            ),
+          )
+          ).paddingSymmetric(horizontal: 15.h),
+        ),
     );
   }
 }

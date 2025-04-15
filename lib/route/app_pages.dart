@@ -1,8 +1,12 @@
 import 'package:impact_zone/export.dart';
 import 'package:impact_zone/modules/cart/cart_binding.dart';
 import 'package:impact_zone/modules/cart/cart_screen.dart';
+import 'package:impact_zone/modules/chat/chat_module/chat_binding.dart';
+import 'package:impact_zone/modules/chat/chat_module/chat_screen.dart';
 import 'package:impact_zone/modules/checkout/checkout_screen.dart';
 import 'package:impact_zone/modules/members/members_screen.dart';
+import 'package:impact_zone/modules/notification/notification_bindings.dart';
+import 'package:impact_zone/modules/notification/notification_screen.dart';
 import 'package:impact_zone/modules/pay_later/pay_later_binding.dart';
 import 'package:impact_zone/modules/pay_later/pay_later_screen.dart';
 import 'package:impact_zone/modules/pos/pos_bindings.dart';
@@ -201,6 +205,22 @@ class AppPages {
       transitionDuration: const Duration(milliseconds: _transitionDuration),
       page: () => PayLaterScreen(),
       binding: PayLaterBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.routeChatScreen,
+      transition: Transition.rightToLeft,
+      curve: Curves.ease,
+      transitionDuration: const Duration(milliseconds: _transitionDuration),
+      page: () => ChatScreen(),
+      binding: ChatBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.routeNotificationScreen,
+      transition: Transition.rightToLeft,
+      curve: Curves.ease,
+      transitionDuration: const Duration(milliseconds: _transitionDuration),
+      page: () => NotificationScreen(),
+      binding: NotificationBindings(),
     ),
   ];
 }

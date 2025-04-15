@@ -3,4 +3,6 @@ class AppConsts {
 
   static const String appName = 'Impact Zone';
 
+  // static
+
 }

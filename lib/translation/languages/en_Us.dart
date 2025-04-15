@@ -145,6 +145,18 @@ Map<String, String> en_US = {
   keySavedCards:"Saved Cards",
   keySave:"Save",
 
+  keyWriteYourMessage:"Write your message",
+  keyShare: "Share",
+  keyCamera: "Camera",
+  keyDocuments: "Documents",
+  keyShareYourFiles: "Share your files",
+  keyMedia: "Media",
+  keySharePhotos: "Share Photos",
+
+  keyNotifications: "Notifications",
+
+  keyChat:"Chat",
+
   keyConfirmPayment:"Confirm Payment"
 
 

@@ -138,6 +138,18 @@ const String keySavedCards="keySavedCards";
 const String keyDate="keyDate";
 const String keySave="keySave";
 
+const String keyChat="keyChat";
+
+const String keyWriteYourMessage="keyWriteYourMessage";
+const String keyShare="keyShare";
+const String keyCamera="keyCamera";
+const String keyDocuments="keyDocuments";
+const String keyShareYourFiles="keyShareYourFiles";
+const String keyMedia="keyMedia";
+const String keySharePhotos="keySharePhotos";
+
+const String keyNotifications="keyNotifications";
+
 
 const String keyConfirmPayment = 'keyConfirmPayment';
 

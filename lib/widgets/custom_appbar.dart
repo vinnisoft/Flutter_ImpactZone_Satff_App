@@ -35,7 +35,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         style: textStyleHeadlineMedium().copyWith(
             fontWeight: FontWeight.w600,
             color: Colors.white),
-      ).paddingOnly(top: 10.h, bottom: 10.h) :  Container(height: 0, width: 0,),
+      ).paddingOnly(top: 10.h, bottom: 10.h) : SizedBox(height: 0, width: 0,),
       shadowColor: Colors.transparent,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12.r)
@@ -43,7 +43,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: bgColor ?? AppColors.appColor,
       actions:  (actionWidget ?? []).map((widget)=>Padding(
         padding: EdgeInsets.only(right: 20),
-        child: widget,
+        child: InkWell(
+          onTap: (){
+            Get.toNamed(AppRoutes.routeNotificationScreen);
+          },
+            child: widget
+        ),
       )).toList(),
     );
   }

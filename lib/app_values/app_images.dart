@@ -61,6 +61,15 @@ class AppImages {
   static const String iconsSingleUserIcon= 'assets/icons/single_user.png';
   static const String iconsCardIcon= 'assets/icons/card.png';
   static const String iconsCvvIcon= 'assets/icons/cvv.png';
+  static const String iconsActiveIcon= 'assets/icons/active.png';
+  static const String iconsThreeDotIcon= 'assets/icons/three_dot.png';
+  static const String iconsAttachmentIcon= 'assets/icons/attachment.png';
+  static const String iconsSendIcon= 'assets/icons/send.png';
+  static const String iconsMediaIcon= 'assets/icons/media.png';
+  static const String iconsCameraIcon= 'assets/icons/camera.png';
+  static const String iconsDocsIcon= 'assets/icons/docs.png';
+  static const String iconsPdfIcon= 'assets/icons/pdf_icon.png';
+  static const String iconsDeActiveIcon= 'assets/icons/de_active.png';
 
 
   static const String imagesAuthBg = 'assets/images/auth_bg.png';

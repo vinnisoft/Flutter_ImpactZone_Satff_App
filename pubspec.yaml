@@ -33,6 +33,9 @@ dependencies:
   syncfusion_flutter_barcodes: ^29.1.33
   shimmer: ^3.0.0
   dotted_line: ^3.2.3
+  permission_handler: ^12.0.0+1
+  file_picker: ^10.1.2
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:

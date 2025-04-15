@@ -26,7 +26,10 @@ class AppRoutes {
   static const String routePosAddNewScreen = '/route_pos_add_new_card_screen';
   static const String routePrePayScreen = '/route_pos_pre_pay_screen';
   static const String routePayLaterScreen = '/route_pay_later_screen';
+  static const String routeChatScreen = '/route_chat_screen';
+  static const String routeNotificationScreen = '/route_notification_screen';
 
-  // static const String routeTodoTask = '/route_todo_task';
+
+// static const String routeTodoTask = '/route_todo_task';
 
 }
