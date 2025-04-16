@@ -33,9 +33,6 @@ class MemberDetailController extends GetxController {
           memberData.value = memberDetailResponse.value.data!;
         }
       }
-    // }).onError((error, stackTrace) {
-    //   isMemberDetailLoading.value = false;
-    //   showToast(message: error.toString());
     });
   }
 

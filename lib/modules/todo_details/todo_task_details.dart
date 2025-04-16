@@ -1,12 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:impact_zone/app_values/app_images.dart';
-import 'package:impact_zone/modules/todo_details/todo_task_details_controller.dart';
-import '../../models/todo_task/todo_task_details_model.dart';
-import '../../translation/local_keys.dart';
-import '../../utils/shimmer_effect.dart';
-import '../../widgets/custom_appbar.dart';
+import 'package:impact_zone/export.dart';
+
 
 class TodoTaskDetails extends  GetView<TodoTaskDetailsController> {
 
@@ -19,7 +12,7 @@ class TodoTaskDetails extends  GetView<TodoTaskDetailsController> {
       appBar: CustomAppBar(
         appBarTitleText: keyToDoTasks.tr,
         actionWidget: [
-          Image.asset(AppImages.iconsBell)
+          AssetImageWidget(AppImages.iconsBell)
         ],
       ),
 
@@ -63,7 +56,7 @@ class TodoTaskDetails extends  GetView<TodoTaskDetailsController> {
                          color: Color(0xffF0F3FF),
                          borderRadius: BorderRadius.circular(4)
                      ),
-                     child: Image.asset("assets/images/splash_logo.png",width: 20,),
+                     child: AssetImageWidget(AppImages.imagesSplashLogo,imageWidth: 20.w,),
                    ),
                    Flexible(
                      child: Column(

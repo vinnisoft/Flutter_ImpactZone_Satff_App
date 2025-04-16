@@ -1,6 +1,4 @@
 import 'package:impact_zone/export.dart';
-import 'package:impact_zone/widgets/drawer.dart';
-import 'package:syncfusion_flutter_barcodes/barcodes.dart';
 
 class HomeScreen extends GetView<HomeController> {
   HomeScreen({super.key});

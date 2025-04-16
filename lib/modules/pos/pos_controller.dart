@@ -1,5 +1,4 @@
-import 'package:get/get.dart';
-import 'package:impact_zone/app_values/app_images.dart';
+
 import 'package:impact_zone/export.dart';
 
 class PosController extends GetxController{

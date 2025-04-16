@@ -1,20 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:impact_zone/export.dart';
-import 'package:impact_zone/modules/pos/pos_controller.dart';
-import '../../app_values/app_images.dart';
-import '../../widgets/custom_asset_image_widget.dart';
-import '../../widgets/drawer.dart';
 
 class PosScreen extends GetView<PosController> {
    PosScreen({super.key});
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // key: _scaffoldKey,
-      // drawer: DrawerWidget(),
       appBar: CustomAppBar(appBarTitleText: keyPos.tr, actionWidget: [
         AssetImageWidget(
           AppImages.iconsNotification,
@@ -45,43 +35,9 @@ class PosScreen extends GetView<PosController> {
            ],
          ),
        ),
-      // bottomNavigationBar: _bottomAppBar(),
     );
   }
-   _topBanner() => Stack(
-         children: [
-           AssetImageWidget(
-             AppImages.iconsHomeBg,
-             imageHeight: 90.h,
-             imageWidth: Get.width,
-             imageFitType: BoxFit.cover,
-             radiusBottomLeft: 15.r,
-             radiusBottomRight: 15.r,
-           ),
-           Padding(
-             padding:  EdgeInsets.only(top: 20.h),
-             child: Row(
-               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-               children: [
-                 InkWell(
-                   onTap: () {
-                       _scaffoldKey.currentState?.openDrawer();
-                   },
-                   child:AssetImageWidget(
-                     AppImages.iconsMenu,
-                     imageHeight: 20.h,
-                   )
-                 ),
-                 Text("POS",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 22),),
-                 AssetImageWidget(
-                   AppImages.iconsNotification,
-                   imageHeight: 20.h,
-                 ),
-               ],
-             ).paddingOnly(top: 20.h, left: 12.h, right: 12.h),
-           )
-         ]
-   );
+
 
   _categories() {
     return Padding(
@@ -349,86 +305,6 @@ class PosScreen extends GetView<PosController> {
       ),
     );
   }
-
-
-   _bottomAppBar() => Obx(
-         () => Container(
-       padding: EdgeInsets.only(top: 4.h, bottom: 5.h),
-       decoration: BoxDecoration(
-           color: Colors.white,
-           borderRadius: BorderRadius.only(
-             topRight: Radius.circular(18.r),
-             topLeft: Radius.circular(18.r),
-           ),
-           boxShadow: [BoxShadow(
-               color: Colors.grey.shade200,
-               spreadRadius: 2,
-               blurRadius: 2
-           )]
-       ),
-       child: ClipRRect(
-         borderRadius: BorderRadius.only(
-           topRight: Radius.circular(18.r),
-           topLeft: Radius.circular(18.r),
-         ),
-         child: BottomNavigationBar(
-           elevation: 0,
-           currentIndex: controller.selectedTab.value,
-           type: BottomNavigationBarType.fixed,
-           onTap: (index) {
-             controller.selectedTab.value = index;
-             switch (index) {
-               case 0:
-                 break;
-               case 1:
-                 break;
-               case 2:
-                 break;
-               case 3:
-                 break;
-             }
-           },
-           selectedLabelStyle: textStyleBodySmall().copyWith(fontSize: 0.sp),
-           backgroundColor: Colors.white,
-           selectedItemColor: AppColors.appColor,
-           unselectedItemColor: AppColors.primaryTextColor,
-           unselectedLabelStyle: textStyleBodySmall().copyWith(fontSize: 0.sp),
-           items: [
-             _navBarItem(
-               icon: AppImages.iconsHomeUnselected,
-               activeIcon: AppImages.iconsHomeSelected,
-             ),
-             _navBarItem(
-               icon: AppImages.iconsCalendarUnselected,
-               activeIcon: AppImages.iconsCalendarSelected,
-             ),
-             _navBarItem(
-               icon: AppImages.iconsChatUnselected,
-               activeIcon: AppImages.iconsChatSelected,
-             ),
-             _navBarItem(
-               icon: AppImages.iconsProfileUnselected,
-               activeIcon: AppImages.iconsProfileSelected,
-             ),
-           ],
-         ),
-       ),
-     ),
-   );
-
-   BottomNavigationBarItem _navBarItem({icon, activeIcon}) =>
-       BottomNavigationBarItem(
-         icon: Image.asset(
-           icon,
-           height: 22.h,
-         ),
-         label: '',
-         activeIcon: Image.asset(
-           activeIcon,
-           height: 22.h,
-         ),
-       );
-
 
 
 }

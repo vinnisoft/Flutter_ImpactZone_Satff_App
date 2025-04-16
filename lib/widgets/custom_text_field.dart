@@ -19,6 +19,7 @@ class TextFieldWidget extends StatelessWidget {
   final bool? hideBorder;
   final bool? isFilled;
   final Widget? suffixIcon;
+  final Widget? suffix;
   final Widget? prefixIcon;
   final int? maxLine;
   final InputBorder? decoration;
@@ -39,6 +40,7 @@ class TextFieldWidget extends StatelessWidget {
     this.hint,
     this.inputType,
     this.textController,
+    this.suffix,
     this.hintStyle,
     this.prefix,
     this.courserColor,
@@ -97,8 +99,6 @@ class TextFieldWidget extends StatelessWidget {
                       RegExp(
                           '(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])'),
                       allow: false),
-                  // FilteringTextInputFormatter.deny(
-                  //     RegExp(r'\s')),
                 ],
             autovalidateMode: AutovalidateMode.onUserInteraction,
             maxLines: maxLine,
@@ -130,6 +130,7 @@ class TextFieldWidget extends StatelessWidget {
       prefixIcon: prefixIcon,
       prefix: prefix,
       suffixIcon: isOutlined == true ? null : suffixIcon,
+      suffix: suffix,
       hintText: hint,
       hintStyle: hintStyle ??
           textStyleBodyMedium()

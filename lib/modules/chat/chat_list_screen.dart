@@ -1,7 +1,5 @@
 import 'package:impact_zone/export.dart';
 
-import '../../widgets/drawer.dart';
-
 class ChatListScreen extends GetView<ChatListController> {
    ChatListScreen({super.key});
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -39,13 +37,13 @@ class ChatListScreen extends GetView<ChatListController> {
 
          child: Row(
            children: [
-             Image.asset(AppImages.iconsSearch,width: 20,),
+             AssetImageWidget(AppImages.iconsSearch,imageWidth: 20.w,),
              SizedBox(width: 8),
              Expanded(
                child: TextField(
                  controller: controller.searchTextController,
                  decoration: InputDecoration(
-                   hintText: "Search",
+                   hintText: keySelect.tr,
                    isCollapsed: true,
                    hintStyle: TextStyle(
                        color: Color(0xff969696),
@@ -58,17 +56,9 @@ class ChatListScreen extends GetView<ChatListController> {
                  ),
                ),
              ),
-             // Image.asset(AppImages.iconsFilter,width: 20,)
 
            ],
-         ), /*AssetImageWidget(
-        AppImages.iconsFilter,
-        imageHeight: 14.h,
-        imageWidth: Get.width,
-        imageFitType: BoxFit.cover,
-        radiusBottomLeft: 15.r,
-        radiusBottomRight: 15.r,
-      ),*/
+         ),
        ),
      );
    }
@@ -120,20 +110,12 @@ class ChatListScreen extends GetView<ChatListController> {
            shrinkWrap: true,
            physics: NeverScrollableScrollPhysics(),
            padding: EdgeInsets.only(top: 20.h),
-           itemCount: /*controller.isMembersListApiCall.value?*/6/*:controller.filteredItems.length*/,
+           itemCount:6,
            itemBuilder: (BuildContext context, int index) =>
-          /* controller.isMembersListApiCall.value
-               ? ShimmerEffect.shimmerMemberListContent()
-               :*/
 
            InkWell(
              onTap: () {
-              Get.toNamed(AppRoutes.routeChatScreen,
-                   // arguments: {
-                   //   'member_id': controller
-                   //       .filteredItems[index].id
-                   // }
-               );
+              Get.toNamed(AppRoutes.routeChatScreen,);
              },
              child: _chatItem()
            ),

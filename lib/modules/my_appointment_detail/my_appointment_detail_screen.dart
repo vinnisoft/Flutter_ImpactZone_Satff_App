@@ -70,7 +70,7 @@ class MyAppointmentDetailScreen extends GetView<MyAppointmentDetailController> {
                         height: 100.h,
                         width: Get.width,
                         child: Text(
-                            'No Members available ',
+                            keyNoMembersAvailable.tr,
                             style: textStyleBodyLarge()),
                       ) :
                        ListView.separated(

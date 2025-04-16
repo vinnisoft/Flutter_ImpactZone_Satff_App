@@ -1,8 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:impact_zone/export.dart';
-import 'package:impact_zone/modules/pay_later/pay_later_controller.dart';
-import 'package:impact_zone/widgets/primary_bottom_button.dart';
+
 
 class PayLaterScreen extends GetView<PayLaterController> {
   const PayLaterScreen({super.key});
@@ -92,7 +89,6 @@ class PayLaterScreen extends GetView<PayLaterController> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-            // margin: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
             padding: EdgeInsets.all(20.h),
             decoration: BoxDecoration(
                 color: Colors.white,
@@ -111,16 +107,6 @@ class PayLaterScreen extends GetView<PayLaterController> {
                 );
               },
             )
-          /*Column(
-               children: [
-                 _cardItem(),
-                 Divider(color: AppColors.containerGreyColor,).paddingSymmetric(vertical: 10.h),
-                 _cardItem(),
-                 Divider(color: AppColors.containerGreyColor,).paddingSymmetric(vertical: 10.h),
-                 _cardItem(),
-
-               ],
-             ),*/
         ),
       ],
     );
@@ -133,35 +119,13 @@ class PayLaterScreen extends GetView<PayLaterController> {
       children: [
         Row(
           children: [
-            Image.asset(AppImages.iconsVisaIcon).paddingOnly(right: 10),
+            AssetImageWidget(AppImages.iconsVisaIcon).paddingOnly(right: 10),
             Expanded(child: Text("**** **** **** 4567",style: TextStyle(color: AppColors.secondaryTextColor,fontWeight: FontWeight.w500,fontSize: 16),)),
             InkWell(
                 onTap: ()=>controller.selectPaymentMethod(index),
-                child: /* controller.selectedIndex.value==index?Image.asset(AppImages.iconsCompleteTodo):*/Image.asset(AppImages.iconsUnCheckTodo)),
+                child:AssetImageWidget(AppImages.iconsUnCheckTodo)),
           ],
         ),
-        // controller.selectedIndex.value==index?Row(
-        //   mainAxisAlignment: MainAxisAlignment.end,
-        //   children: [
-        //     Container(
-        //         padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-        //         decoration: BoxDecoration(
-        //             borderRadius: BorderRadius.circular(10),
-        //             border: Border.all(color: AppColors.appColor)
-        //         ),
-        //         child:Text("CVV",style: TextStyle(color: AppColors.secondaryTextColor,fontSize: 14,fontWeight: FontWeight.w400),)
-        //     ).paddingSymmetric(horizontal: 10),
-        //     Container(
-        //         padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-        //         decoration: BoxDecoration(
-        //             borderRadius: BorderRadius.circular(10),
-        //             border: Border.all(color: AppColors.containerGreyColor),
-        //             color:AppColors.appColor
-        //         ),
-        //         child:Text("Pay \$200",style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.w700),)
-        //     ),
-        //   ],
-        // ):SizedBox(),
         index==2?SizedBox():Divider(color: AppColors.containerGreyColor,).paddingSymmetric(vertical: 10.h),
       ],
     );
@@ -176,11 +140,11 @@ class PayLaterScreen extends GetView<PayLaterController> {
       ),
       child: Row(
         children: [
-          Image.asset(AppImages.iconsDate,width: 25,),
+          AssetImageWidget(AppImages.iconsDate,imageWidth: 25.w,),
           Expanded(
             child: TextField(
               decoration: InputDecoration(
-                  hintText: 'Select',
+                  hintText: keySelect.tr,
                   contentPadding: EdgeInsets.symmetric(vertical: 14, horizontal: 12),
                   filled: true,
                   isDense: true,

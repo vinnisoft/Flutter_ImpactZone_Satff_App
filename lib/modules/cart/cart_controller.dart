@@ -1,4 +1,5 @@
-import 'package:get/get.dart';
+import 'package:impact_zone/export.dart';
+
 
 class CartController extends GetxController{
 

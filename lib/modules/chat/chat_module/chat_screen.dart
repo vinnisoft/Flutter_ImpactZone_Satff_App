@@ -1,18 +1,6 @@
-import 'dart:io';
+import 'package:impact_zone/export.dart';
 
-import 'package:file_picker/file_picker.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:impact_zone/app_values/app_colors.dart';
-import 'package:impact_zone/modules/chat/chat_module/chat_controller.dart';
-import '../../../app_values/app_images.dart';
-import '../../../repository/endpoint.dart';
-import '../../../translation/local_keys.dart';
-import '../../../utils/helper.dart';
-import '../../../widgets/custom_asset_image_widget.dart';
-import '../../../widgets/custom_chat_widget.dart';
-import '../../../widgets/network_image.dart';
+
 
 class ChatScreen extends GetView<ChatController> {
   const ChatScreen({super.key});
@@ -31,7 +19,6 @@ class ChatScreen extends GetView<ChatController> {
                 child: ListView.builder(
                   shrinkWrap: true,
                     itemBuilder: _chatItems,
-                    // separatorBuilder: (_,index)=>SizedBox(height: 20,),
                     itemCount: 6).paddingSymmetric(horizontal: 20),
               ),
              _chatTextField()
@@ -76,7 +63,7 @@ class ChatScreen extends GetView<ChatController> {
                   Positioned(
                     bottom: 2,
                       right: 2,
-                      child: Image.asset(AppImages.iconsActiveIcon)
+                      child: AssetImageWidget(AppImages.iconsActiveIcon)
                   )
                 ],
               ).paddingSymmetric(horizontal: 10),
@@ -84,7 +71,7 @@ class ChatScreen extends GetView<ChatController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("Jhon Abraham",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 16),),
-                  Text("Active now",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 12),),
+                  Text(keyActiveNow.tr,style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 12),),
                 ],
               )
 
@@ -105,7 +92,7 @@ class ChatScreen extends GetView<ChatController> {
               color: Color(0xFFF8FBFA),
               borderRadius: BorderRadius.circular(6),
             ),
-            child: Text('Today', style: TextStyle(color: Color(0xff000E08),fontSize: 12,fontWeight: FontWeight.w500)),
+            child: Text(keyToday.tr, style: TextStyle(color: Color(0xff000E08),fontSize: 12,fontWeight: FontWeight.w500)),
           ),
         ),
         Align(
@@ -186,7 +173,6 @@ class ChatScreen extends GetView<ChatController> {
                   children: [
                     Expanded(
                       child: TextField(
-                        // controller: cont,
                         decoration: InputDecoration(
                           hintText: keyWriteYourMessage.tr,
                           isCollapsed: true,

@@ -41,7 +41,7 @@ class CustomChatWidget extends GetView<ChatController> {
                   ),
                   child: Text(message, style: TextStyle(color: textColor,fontWeight: FontWeight.w400,fontSize: 12)),
                 ),
-                isSender?SizedBox():Image.asset(AppImages.iconsThreeDotIcon,height: 30,)
+                isSender?SizedBox():AssetImageWidget(AppImages.iconsThreeDotIcon,imageHeight: 15.h,)
               ],
             ),
             Obx(

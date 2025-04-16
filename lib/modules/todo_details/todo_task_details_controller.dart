@@ -1,9 +1,5 @@
-import 'package:get/get.dart';
 
-import '../../export.dart';
-import '../../models/todo_task/todo_task_details_model.dart';
-import '../../repository/api_repository.dart';
-import '../../utils/custom_toast.dart';
+import 'package:impact_zone/export.dart';
 
 class TodoTaskDetailsController extends GetxController{
   final APIRepository _repository = Get.find<APIRepository>();
@@ -29,8 +25,6 @@ class TodoTaskDetailsController extends GetxController{
 
 
   todoListDetailsApi() {
-    // print(todoId.value);
-    // return;
     isTodoDetailsLoading.value = true;
     _repository.todoDetailsApiCall(todoId.value).then((value) async {
       if (value != null) {

@@ -115,6 +115,7 @@ const String keyTax = 'keyTax';
 const String keyTotal = 'keyTotal';
 const String keyCheckout = 'keyCheckout';
 const String keyCancel = 'keyCancel';
+const String keyNoMembersAvailable = 'keyNoMembersAvailable';
 
 const String keyAddNewCard = 'keyAddNewCard';
 
@@ -139,6 +140,8 @@ const String keyDate="keyDate";
 const String keySave="keySave";
 
 const String keyChat="keyChat";
+const String keyToday="keyToday";
+const String keyActiveNow="keyActiveNow";
 
 const String keyWriteYourMessage="keyWriteYourMessage";
 const String keyShare="keyShare";
@@ -149,6 +152,21 @@ const String keyMedia="keyMedia";
 const String keySharePhotos="keySharePhotos";
 
 const String keyNotifications="keyNotifications";
+
+const String keySelect="keySelect";
+
+const String keySearch="keySearch";
+
+const String keyCash="keyCash";
+const String keyCheck="keyCheck";
+const String keyCardOnFile="keyCardOnFile";
+const String keyCreditCard="keyCreditCard";
+const String keyReward="keyReward";
+const String keyCreditDebitCards="keyCreditDebitCards";
+
+const String keyNoBillingAvailable="keyNoBillingAvailable";
+const String keyNoPosHistoryAvailable="keyNoPosHistoryAvailable";
+const String keyEnter="keyEnter";
 
 
 const String keyConfirmPayment = 'keyConfirmPayment';

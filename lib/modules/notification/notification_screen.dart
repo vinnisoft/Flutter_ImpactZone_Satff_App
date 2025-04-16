@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'package:impact_zone/export.dart';
-import 'package:impact_zone/modules/notification/notification_controller.dart';
+
 
 class NotificationScreen extends GetView<NotificationController> {
   const NotificationScreen({super.key});
@@ -14,7 +13,6 @@ class NotificationScreen extends GetView<NotificationController> {
       body: ListView(
         children: [
            Container(
-             // padding: EdgeInsets.all(20),
              margin: EdgeInsets.all(20),
              decoration: BoxDecoration(
                  color: Colors.white,
@@ -50,7 +48,7 @@ class NotificationScreen extends GetView<NotificationController> {
                 padding: EdgeInsets.all(8),
                 margin: EdgeInsets.only(right:10 ),
                 decoration: BoxDecoration(
-                  color: index==0?Colors.white:AppColors.blueBgColor,
+                  color: index==0||index==1?Colors.white:AppColors.blueBgColor,
                   borderRadius: BorderRadius.circular(30)
                 ),
                 child: AssetImageWidget(AppImages.iconsAppLogo,imageWidth: 20,),

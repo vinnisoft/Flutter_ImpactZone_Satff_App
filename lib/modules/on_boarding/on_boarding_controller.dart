@@ -33,7 +33,7 @@ class OnBoardingController extends GetxController {
       pageController.animateToPage(selectedPageIndex.value,
           curve: Curves.decelerate,
           duration: const Duration(
-              milliseconds: 500)); // for animated jump. Requires a cu
+              milliseconds: 500));
     } else {
        moveToLoginScreen();
     }

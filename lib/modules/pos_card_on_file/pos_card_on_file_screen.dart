@@ -1,13 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:impact_zone/app_values/app_images.dart';
 import 'package:impact_zone/export.dart';
-import 'package:impact_zone/modules/pos_card_on_file/pos_card_on_file_controller.dart';
-import 'package:impact_zone/widgets/top_banner.dart';
 
-import '../../app_values/app_colors.dart';
-import '../../translation/local_keys.dart';
 
 class PosCardOnFileScreen extends GetView<PosCardOnFileController> {
   const PosCardOnFileScreen({super.key});
@@ -15,14 +7,14 @@ class PosCardOnFileScreen extends GetView<PosCardOnFileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(appBarTitleText:"Card on File" ,),
+      appBar: CustomAppBar(appBarTitleText:keyCardOnFile.tr ,),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // topBanner(title: "Card on File"),
             _amountDetails(),
-            Text("Credit & Debit Cards",style: TextStyle(color:AppColors.primaryTextColor,fontSize: 20,fontWeight: FontWeight.w700),).paddingSymmetric(horizontal: 25),
+            Text(keyCreditDebitCards.tr,style: TextStyle(color:AppColors.primaryTextColor,fontSize: 20,fontWeight: FontWeight.w700),).paddingSymmetric(horizontal: 25),
             _cardOptions(),
             _addNewCard()
           ],
@@ -89,16 +81,6 @@ class PosCardOnFileScreen extends GetView<PosCardOnFileController> {
            );
              },
          )
-      /*Column(
-           children: [
-             _cardItem(),
-             Divider(color: AppColors.containerGreyColor,).paddingSymmetric(vertical: 10.h),
-             _cardItem(),
-             Divider(color: AppColors.containerGreyColor,).paddingSymmetric(vertical: 10.h),
-             _cardItem(),
-
-           ],
-         ),*/
     );
   }
 
@@ -107,11 +89,11 @@ class PosCardOnFileScreen extends GetView<PosCardOnFileController> {
       children: [
         Row(
           children: [
-          Image.asset(AppImages.iconsVisaIcon).paddingOnly(right: 10),
+            AssetImageWidget(AppImages.iconsVisaIcon).paddingOnly(right: 10),
           Expanded(child: Text("**** **** **** 4567",style: TextStyle(color: AppColors.secondaryTextColor,fontWeight: FontWeight.w500,fontSize: 16),)),
           InkWell(
              onTap: ()=>controller.selectPaymentMethod(index),
-              child:  controller.selectedIndex.value==index?Image.asset(AppImages.iconsCompleteTodo):Image.asset(AppImages.iconsUnCheckTodo)),
+              child:  controller.selectedIndex.value==index?AssetImageWidget(AppImages.iconsCompleteTodo):AssetImageWidget(AppImages.iconsUnCheckTodo)),
         ],
         ),
         controller.selectedIndex.value==index?Row(
@@ -155,7 +137,7 @@ class PosCardOnFileScreen extends GetView<PosCardOnFileController> {
             ]),
         child:Row(
           children: [
-            Image.asset(AppImages.iconsAddNewCardIcon).paddingOnly(right: 10),
+            AssetImageWidget(AppImages.iconsAddNewCardIcon).paddingOnly(right: 10),
             Text(keyAddNewCard.tr,style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w500,fontSize: 16),)
           ],
         ) ,

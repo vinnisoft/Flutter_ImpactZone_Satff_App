@@ -2,7 +2,6 @@ import 'package:impact_zone/export.dart';
 
 class OtpVerificationController extends GetxController {
   final APIRepository _repository = Get.find<APIRepository>();
-  final LocalStorage _localStorage = Get.find<LocalStorage>();
 
   TextEditingController otpTextController = TextEditingController();
   FocusNode otpFocusNode = FocusNode();

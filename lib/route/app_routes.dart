@@ -28,6 +28,7 @@ class AppRoutes {
   static const String routePayLaterScreen = '/route_pay_later_screen';
   static const String routeChatScreen = '/route_chat_screen';
   static const String routeNotificationScreen = '/route_notification_screen';
+  static const String routeReportScreen = '/route_report_screen';
 
 
 // static const String routeTodoTask = '/route_todo_task';

@@ -70,6 +70,10 @@ class AppImages {
   static const String iconsDocsIcon= 'assets/icons/docs.png';
   static const String iconsPdfIcon= 'assets/icons/pdf_icon.png';
   static const String iconsDeActiveIcon= 'assets/icons/de_active.png';
+  static const String iconsCommissionIcon= 'assets/icons/commission.png';
+  static const String iconsTimeSheetIcon= 'assets/icons/time_sheet.png';
+  static const String iconsSalesReportIcon= 'assets/icons/sales_report.png';
+  static const String iconsTransactionReportIcon= 'assets/icons/transaction_report.png';
 
 
   static const String imagesAuthBg = 'assets/images/auth_bg.png';

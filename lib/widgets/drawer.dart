@@ -66,7 +66,10 @@ class DrawerWidget extends StatelessWidget {
                     icon: AppImages.iconsPOS,
                     label: keyPOS.tr),
                 _drawerItem(
-                    onPress: () {},
+                    onPress: () {
+                      Get.back();
+                      Get.toNamed(AppRoutes.routeReportScreen);
+                    },
                     icon: AppImages.iconsReport,
                     label: keyReports.tr),
                 _drawerItem(

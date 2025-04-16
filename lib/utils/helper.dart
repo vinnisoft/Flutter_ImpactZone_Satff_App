@@ -1,9 +1,5 @@
-import 'dart:io';
+import 'package:impact_zone/export.dart';
 
-import 'package:file_picker/file_picker.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class Helper{
   Helper._();
@@ -14,7 +10,6 @@ class Helper{
     if(fileType=="image"){
       result= await FilePicker.platform.pickFiles(
           type: FileType.image,
-          // allowedExtensions: ['pdf'],
           allowMultiple: true
       );
     }
@@ -32,10 +27,8 @@ class Helper{
       File file = File(result.files.single.path!);
       debugPrint('Picked file: ${file.path}');
       return file;
-      // You can now use this file: upload, preview, etc.
     } else {
       return null;
-      debugPrint('User canceled the picker');
     }
   }
 
@@ -62,21 +55,18 @@ class Helper{
 
 
   static Future<void> takePhoto() async {
-    // bool hasPermission = await checkCameraPermission();
-    // if (!hasPermission) {
-    //   print('Camera permission denied');
-    //   return;
-    // }
-
     final ImagePicker picker = ImagePicker();
     final XFile? photo = await picker.pickImage(source: ImageSource.camera);
 
     if (photo != null) {
       File imageFile = File(photo.path);
-      print('Photo taken: ${imageFile.path}');
-      // Use imageFile (display, upload, etc.)
+      if (kDebugMode) {
+        print('Photo taken: ${imageFile.path}');
+      }
     } else {
-      print('No photo taken');
+      if (kDebugMode) {
+        print('No photo taken');
+      }
     }
   }
 

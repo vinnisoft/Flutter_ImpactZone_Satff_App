@@ -1,13 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:impact_zone/app_values/app_colors.dart';
-import 'package:impact_zone/app_values/app_images.dart';
 import 'package:impact_zone/export.dart';
-import 'package:impact_zone/modules/checkout/checkout_controller.dart';
 
-import '../../translation/local_keys.dart';
-import '../../widgets/top_banner.dart';
 
 class CheckoutScreen extends GetView<CheckOutController> {
   const CheckoutScreen({super.key});
@@ -24,7 +16,6 @@ class CheckoutScreen extends GetView<CheckOutController> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // topBanner(title: keyCheckout.tr),
         Padding(
           padding: const EdgeInsets.all(16),
           child:  GridView.count(
@@ -40,11 +31,11 @@ class CheckoutScreen extends GetView<CheckOutController> {
                   children: [
                     InkWell(
                       onTap: (){
-                        if(option['title']=="Card on File"){
+                        if(option['title']==keyCardOnFile.tr){
                           Get.toNamed(AppRoutes.routePosCardOnFileScreen);
                           return;
                         }
-                        if(option['title']=="Pre-Pay"){
+                        if(option['title']==keyPrePay.tr){
                           Get.toNamed(AppRoutes.routePrePayScreen);
                           return;
                         }
@@ -61,16 +52,14 @@ class CheckoutScreen extends GetView<CheckOutController> {
                           color:  Colors.white,
                           border: Border.all(
                             color: AppColors.containerBorderGreyColor,
-                            // width: 1,
                           ),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Center(
-                          child: Image.asset(
+                          child: AssetImageWidget(
                             option['icon'].toString(),
-                            height: 40,
-                            width: 40,
-                            // color: Color(0xFF1B1E36),
+                            imageHeight: 40.h,
+                            imageWidth: 40.w,
                           ),
                         ),
                       ),
@@ -96,19 +85,22 @@ class CheckoutScreen extends GetView<CheckOutController> {
                     Get.toNamed(AppRoutes.routePayLaterScreen);
                   },
                   child: Container(
+                    padding: EdgeInsets.all(30),
                   height: 130,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.r),
                       border: Border.all(color: AppColors.containerGreyColor)
                     ),
-                    child: Image.asset(AppImages.iconsPayLaterIcon),
+                    child: AssetImageWidget(AppImages.iconsPayLaterIcon,
+                      imageHeight: 40.h,
+                      imageWidth: 40.w,),
                   ).paddingSymmetric(horizontal: 40,vertical: 5.h),
                 ),
                 Text(
                  keyPayLater.tr,
                   style: TextStyle(
-                    color: Color(0xFF1B1E36),
+                    color: AppColors.primaryTextColor,
                     fontWeight: FontWeight.w500,
                   ),
                 )

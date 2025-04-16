@@ -128,6 +128,8 @@ Map<String, String> en_US = {
   keyCreditBalance:"Credit Balance",
   keyPrePay:"Pre-Pay",
 
+  keyNoMembersAvailable:"No Members available",
+
   keyAdd:"Add",
   keyExpiry:"Expiry",
   keyCVV:"CVV",
@@ -156,6 +158,22 @@ Map<String, String> en_US = {
   keyNotifications: "Notifications",
 
   keyChat:"Chat",
+  keyToday:"Today",
+  keyActiveNow:"Active now",
+
+  keyCash:"Cash",
+  keyCheck:"Check",
+  keyCardOnFile:"Card on File",
+  keyCreditCard:"Credit Card",
+  keyReward:"Reward",
+  keyCreditDebitCards:"Credit & Debit Cards",
+
+  keyNoBillingAvailable:"No Billing available.",
+  keyNoPosHistoryAvailable:"No POS History available.",
+
+  keySelect:"Select",
+  keySearch:"Search",
+  keyEnter:"Enter",
 
   keyConfirmPayment:"Confirm Payment"
 

@@ -1,5 +1,5 @@
-import 'package:get/get.dart';
-import 'package:impact_zone/app_values/app_images.dart';
+import 'package:impact_zone/export.dart';
+
 
 class CheckOutController extends GetxController{
 
@@ -7,27 +7,27 @@ class CheckOutController extends GetxController{
 List<Map<dynamic,String>> checkOutTypeList=[
   {
    "icon": AppImages.iconsCashIcon,
-    "title":"Cash"
+    "title":keyCash.tr
   },
   {
     "icon": AppImages.iconsCheckIcon,
-    "title":"Check"
+    "title":keyCheck.tr
   },
   {
     "icon": AppImages.iconsCardOnFileIcon,
-    "title":"Card on File"
+    "title":keyCardOnFile.tr
   },
   {
     "icon": AppImages.iconsPrePayIcon,
-    "title":"Pre-Pay"
+    "title":keyPrePay.tr
   },
   {
     "icon": AppImages.iconsCreditCardIcon,
-    "title":"Credit Card"
+    "title":keyCreditCard.tr
   },
   {
     "icon": AppImages.iconsRewardIcon,
-    "title":"Reward"
+    "title":keyReward.tr
   },
 ];
 @override

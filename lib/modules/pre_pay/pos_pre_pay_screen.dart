@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:impact_zone/export.dart';
-import 'package:impact_zone/modules/pre_pay/pos_pre_pay_controller.dart';
-import 'package:impact_zone/widgets/primary_bottom_button.dart';
 
 class PosPrePayScreen extends GetView<PosPrePayController> {
   const PosPrePayScreen({super.key});
@@ -42,10 +38,10 @@ class PosPrePayScreen extends GetView<PosPrePayController> {
           Divider(color: AppColors.containerGreyColor,).paddingSymmetric(vertical: 20.h),
           Row(
             children: [
-              Image.asset(
+              AssetImageWidget(
                 AppImages.iconsProfileImage,
-                width: 35,
-                height: 35,
+                imageWidth: 35.w,
+                imageHeight: 35.h,
               ).paddingOnly(right: 10.w),
               Text(
                 "Alex Linderson",

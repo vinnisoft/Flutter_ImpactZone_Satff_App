@@ -138,7 +138,7 @@ class MemberDetailScreen extends GetView<MemberDetailController> {
                     alignment: Alignment.center,
                     height: 100.h,
                     width: Get.width,
-                    child: Text('No Billing available ',
+                    child: Text(keyNoBillingAvailable.tr,
                         style: textStyleBodyLarge()),
                   )
                 : ListView.separated(
@@ -232,7 +232,7 @@ class MemberDetailScreen extends GetView<MemberDetailController> {
                     alignment: Alignment.center,
                     height: 100.h,
                     width: Get.width,
-                    child: Text('No POS History available ',
+                    child: Text(keyNoPosHistoryAvailable.tr,
                         style: textStyleBodyLarge()),
                   )
                 : ListView.separated(
@@ -397,18 +397,14 @@ class MemberDetailScreen extends GetView<MemberDetailController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                              // controller.memberData.value.billingHistory?[index]
-                              //         .name ??
                               '20 mins Private',
                               style: textStyleLabelMedium()),
                           Text(
-                              // controller.memberData.value.billingHistory?[index].name ??
                               'safgsadf',
                               style: textStyleBodySmall())
                         ],
                       ),
                       Text(
-                          // controller.memberData.value.billingHistory?[index].netPrice ??
                           '\$49',
                           style: textStyleDisplayMedium()),
                     ],
@@ -440,7 +436,6 @@ class MemberDetailScreen extends GetView<MemberDetailController> {
                         color: Colors.black12, spreadRadius: 2, blurRadius: 10)
                   ]),
               child: ListView.separated(
-                // itemCount: (controller.memberData.value.posHistory?.length ?? 0) > 4 ? 4: controller.memberData.value.posHistory?.length ?? 0,
                 itemCount: 4,
                 padding: EdgeInsets.zero,
                 physics: NeverScrollableScrollPhysics(),
@@ -455,12 +450,9 @@ class MemberDetailScreen extends GetView<MemberDetailController> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                        // controller.memberData.value.billingHistory?[index]
-                        //         .name ??
                         'Protien Shake',
                         style: textStyleLabelMedium()),
                     Text(
-                        // controller.memberData.value.billingHistory?[index].netPrice ??
                         'Nov',
                         style: textStyleBodyLarge()),
                   ],

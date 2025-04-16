@@ -1,5 +1,5 @@
 import 'package:impact_zone/export.dart';
-import 'package:dotted_line/dotted_line.dart';
+
 class ToDoTaskScreen extends GetView<ToDoTaskController>{
   const ToDoTaskScreen({super.key});
 
@@ -9,7 +9,7 @@ class ToDoTaskScreen extends GetView<ToDoTaskController>{
       appBar: CustomAppBar(
         appBarTitleText: keyToDoTasks.tr,
         actionWidget: [
-          Image.asset(AppImages.iconsBell)
+          AssetImageWidget(AppImages.iconsBell)
         ],
       ),
        body:SingleChildScrollView(
@@ -141,7 +141,7 @@ class ToDoTaskScreen extends GetView<ToDoTaskController>{
                     color: Color(0xffF0F3FF),
                     borderRadius: BorderRadius.circular(4)
                 ),
-                child: Image.asset(AppImages.iconsAppLogo,width: 20,),
+                child: AssetImageWidget(AppImages.iconsAppLogo,imageWidth: 20.w,),
               ),
               Expanded(
                 child: Column(
@@ -153,7 +153,7 @@ class ToDoTaskScreen extends GetView<ToDoTaskController>{
                 ),
               ),
               SizedBox(width: 10.h,),
-              Image.asset(AppImages.iconsCompleteTodo,width: 20,),
+              AssetImageWidget(AppImages.iconsCompleteTodo,imageWidth: 20.w,),
             ],
           ),
           if(index!=controller.myTodoList.length-1)Container(
@@ -174,20 +174,8 @@ class ToDoTaskScreen extends GetView<ToDoTaskController>{
   }
 
   _completeTodoList(int index) {
-    // if(controller.myTodoList[index].status=="COMPLETE"){
-    //   return SizedBox();
-    // }
     return  InkWell(
       onTap: (){
-        // Get.toNamed(AppRoutes.routeTodoDescription,
-        //   arguments: {
-        //     'title': 'title',
-        //     'memberName': 'memberName',
-        //     'description': 'description',
-        //     'AssignedBy': 'AssignedBy',
-        //     'dueDate': 'dueDate',
-        //   },);
-
       },
       child: controller.isTaskLoading.value
           ? ShimmerEffect.shimmerTaskListContent(showCompleted: true):Column(
@@ -202,7 +190,7 @@ class ToDoTaskScreen extends GetView<ToDoTaskController>{
                     color: Color(0xffF0F3FF),
                     borderRadius: BorderRadius.circular(4)
                 ),
-                child: Image.asset(AppImages.iconsAppLogo,width: 20,),
+                child: AssetImageWidget(AppImages.iconsAppLogo,imageWidth: 20.w,),
               ),
               Expanded(
                 child: Column(
@@ -218,19 +206,19 @@ class ToDoTaskScreen extends GetView<ToDoTaskController>{
                 onTap: (){
                   controller.updateBookMarkStatus(controller.myTodoList[index].id.toString(),false);
                 },
-                  child: Image.asset(AppImages.iconsBookmark,width: 20,)):
+                  child: AssetImageWidget(AppImages.iconsBookmark,imageWidth: 20.w,)):
               InkWell(
                 onTap: (){
                   controller.updateBookMarkStatus(controller.myTodoList[index].id.toString(),true);
                 },
-                  child: Image.asset(AppImages.iconsEmptyBookmark,width: 20,)),
+                  child: AssetImageWidget(AppImages.iconsEmptyBookmark,imageWidth: 20.w,)),
               SizedBox(width: 5,),
-              controller.myTodoList[index].status=="COMPLETED"?Image.asset(AppImages.iconsCompleteTodo,width: 20,):
+              controller.myTodoList[index].status=="COMPLETED"?AssetImageWidget(AppImages.iconsCompleteTodo,imageWidth: 20.w,):
               InkWell(
                 onTap: (){
                   controller.todoListUpdateApi(controller.myTodoList[index].id.toString(),"COMPLETED");
                 },
-                  child: Image.asset(AppImages.iconsUnCheckTodo,width: 20,)
+                  child: AssetImageWidget(AppImages.iconsUnCheckTodo,imageWidth: 20.w,)
               ),
             ],
           ),

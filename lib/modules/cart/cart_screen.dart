@@ -1,10 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:impact_zone/export.dart';
-import 'package:impact_zone/modules/cart/cart_controller.dart';
-
-import '../../widgets/custom_dropdown2.dart';
 
 class CartScreen extends GetView<CartController> {
   const CartScreen({super.key});
@@ -21,7 +15,6 @@ class CartScreen extends GetView<CartController> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // _topBanner(),
          _cart(),
           ],
         ),
@@ -100,42 +93,6 @@ class CartScreen extends GetView<CartController> {
     ).paddingAll(20.h);
   }
 
-  _topBanner() => Stack(
-      children: [
-        AssetImageWidget(
-          AppImages.iconsHomeBg,
-          imageHeight: 90.h,
-          imageWidth: Get.width,
-          imageFitType: BoxFit.cover,
-          radiusBottomLeft: 15.r,
-          radiusBottomRight: 15.r,
-        ),
-        Padding(
-          padding:  EdgeInsets.only(top: 20.h),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              InkWell(
-                  onTap: () {
-                   Get.back();
-                  },
-                  child:AssetImageWidget(
-                    AppImages.iconsBack,
-                    imageHeight: 20.h,
-                  )
-              ),
-              Text(keyCart.tr,style: TextStyle(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 22),),
-              AssetImageWidget(
-                AppImages.iconsNotification,
-                imageHeight: 20.h,
-              ),
-            ],
-          ).paddingOnly(top: 20.h, left: 12.h, right: 12.h),
-        )
-      ]
-  );
-
-
   Widget _circleButton(IconData icon, VoidCallback onPressed) {
     return InkWell(
       onTap: onPressed,
@@ -207,38 +164,14 @@ class CartScreen extends GetView<CartController> {
   }
 
   _discountTextField() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10),
-      decoration: BoxDecoration(
-        border: Border.all(color: AppColors.containerGreyColor),
-        borderRadius: BorderRadius.circular(12.r)
-      ),
-      child: Row(
-        children: [
-          Image.asset(AppImages.iconsDiscountIcon),
-          Expanded(
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: 'Select',
-                contentPadding: EdgeInsets.symmetric(vertical: 14, horizontal: 12),
-                filled: true,
-                isDense: true,
-                fillColor: Colors.white,
-                border: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                errorBorder: InputBorder.none,
-                disabledBorder: InputBorder.none,
-              ),
-              onTap: () {
-                // open your modal, popup, or dropdown logic here
-              },
-            ),
-          ),
-          Text(keyApply.tr,style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w500),)
-        ],
-      ),
-    );
+    return  TextFieldWidget(
+      hint: keyEnter.tr,
+      prefixIcon: AssetImageWidget(
+        AppImages.iconsDiscountIcon,
+        imageHeight: 12.h,
+      ).paddingSymmetric(vertical: 10.h, horizontal: 12.w),
+      suffix:Text(keyApply.tr,textAlign:TextAlign.center,style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500,color: AppColors.primaryTextColor),),
+    ).paddingSymmetric(vertical: 12.h);
   }
 
   _detailsContainer() {

@@ -3,7 +3,6 @@ import 'package:impact_zone/export.dart';
 class MemberListWidget extends StatelessWidget {
   final String memberImage;
   final String memberName;
-  // final String fontSize;
 
   const MemberListWidget({super.key,
     required this.memberImage,
@@ -33,7 +32,6 @@ class MemberListWidget extends StatelessWidget {
                 fontSize: 18,
                 color: Color(0xff1F1F21)
               )),
-              // style: textStyleTitleMedium()),
         ),
       ],
     );

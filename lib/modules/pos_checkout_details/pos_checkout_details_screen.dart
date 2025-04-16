@@ -1,15 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:impact_zone/modules/pos_checkout_details/pos_checkout_details_controller.dart';
-import 'package:impact_zone/widgets/primary_bottom_button.dart';
-import 'package:impact_zone/widgets/top_banner.dart';
+import 'package:impact_zone/export.dart';
 
-import '../../app_values/app_colors.dart';
-import '../../app_values/app_images.dart';
-import '../../app_values/text_styles.dart';
-import '../../export.dart';
-import '../../translation/local_keys.dart';
 
 class PosCheckoutDetailsScreen extends GetView<PosCheckOutDetailsController> {
   const PosCheckoutDetailsScreen({super.key});
@@ -27,7 +17,6 @@ class PosCheckoutDetailsScreen extends GetView<PosCheckOutDetailsController> {
         ],),
         body: Column(
           children: [
-            // topBanner(title: "Check"),
             _details()
           ],
         ),
@@ -52,7 +41,7 @@ class PosCheckoutDetailsScreen extends GetView<PosCheckOutDetailsController> {
           children: [
             _detailsContainer(),
             controller.title.value=="Check"?Divider(color: AppColors.containerGreyColor,).paddingSymmetric(vertical: 20.h):SizedBox(),
-            controller.title.value=="Check"?Text("Check",style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w500,fontSize: 16),):SizedBox(),
+            controller.title.value=="Check"?Text(keyCheck.tr,style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w500,fontSize: 16),):SizedBox(),
             controller.title.value=="Check"?_checkTextField():SizedBox(),
             Expanded(child: SizedBox()),
             PrimaryBottomButton(callBack: (){
@@ -63,20 +52,6 @@ class PosCheckoutDetailsScreen extends GetView<PosCheckOutDetailsController> {
     );
   }
 
-  _bottomButton({Function()? onClickCallBack}) {
-    return InkWell(
-      onTap: onClickCallBack,
-      child: Container(
-        height: 46.h,
-        width: double.infinity,
-        decoration: BoxDecoration(
-            color: AppColors.appColor,
-            borderRadius: BorderRadius.circular(5.r)
-        ),
-        child: Center(child: Text(keyConfirmPayment.tr,style: TextStyle(color: Colors.white,fontWeight: FontWeight.w700),)),
-      ),
-    );
-  }
 
   _confirmPaymentSheet() => Get.bottomSheet(
       Container(
@@ -148,46 +123,20 @@ class PosCheckoutDetailsScreen extends GetView<PosCheckOutDetailsController> {
   }
 
   _checkTextField() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10),
-      decoration: BoxDecoration(
-          border: Border.all(color: AppColors.containerGreyColor),
-          borderRadius: BorderRadius.circular(12.r)
-      ),
-      child: Row(
-        children: [
-          Image.asset(AppImages.iconsCheckIcon,width: 25,),
-          Expanded(
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: 'Enter',
-                contentPadding: EdgeInsets.symmetric(vertical: 14, horizontal: 12),
-                filled: true,
-                isDense: true,
-                fillColor: Colors.white,
-                border: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                errorBorder: InputBorder.none,
-                disabledBorder: InputBorder.none,
-                hintStyle: TextStyle(color: AppColors.secondaryTextColor)
-              ),
-              onTap: () {
-                // open your modal, popup, or dropdown logic here
-              },
-            ),
-          ),
-        ],
-      ),
-    );
+    return TextFieldWidget(
+      hint: keyEnter.tr,
+      prefixIcon: AssetImageWidget(
+        AppImages.iconsCheckIcon,
+        imageHeight: 12.h,
+      ).paddingSymmetric(vertical: 10.h, horizontal: 12.w),
+
+      validate: (value) => EmailValidator.validateEmail(value ?? ''),
+    ).paddingSymmetric(vertical: 12.h);
   }
 
   _form() => Pinput(
-    // controller: controller.otpTextController,
-    // focusNode: controller.otpFocusNode,
     length: 4,
     onChanged: (value) {
-      // controller.otpCode.value = value;
     },
 
     defaultPinTheme: PinTheme(
@@ -222,7 +171,6 @@ class PosCheckoutDetailsScreen extends GetView<PosCheckOutDetailsController> {
             color: Colors.white,
             border: Border.all(
                 color: AppColors.textFieldBorderColor, width: 1.w))),
-    // validator: (value) => OtpFormValidator.validateOtpField(value: value!),
   );
 
 

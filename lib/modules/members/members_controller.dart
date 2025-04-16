@@ -1,11 +1,5 @@
-import 'dart:async';
+import 'package:impact_zone/export.dart';
 
-import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
-
-import '../../models/member/members_list_model.dart';
-import '../../repository/api_repository.dart';
-import '../../utils/custom_toast.dart';
 
 class MembersController extends GetxController{
   final APIRepository _repository = Get.find<APIRepository>();

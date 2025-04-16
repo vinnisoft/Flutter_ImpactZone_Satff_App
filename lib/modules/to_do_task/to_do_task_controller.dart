@@ -1,7 +1,4 @@
 import 'package:impact_zone/export.dart';
-import 'package:impact_zone/models/todo_task/todo_task_details_model.dart';
-
-import '../../models/todo_task/todo_task_model.dart';
 
 class ToDoTaskController extends GetxController {
   final APIRepository _repository = Get.find<APIRepository>();

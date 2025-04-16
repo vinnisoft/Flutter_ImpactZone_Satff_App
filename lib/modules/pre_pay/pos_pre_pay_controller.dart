@@ -1,4 +1,4 @@
-import 'package:get/get.dart';
+import 'package:impact_zone/export.dart';
 
 class PosPrePayController extends GetxController{
 

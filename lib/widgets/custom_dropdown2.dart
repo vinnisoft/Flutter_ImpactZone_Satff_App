@@ -47,23 +47,17 @@ class CustomDropdown2<T> extends StatelessWidget {
       isExpanded: true,
       value: dropdownValue,
       isDense: true,
-      // dropdownStyleData: DropdownStyleData(
-      //   maxHeight: 200.h,
-      //   decoration: const BoxDecoration(
-      //     color: Colors.white,
-      //   ),
-      // ),
       hint: Row(
     children: [
 
-    Image.asset(
+      AssetImageWidget(
       'assets/icons/member.png', // Replace with your placeholder icon
-      width: 20,
-      height: 20,
+      imageWidth: 20.h,
+      imageHeight: 20.w,
     ),
     const SizedBox(width: 10),
     Text(
-    hint ?? 'Select',
+    hint ?? keySelect.tr,
     style: hintStyle ??
     textStyleBodyMedium().copyWith(
     color: AppColors.secondaryTextColor,
@@ -87,10 +81,10 @@ class CustomDropdown2<T> extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Image.asset(
+                      AssetImageWidget(
                         AppImages.iconsProfileImage,
-                        width: 20,
-                        height: 20,
+                        imageWidth: 20.h,
+                        imageHeight: 20.w,
                       ).paddingOnly(right: 10.w),
                       Text(
                         "Alex Linderson",
