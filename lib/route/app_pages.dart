@@ -3,16 +3,21 @@ import 'package:impact_zone/modules/cart/cart_binding.dart';
 import 'package:impact_zone/modules/cart/cart_screen.dart';
 import 'package:impact_zone/modules/checkout/checkout_screen.dart';
 import 'package:impact_zone/modules/members/members_screen.dart';
+import 'package:impact_zone/modules/pay_later/pay_later_binding.dart';
+import 'package:impact_zone/modules/pay_later/pay_later_screen.dart';
 import 'package:impact_zone/modules/pos/pos_bindings.dart';
 import 'package:impact_zone/modules/pos/pos_screen.dart';
 import 'package:impact_zone/modules/pos_card_on_file/pos_card_on_file_binding.dart';
 import 'package:impact_zone/modules/pos_card_on_file/pos_card_on_file_screen.dart';
 import 'package:impact_zone/modules/pos_checkout_details/pos_checkout_details_screen.dart';
+import 'package:impact_zone/modules/pre_pay/pos_pre_pay_binding.dart';
+import 'package:impact_zone/modules/pre_pay/pos_pre_pay_screen.dart';
 import 'package:impact_zone/modules/todo_details/to_do_task_details_binding.dart';
 import 'package:impact_zone/modules/todo_details/todo_task_details.dart';
 
 import '../modules/checkout/checkout_binding.dart';
 import '../modules/members/member_list_binding.dart';
+import '../modules/pos_card_on_file/add_new_card.dart';
 import '../modules/pos_checkout_details/pos_checkout_details_binding.dart';
 
 class AppPages {
@@ -172,5 +177,30 @@ class AppPages {
       binding: PosCardOnFileBinding(),
     ),
 
+    GetPage(
+      name: AppRoutes.routePosAddNewScreen,
+      transition: Transition.rightToLeft,
+      curve: Curves.ease,
+      transitionDuration: const Duration(milliseconds: _transitionDuration),
+      page: () => AddNewCardScreen(),
+      binding: PosCardOnFileBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.routePrePayScreen,
+      transition: Transition.rightToLeft,
+      curve: Curves.ease,
+      transitionDuration: const Duration(milliseconds: _transitionDuration),
+      page: () => PosPrePayScreen(),
+      binding: PosPrePayBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.routePayLaterScreen,
+      transition: Transition.rightToLeft,
+      curve: Curves.ease,
+      transitionDuration: const Duration(milliseconds: _transitionDuration),
+      page: () => PayLaterScreen(),
+      binding: PayLaterBinding(),
+    ),
   ];
 }

@@ -110,6 +110,7 @@ Map<String, String> en_US = {
   keySelectServices:"Select Service",
   keySelectMembershipPlan:"Select Membership Plan",
   keySelectProducts:"Select Products",
+  keyPos:"POS",
 
   keyItem:"Item",
   keyCart:"Cart",
@@ -124,6 +125,25 @@ Map<String, String> en_US = {
   keyCancel:"Cancel",
   keyAddNewCard:"Add New Card",
 
+  keyCreditBalance:"Credit Balance",
+  keyPrePay:"Pre-Pay",
+
+  keyAdd:"Add",
+  keyExpiry:"Expiry",
+  keyCVV:"CVV",
+  keyCardNumber:"Card Number",
+  keyNameOnCard:"Name on Card",
+
+  keyOtpSendMessage:"An OTP has been sent to the member mobile number. Please enter the OTP to proceed.",
+
+ keyCongratulation:"Congratulation",
+ keyPaymentConfirmMessage:"Thank you for your transaction! Your transaction has been successfully confirmed.",
+ keyGoBack:"Go Back",
+
+  keyPayLater:"Pay Later",
+  keyDate:"Date",
+  keySavedCards:"Saved Cards",
+  keySave:"Save",
 
   keyConfirmPayment:"Confirm Payment"
 

@@ -8,6 +8,12 @@ class MyAppointmentsScreen extends GetView<MyAppointmentsController> {
     return Scaffold(
         appBar: CustomAppBar(
           appBarTitleText: keyMyAppointments.tr,
+          actionWidget: [
+            AssetImageWidget(
+              AppImages.iconsNotification,
+              imageHeight: 20.h,
+            ),
+          ],
         ),
         body: Obx(
           () => ListView.separated(

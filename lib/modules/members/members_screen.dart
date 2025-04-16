@@ -28,6 +28,12 @@ class MembersScreen extends GetView<MembersController> {
         // drawer: DrawerWidget(),
           appBar: CustomAppBar(
             appBarTitleText: keyMembers.tr,
+            actionWidget: [
+              AssetImageWidget(
+                AppImages.iconsNotification,
+                imageHeight: 20.h,
+              ),
+            ],
           ),
         body: SingleChildScrollView(
           child: Column(
