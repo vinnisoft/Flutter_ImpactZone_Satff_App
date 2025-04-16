@@ -97,9 +97,8 @@ class MyAppointmentDetailScreen extends GetView<MyAppointmentDetailController> {
                                           });
                                     },
                                     child: MemberListWidget(
-                                      memberImage: controller.appointmentData
-                                              .value.members?[index].image ??
-                                          '',
+                                      memberImage: baseUrl+controller.appointmentData
+                                              .value.members![index].image!??'',
                                       memberName:
                                           '${controller.appointmentData.value.members?[index].firstName} ${controller.appointmentData.value.members?[index].lastName}',
                                     ),

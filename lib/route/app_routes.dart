@@ -16,5 +16,14 @@ class AppRoutes {
   static const String routeToDoTasksList = '/route_to_do_task_list';
 
   static const String routeMemberDetail = '/route_memberDetail';
+  static const String routeTodoDescription = '/route_todo_description';
+  static const String routeMembersScreen = '/route_members_screen';
+  static const String routePosScreen = '/route_pos_screen';
+  static const String routeCartScreen = '/route_cart_screen';
+  static const String routeCheckOutScreen = '/route_checkout_screen';
+  static const String routePosCheckoutDetailsScreen = '/route_pos_checkout_details_creen';
+  static const String routePosCardOnFileScreen = '/route_pos_card_on_file_screen';
+
+  // static const String routeTodoTask = '/route_todo_task';
 
 }

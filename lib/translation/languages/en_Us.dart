@@ -98,6 +98,34 @@ Map<String, String> en_US = {
   keyAssignedBy : 'Assigned By',
   keyDueDate : 'Due Date',
 
+  keyTodoListEmpty : 'Todo Task is Empty!',
+  keyCompletedTodoEmpty : 'Completed Todo Task is Empty!',
+
   keyResource : 'Resource',
+
+  keyWhatToSell:"What to Sell?",
+  keyServices:"Services",
+  keyAgreements:"Agreements",
+  keyProducts:"Products",
+  keySelectServices:"Select Service",
+  keySelectMembershipPlan:"Select Membership Plan",
+  keySelectProducts:"Select Products",
+
+  keyItem:"Item",
+  keyCart:"Cart",
+  keyDiscount:"Discount",
+  keyApply:"Apply",
+  keyDetails:"Details",
+  keyMember:"Member",
+  keyDiscounts:"Discounts:",
+  keyTax:"Tax:",
+  keyTotal:"Total:",
+  keyCheckout:"Checkout",
+  keyCancel:"Cancel",
+  keyAddNewCard:"Add New Card",
+
+
+  keyConfirmPayment:"Confirm Payment"
+
 
 };
