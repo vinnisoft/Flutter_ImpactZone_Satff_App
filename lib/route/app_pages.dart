@@ -1,4 +1,19 @@
 import 'package:impact_zone/export.dart';
+import 'package:impact_zone/modules/cart/cart_binding.dart';
+import 'package:impact_zone/modules/cart/cart_screen.dart';
+import 'package:impact_zone/modules/checkout/checkout_screen.dart';
+import 'package:impact_zone/modules/members/members_screen.dart';
+import 'package:impact_zone/modules/pos/pos_bindings.dart';
+import 'package:impact_zone/modules/pos/pos_screen.dart';
+import 'package:impact_zone/modules/pos_card_on_file/pos_card_on_file_binding.dart';
+import 'package:impact_zone/modules/pos_card_on_file/pos_card_on_file_screen.dart';
+import 'package:impact_zone/modules/pos_checkout_details/pos_checkout_details_screen.dart';
+import 'package:impact_zone/modules/todo_details/to_do_task_details_binding.dart';
+import 'package:impact_zone/modules/todo_details/todo_task_details.dart';
+
+import '../modules/checkout/checkout_binding.dart';
+import '../modules/members/member_list_binding.dart';
+import '../modules/pos_checkout_details/pos_checkout_details_binding.dart';
 
 class AppPages {
   AppPages();
@@ -96,7 +111,66 @@ class AppPages {
       page: () => MemberDetailScreen(),
       binding: MemberDetailBinding(),
     ),
+    GetPage(
+      name: AppRoutes.routeTodoDescription,
+      transition: Transition.rightToLeft,
+      curve: Curves.ease,
+      transitionDuration: const Duration(milliseconds: _transitionDuration),
+      page: () => TodoTaskDetails(),
+      binding: ToDoTaskDetailsBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.routeMembersScreen,
+      transition: Transition.rightToLeft,
+      curve: Curves.ease,
+      transitionDuration: const Duration(milliseconds: _transitionDuration),
+      page: () => MembersScreen(),
+      binding: MemberListBinding(),
+    ),
 
+    GetPage(
+      name: AppRoutes.routePosScreen,
+      transition: Transition.rightToLeft,
+      curve: Curves.ease,
+      transitionDuration: const Duration(milliseconds: _transitionDuration),
+      page: () => PosScreen(),
+      binding: PosBindings(),
+    ),
+
+    GetPage(
+      name: AppRoutes.routeCartScreen,
+      transition: Transition.rightToLeft,
+      curve: Curves.ease,
+      transitionDuration: const Duration(milliseconds: _transitionDuration),
+      page: () => CartScreen(),
+      binding: CartBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.routeCheckOutScreen,
+      transition: Transition.rightToLeft,
+      curve: Curves.ease,
+      transitionDuration: const Duration(milliseconds: _transitionDuration),
+      page: () => CheckoutScreen(),
+      binding: CheckoutBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.routePosCheckoutDetailsScreen,
+      transition: Transition.rightToLeft,
+      curve: Curves.ease,
+      transitionDuration: const Duration(milliseconds: _transitionDuration),
+      page: () => PosCheckoutDetailsScreen(),
+      binding: PosCheckoutDetailsBinding(),
+    ),
+   GetPage(
+      name: AppRoutes.routePosCardOnFileScreen,
+      transition: Transition.rightToLeft,
+      curve: Curves.ease,
+      transitionDuration: const Duration(milliseconds: _transitionDuration),
+      page: () => PosCardOnFileScreen(),
+      binding: PosCardOnFileBinding(),
+    ),
 
   ];
 }

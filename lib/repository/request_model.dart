@@ -108,4 +108,16 @@ class RequestModel {
     data["paymentId"] = paymentId;
     return data;
   }
+
+
+
+// /*=================================================== update Task Request Model==============================================*/
+//   static updateTaskRequestModel({
+//     required String status
+//   }) {
+//     final Map<String, dynamic> data = <String, dynamic>{};
+//     data["bookingId"] = bookingId;
+//     data["paymentId"] = paymentId;
+//     return data;
+//   }
 }

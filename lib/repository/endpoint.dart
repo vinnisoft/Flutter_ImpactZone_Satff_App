@@ -17,6 +17,8 @@ const String updateFcmEndPoint = "";
 const String appointmentsEndPoint = "api/user/calendar/appointments/";
 const String appointmentDetailEndPoint = "api/user/calendar/appointments/";
 const String membersDetailEndPoint = "api/user/memberV2/";
+const String taskEndPoint = "api/user/task/";
+const String todoDetails = "api/user/task/";
 
 
 

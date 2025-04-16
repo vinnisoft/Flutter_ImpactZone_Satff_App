@@ -1,4 +1,8 @@
 import 'package:impact_zone/export.dart';
+import 'package:impact_zone/models/member/members_list_model.dart';
+import 'package:impact_zone/models/todo_task/todo_task_model.dart';
+
+import '../models/todo_task/todo_task_details_model.dart';
 
 class APIRepository {
   late DioClient? dioClient;
@@ -149,4 +153,52 @@ class APIRepository {
     //   return Future.error(NetworkExceptions.getDioException(e));
     // }
   }
+
+
+  /*===================================================================== Todo list API Call  ==========================================================*/
+
+  Future todoListApiCall() async {
+    try {
+      final response = await dioClient!.get(taskEndPoint, skipAuth: false);
+      return EmployeeTaskResponseModel.fromJson(response);
+    } catch (e) {
+      return Future.error(NetworkExceptions.getDioException(e));
+    }
+  }
+
+  /*===================================================================== Todo Details API Call  ==========================================================*/
+
+  Future todoDetailsApiCall(String taskId) async {
+    try {
+      final response = await dioClient!.get("$taskEndPoint/$taskId", skipAuth: false);
+      return TaskDetailResponseModel.fromJson(response);
+    } catch (e) {
+      return Future.error(NetworkExceptions.getDioException(e));
+    }
+  }
+
+
+
+  /*===================================================================== membes List  API Call  ==========================================================*/
+
+  Future membersListApiCall() async {
+    try {
+    final response = await dioClient!.get(membersDetailEndPoint, skipAuth: false);
+    return MemberListResponseModel.fromJson(response);
+    } catch (e) {
+      return Future.error(NetworkExceptions.getDioException(e));
+    }
+  }
+
+  /*===================================================================== TodoList Update  API Call  ==========================================================*/
+
+  Future todoListUpdateApiCall(String id,{required Map<String, dynamic>? dataBody} ) async {
+    try {
+      final response = await dioClient!.put(todoDetails+id, skipAuth: false, data: dataBody!);
+      return EmployeeTaskModel.fromJson(response);
+    } catch (e) {
+      return Future.error(NetworkExceptions.getDioException(e));
+    }
+  }
+
 }

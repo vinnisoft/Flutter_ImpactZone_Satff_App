@@ -16,7 +16,14 @@ class LoginController extends GetxController {
 
   Rx<LoginResponseModel> loginResponseModel = LoginResponseModel().obs;
 
-
+  @override
+  void onReady() {
+    if(kDebugMode){
+      emailTextController.text="devansh@yopmail.com";
+      passwordTextController.text="Dev@1234";
+    }
+    super.onReady();
+  }
   loginApi() {
     loginLoading.value = true;
     Map<String, dynamic> requestModel = RequestModel.loginRequestModel(

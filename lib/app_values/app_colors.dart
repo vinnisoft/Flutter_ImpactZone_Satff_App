@@ -12,4 +12,7 @@ class AppColors {
   static const bottomSheetBarColor = Color(0xFFE9E9E9);
   static const blueBgColor = Color(0xFFF0F3FF);
   static const textFieldBorderColor = Color(0xFFDFDFDF);
+  static const containerBorderColor = Color(0xFF252B42);
+  static const containerBorderGreyColor = Color(0xFFE9E9E9);
+  static const containerGreyColor = Color(0xFFD7D7D7);
 }

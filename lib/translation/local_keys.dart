@@ -92,6 +92,40 @@ const String keyDescription = 'keyDescription';
 const String keyAssignedBy = 'keyAssignedBy';
 const String keyDueDate = 'keyDueDate';
 const String keyResource = 'keyResource';
+const String keyTodoListEmpty = 'keyTodoListEmpty';
+const String keyCompletedTodoEmpty = 'keyCompletedTodoEmpty';
+
+const String keyWhatToSell = 'keyWhatToSell';
+const String keyServices = 'keyServices';
+const String keyAgreements = 'keyAgreements';
+const String keyProducts = 'keyProducts';
+const String keySelectServices = 'keySelectServices';
+const String keySelectMembershipPlan = 'keySelectMembershipPlan';
+const String keySelectProducts = 'keySelectProducts';
+
+const String keyItem = 'keyItem';
+const String keyMember = 'keyMember';
+const String keyCart = 'keyCart';
+const String keyDiscount = 'keyDiscount';
+const String keyApply = 'keyApply';
+const String keyDetails = 'keyDetails';
+const String keyDiscounts = 'keyDiscounts';
+const String keyTax = 'keyTax';
+const String keyTotal = 'keyTotal';
+const String keyCheckout = 'keyCheckout';
+const String keyCancel = 'keyCancel';
+
+const String keyAddNewCard = 'keyAddNewCard';
+
+
+const String keyConfirmPayment = 'keyConfirmPayment';
+
+
+
+
+
+
+
 
 const String key = '';
 

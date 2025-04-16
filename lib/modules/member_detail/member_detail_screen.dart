@@ -18,7 +18,7 @@ class MemberDetailScreen extends GetView<MemberDetailController> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     NetworkImageWidget(
-                      imageUrl: controller.memberData.value.image ?? '',
+                      imageUrl: baseUrl+controller.memberData.value.image.toString() ?? '',
                       imageHeight: 80.h,
                       imageWidth: 80.h,
                       radiusAll: 8.r,

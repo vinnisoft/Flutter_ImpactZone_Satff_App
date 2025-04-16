@@ -36,6 +36,29 @@ class AppImages {
   static const String iconsTask = 'assets/icons/task.png';
   static const String iconsTime = 'assets/icons/time.png';
   static const String iconsTraining = 'assets/icons/training.png';
+  static const String iconsFilter = 'assets/icons/filter.png';
+  static const String iconsSearch = 'assets/icons/search.png';
+  static const String iconsBell = 'assets/icons/bell.png';
+  static const String iconsCompleteTodo = 'assets/icons/tick-circle.png';
+  static const String iconsUnCheckTodo = 'assets/icons/un_tick_circle.png';
+  static const String iconsBookmark = 'assets/icons/vector.png';
+  static const String iconsEmptyBookmark = 'assets/icons/empty_vector.png';
+  static const String iconsProduct = 'assets/icons/product.png';
+  static const String iconsAgreements= 'assets/icons/agreements.png';
+  static const String iconsService= 'assets/icons/services.png';
+  static const String iconsDropDownUser= 'assets/icons/drop_down_user.png';
+  static const String iconsDropDownIcon= 'assets/icons/drop_down_icon.png';
+  static const String iconsDiscountIcon= 'assets/icons/discount_icon.png';
+  static const String iconsCashIcon= 'assets/icons/cash.png';
+  static const String iconsCheckIcon= 'assets/icons/check.png';
+  static const String iconsCardOnFileIcon= 'assets/icons/card_on_file.png';
+  static const String iconsPrePayIcon= 'assets/icons/pre_pay.png';
+  static const String iconsCreditCardIcon= 'assets/icons/credit_card.png';
+  static const String iconsRewardIcon= 'assets/icons/reward.png';
+  static const String iconsPayLaterIcon= 'assets/icons/pay_later.png';
+  static const String iconsVisaIcon= 'assets/icons/visa.png';
+  static const String iconsAddNewCardIcon= 'assets/icons/add_new_card.png';
+
 
   static const String imagesAuthBg = 'assets/images/auth_bg.png';
   static const String imagesOnBoarding1 = 'assets/images/on_boarding1.png';

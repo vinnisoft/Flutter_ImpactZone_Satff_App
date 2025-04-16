@@ -45,7 +45,10 @@ class DrawerWidget extends StatelessWidget {
             Column(
               children: [
                 _drawerItem(
-                    onPress: () {},
+                    onPress: () {
+                      Get.back();
+                      Get.toNamed(AppRoutes.routeMembersScreen);
+                    },
                     icon: AppImages.iconsDrawerMembers,
                     label: keyMembers.tr),
                 _drawerItem(
@@ -57,7 +60,9 @@ class DrawerWidget extends StatelessWidget {
                     icon: AppImages.iconsTraining,
                     label: keyTrainingNutrition.tr),
                 _drawerItem(
-                    onPress: () {},
+                    onPress: () {
+                      Get.toNamed(AppRoutes.routePosScreen);
+                    },
                     icon: AppImages.iconsPOS,
                     label: keyPOS.tr),
                 _drawerItem(
