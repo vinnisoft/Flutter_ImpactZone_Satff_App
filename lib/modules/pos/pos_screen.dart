@@ -15,7 +15,12 @@ class PosScreen extends GetView<PosController> {
     return Scaffold(
       // key: _scaffoldKey,
       // drawer: DrawerWidget(),
-      appBar: CustomAppBar(appBarTitleText: "POS",),
+      appBar: CustomAppBar(appBarTitleText: keyPos.tr, actionWidget: [
+        AssetImageWidget(
+          AppImages.iconsNotification,
+          imageHeight: 20.h,
+        ),
+      ],),
        body: SingleChildScrollView(
          child: Column(
            children: [

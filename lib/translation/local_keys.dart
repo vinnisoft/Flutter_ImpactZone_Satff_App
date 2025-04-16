@@ -102,6 +102,7 @@ const String keyProducts = 'keyProducts';
 const String keySelectServices = 'keySelectServices';
 const String keySelectMembershipPlan = 'keySelectMembershipPlan';
 const String keySelectProducts = 'keySelectProducts';
+const String keyPos = 'keyPos';
 
 const String keyItem = 'keyItem';
 const String keyMember = 'keyMember';
@@ -116,6 +117,26 @@ const String keyCheckout = 'keyCheckout';
 const String keyCancel = 'keyCancel';
 
 const String keyAddNewCard = 'keyAddNewCard';
+
+
+const String keyCreditBalance = 'keyCreditBalance';
+const String keyPrePay = 'keyPrePay';
+
+const String keyAdd = 'keyAdd';
+const String keyExpiry = 'keyExpiry';
+const String keyCVV = 'keyCVV';
+const String keyCardNumber = 'keyCardNumber';
+const String keyNameOnCard = 'keyNameOnCard';
+const String keyOtpSendMessage="keyOtpSendMessage";
+
+const String keyCongratulation="keyCongratulation";
+const String keyPaymentConfirmMessage="keyPaymentConfirmMessage";
+const String keyGoBack="keyGoBack";
+
+const String keyPayLater="KeyPayLater";
+const String keySavedCards="keySavedCards";
+const String keyDate="keyDate";
+const String keySave="keySave";
 
 
 const String keyConfirmPayment = 'keyConfirmPayment';
