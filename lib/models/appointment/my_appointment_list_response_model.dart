@@ -39,6 +39,7 @@ class MyAppointmentDataModel {
   String? scheduleDay;
   bool? isMemberVerified;
   String? location;
+  String? resources;
 
   MyAppointmentDataModel(
       {this.sId,
@@ -51,6 +52,7 @@ class MyAppointmentDataModel {
         this.status,
         this.scheduleDay,
         this.isMemberVerified,
+        this.resources,
         this.location});
 
   MyAppointmentDataModel.fromJson(Map<String, dynamic> json) {
@@ -65,6 +67,7 @@ class MyAppointmentDataModel {
     scheduleDay = json['scheduleDay'];
     isMemberVerified = json['isMemberVerified'];
     location = json['location'];
+    resources = json['resources'];
   }
 
   Map<String, dynamic> toJson() {
@@ -80,6 +83,7 @@ class MyAppointmentDataModel {
     data['scheduleDay'] = scheduleDay;
     data['isMemberVerified'] = isMemberVerified;
     data['location'] = location;
+    data['resources'] = resources;
     return data;
   }
 }

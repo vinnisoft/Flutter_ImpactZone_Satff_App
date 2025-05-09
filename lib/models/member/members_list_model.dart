@@ -87,6 +87,6 @@ class MemberModel {
 
   @override
   String toString() {
-    return '$firstName $lastName (barcode: $barCode)';
+    return '$firstName $lastName';
   }
 }

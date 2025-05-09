@@ -29,6 +29,11 @@ class AppRoutes {
   static const String routeChatScreen = '/route_chat_screen';
   static const String routeNotificationScreen = '/route_notification_screen';
   static const String routeReportScreen = '/route_report_screen';
+  static const String routeChangePasswordScreen = '/route_change_password_screen';
+  static const String routeTimeSheetScreen = '/time_sheet_screen';
+  static const String routeBookEventScreen = '/book_event_screen';
+  static const String routeViewEventScreen = '/book_view_event_screen';
+  static const String routeEditEventScreen = '/edit_appointment_screen';
 
 
 // static const String routeTodoTask = '/route_todo_task';

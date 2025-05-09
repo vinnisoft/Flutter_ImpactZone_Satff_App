@@ -39,22 +39,22 @@ class TodoTaskDetails extends  GetView<TodoTaskDetailsController> {
           child: Column(
             children: [
              Container(
-               padding: EdgeInsets.symmetric(horizontal: 20),
+               padding: EdgeInsets.symmetric(horizontal: 20.w),
                decoration: BoxDecoration(
                    color: Colors.white,
                    borderRadius: BorderRadius.circular(12.r),
                    boxShadow: [
-                     BoxShadow(color: Colors.black12, spreadRadius: 2, blurRadius: 10)
+                     BoxShadow(color: Colors.black12, spreadRadius: 2.r, blurRadius: 10.r)
                    ]),
                child: Row(
 
                  children: [
                    Container(
                      padding: EdgeInsets.all(10),
-                     margin: EdgeInsets.only(top: 20,bottom: 20,right: 20,left: 0),
+                     margin: EdgeInsets.only(top: 20.h,bottom: 20.h,right: 20.w,left: 0.w),
                      decoration: BoxDecoration(
                          color: Color(0xffF0F3FF),
-                         borderRadius: BorderRadius.circular(4)
+                         borderRadius: BorderRadius.circular(4.r)
                      ),
                      child: AssetImageWidget(AppImages.imagesSplashLogo,imageWidth: 20.w,),
                    ),
@@ -62,8 +62,8 @@ class TodoTaskDetails extends  GetView<TodoTaskDetailsController> {
                      child: Column(
                        crossAxisAlignment: CrossAxisAlignment.start,
                        children: [
-                         Text(controller.myTodoDetails.value.taskTitle.toString(),maxLines:1,overflow: TextOverflow.ellipsis,style: TextStyle(fontWeight: FontWeight.w700,fontSize: 17,color: Color(0xff1F1F21)),),
-                         Text(controller.myTodoDetails.value.taskType.toString(),maxLines:1,overflow: TextOverflow.ellipsis,style: TextStyle(fontWeight: FontWeight.w400,fontSize: 14,color: Color(0xff848484)),)
+                         Text(controller.myTodoDetails.value.taskTitle.toString(),maxLines:1,overflow: TextOverflow.ellipsis,style:textStyleHeadlineMedium().copyWith(fontWeight: FontWeight.w700),),
+                         Text(controller.myTodoDetails.value.taskType.toString(),maxLines:1,overflow: TextOverflow.ellipsis,style:textStyleBodySmall().copyWith(fontSize: 14.sp),)
                        ],
                      ),
                    ),
@@ -71,67 +71,49 @@ class TodoTaskDetails extends  GetView<TodoTaskDetailsController> {
                ),
              ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 20,vertical: 20),
-                margin: EdgeInsets.symmetric(vertical: 20),
+                padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.h),
+                margin: EdgeInsets.symmetric(vertical: 20.h),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(12.r),
                     boxShadow: [
-                      BoxShadow(color: Colors.black12, spreadRadius: 2, blurRadius: 10)
+                      BoxShadow(color: Colors.black12, spreadRadius: 2.r, blurRadius: 10.r)
                     ]),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: Text(keyDescription.tr,style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 16,
-                        color: Color(0xFF2F3032)
-                      ),),
+                      padding:  EdgeInsets.only(bottom: 10.h),
+                      child: Text(keyDescription.tr,style: textStyleHeadlineMedium().copyWith(fontWeight: FontWeight.w700)),
                     ),
 
                     Text(controller.myTodoDetails.value.message.toString(),
-                    style: TextStyle(fontWeight:FontWeight.w500,color: Color(0xffA6A6A6))),
+                    style:textStyleBodySmall().copyWith(fontSize: 14.sp),),
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical:10 ),
+                      padding:  EdgeInsets.symmetric(vertical:10.h ),
                       child: Divider(color: Color(0xffE9E9E9),),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(keyAssignedBy.tr,style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16,
-                            color: Color(0xFF2F3032)
-                        ),),
+                        Text(keyAssignedBy.tr,style:textStyleHeadlineMedium().copyWith(fontWeight: FontWeight.w700)),
                         Flexible(
                           child: Text("${controller.myTodoDetails.value.member!.firstName.toString()} ${controller.myTodoDetails.value.member!.firstName.toString()}",
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                            color: Color(0xffA6A6A6),
-                            fontWeight: FontWeight.w500
-                          ),),
+                            style: textStyleBodySmall().copyWith(fontSize: 14.sp),),
                         )
                       ],
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical:10),
+                      padding:  EdgeInsets.symmetric(vertical:10.h),
                       child: Divider(color: Color(0xffE9E9E9),),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(keyDueDate.tr,style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16,
-                            color: Color(0xFF2F3032)
-                        ),),
-                        Text(formatedDue,style: TextStyle(
-                            color: Color(0xffA6A6A6),
-                            fontWeight: FontWeight.w500
-                        ),)
+                        Text(keyDueDate.tr,style:textStyleHeadlineMedium().copyWith(fontWeight: FontWeight.w700)),
+                        Text(formatedDue,style:textStyleBodySmall().copyWith(fontSize: 14.sp),)
                       ],
                     ),
 

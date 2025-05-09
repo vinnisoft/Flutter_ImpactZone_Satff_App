@@ -11,9 +11,12 @@ class DashboardController extends GetxController {
 
   RxList<Widget> screens = <Widget>[
     HomeScreen(),
-    Container(),
+    // CustomCalendarScreen(),
+    // CalendarScreen(),
+    // MyHomePage(),
+    CustomCalendarScreen(),
     ChatListScreen(),
-    Container(),
+    ProfileScreen(),
   ].obs;
 
   RxInt selectedTab = 0.obs;

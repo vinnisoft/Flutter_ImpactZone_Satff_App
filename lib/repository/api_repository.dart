@@ -1,8 +1,7 @@
 import 'package:impact_zone/export.dart';
-import 'package:impact_zone/models/member/members_list_model.dart';
-import 'package:impact_zone/models/todo_task/todo_task_model.dart';
 
-import '../models/todo_task/todo_task_details_model.dart';
+
+
 
 class APIRepository {
   late DioClient? dioClient;
@@ -146,12 +145,12 @@ class APIRepository {
 /*===================================================================== member detail API Call  ==========================================================*/
 
   Future memberDetailApiCall({id}) async {
-    // try {
+    try {
       final response = await dioClient!.get(membersDetailEndPoint + id, skipAuth: false);
       return MemberDetailResponseModel.fromJson(response);
-    // } catch (e) {
-    //   return Future.error(NetworkExceptions.getDioException(e));
-    // }
+    } catch (e) {
+      return Future.error(NetworkExceptions.getDioException(e));
+    }
   }
 
 
@@ -179,7 +178,7 @@ class APIRepository {
 
 
 
-  /*===================================================================== membes List  API Call  ==========================================================*/
+  /*===================================================================== Members List  API Call  ==========================================================*/
 
   Future membersListApiCall() async {
     try {
@@ -201,4 +200,162 @@ class APIRepository {
     }
   }
 
+
+  /*===================================================================== Profile Data API Call  ==========================================================*/
+
+  Future profileDataApiCall({id}) async {
+    try {
+      final response = await dioClient!.get(profileData, skipAuth: false);
+      return ProfileModelResponse.fromJson(response);
+    } catch (e) {
+      return Future.error(NetworkExceptions.getDioException(e));
+    }
+  }
+
+  /*===================================================================== Inventory Category List  API Call  ==========================================================*/
+
+  Future inventoryCategoryApiCall() async {
+    try {
+      final response = await dioClient!.get(inventoryCategory, skipAuth: false);
+      return InventoryResponse.fromJson(response);
+    } catch (e) {
+      return Future.error(NetworkExceptions.getDioException(e));
+    }
+  }
+
+
+
+  /*=====================================================================  book event API Call  ==========================================================*/
+
+  Future bookEventApiCall(
+      {required Map<String, dynamic>? dataBody}) async {
+    try {
+      final response = await dioClient!
+          .post(bookEvent, data: dataBody!, skipAuth: false);
+      return MessageResponseModel.fromJson(response);
+    } catch (e) {
+      return Future.error(NetworkExceptions.getDioException(e));
+    }
+  }
+
+
+
+
+  /*=====================================================================  get event API Call  ==========================================================*/
+
+  Future getEventApiCall() async {
+    try {
+      final response = await dioClient!
+          .get(getEvent, skipAuth: false);
+      return CalendarEventSetupResponse.fromJson(response);
+    } catch (e) {
+      return Future.error(NetworkExceptions.getDioException(e));
+    }
+  }
+
+
+  /*=====================================================================  get resource API Call  ==========================================================*/
+
+  Future getResourceApiCall() async {
+    try {
+      final response = await dioClient!
+          .get(getResource, skipAuth: false);
+      return ResourceResponse.fromJson(response);
+    } catch (e) {
+      return Future.error(NetworkExceptions.getDioException(e));
+    }
+  }
+
+
+
+  /*=====================================================================  get location API Call  ==========================================================*/
+
+  Future getLocationApiCall() async {
+    try {
+      final response = await dioClient!
+          .get(getLocation, skipAuth: false);
+      return CalendarLocationResponse.fromJson(response);
+    } catch (e) {
+      return Future.error(NetworkExceptions.getDioException(e));
+    }
+  }
+
+
+
+
+  /*=====================================================================  get staff API Call  ==========================================================*/
+
+  Future getStaffApiCall() async {
+    try {
+      final response = await dioClient!
+          .get(getStaff, skipAuth: false);
+      return StaffResponseModel.fromJson(response);
+    } catch (e) {
+      return Future.error(NetworkExceptions.getDioException(e));
+    }
+  }
+
+
+  /*===================================================================== member detail API Call  ==========================================================*/
+
+  Future bookingDetailsApiCall({id}) async {
+    try {
+      final response = await dioClient!.get(getBookingDetails + id, skipAuth: false);
+      return BookingDetailResponseModel.fromJson(response);
+    } catch (e) {
+      return Future.error(NetworkExceptions.getDioException(e));
+    }
+  }
+
+
+
+
+
+  /*===================================================================== appointment detail API Call  ==========================================================*/
+
+  Future getAllAppointmentDetailApiCall() async {
+    try {
+      final response = await dioClient!.get(appointmentsEndPoint, skipAuth: false);
+      return MyAppointmentListResponseModel.fromJson(response);
+    } catch (e) {
+      return Future.error(NetworkExceptions.getDioException(e));
+    }
+  }
+
+
+
+
+  /*=====================================================================  update appoinment API Call  ==========================================================*/
+
+  Future updateEventApiCall(
+      {required Map<String, dynamic>? dataBody,required String id}) async {
+    try {
+      final response = await dioClient!
+          .put(updateAppointment+id, data: dataBody!, skipAuth: false);
+      return MessageResponseModel.fromJson(response);
+    } catch (e) {
+      return Future.error(NetworkExceptions.getDioException(e));
+    }
+  }
+
+
+
+
+  /*===================================================================== check Promo Code API Call  ==========================================================*/
+
+  Future checkPromoCodeApiCall(
+      {required Map<String, dynamic>? dataBody}) async {
+    try {
+      final response =
+      await dioClient!.post(checkPromoCode, data: dataBody!,skipAuth: false);
+      return PromoCodeResponse.fromJson(response);
+    } catch (e) {
+      return Future.error(NetworkExceptions.getDioException(e));
+    }
+  }
+
+
+
 }
+
+

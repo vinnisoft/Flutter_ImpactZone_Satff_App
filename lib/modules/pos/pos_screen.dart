@@ -1,7 +1,7 @@
 import 'package:impact_zone/export.dart';
 
 class PosScreen extends GetView<PosController> {
-   PosScreen({super.key});
+  const PosScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +14,7 @@ class PosScreen extends GetView<PosController> {
        body: SingleChildScrollView(
          child: Column(
            children: [
-             // _topBanner(),
+
              Padding(
                padding:  EdgeInsets.symmetric(horizontal:20.h,vertical: 15.h),
                child: Column(
@@ -26,9 +26,9 @@ class PosScreen extends GetView<PosController> {
                    Obx(
                     ()=> _posLists(),
                    ),
-                   SizedBox(height:20),
+                   SizedBox(height:20.h),
                    controller.categoryIndex>=0?SizedBox():_bottomButton(),
-         
+
                  ],
                ),
              )
@@ -46,7 +46,7 @@ class PosScreen extends GetView<PosController> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment:CrossAxisAlignment.start,
         children: [
-          Text(keyWhatToSell.tr,style: TextStyle(color: Color(0xFF1F1F21),fontWeight: FontWeight.w700,fontSize: 20),),
+          Text(keyWhatToSell.tr,style:textStyleHeadlineLarge()),
           Container(
             margin: EdgeInsets.symmetric(vertical: 10.h),
             height: 120.h,
@@ -54,7 +54,8 @@ class PosScreen extends GetView<PosController> {
                 scrollDirection: Axis.horizontal,
                 separatorBuilder: (_,i)=>SizedBox(width: 15.w,),
                 itemCount: controller.iconItems.length,
-                itemBuilder: (_,index)=>Column(
+                itemBuilder: (_,index) {
+                  return Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Obx(
@@ -79,9 +80,10 @@ class PosScreen extends GetView<PosController> {
                       ),
                     ),
                     SizedBox(height: 10.h,),
-                    Text(controller.iconItems[index]['title'].toString(),style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w500),)
+                    Text(controller.iconItems[index]['title'].toString(),style:textStyleHeadlineSmall())
                   ],
-                ),
+                );
+                },
               ),
           )
 
@@ -100,7 +102,7 @@ class PosScreen extends GetView<PosController> {
           color: controller.categoryIndex>=0?AppColors.appColor:AppColors.containerGreyColor,
           borderRadius: BorderRadius.circular(5.r)
         ),
-        child: Center(child: Text(keyContinue.tr,style: TextStyle(color: Colors.white,fontWeight: FontWeight.w700),)),
+        child: Center(child: Text(keyContinue.tr,style:textStyleHeadlineSmall().copyWith(color: Colors.white,fontWeight: FontWeight.w700))),
       ),
     );
   }
@@ -113,49 +115,38 @@ class PosScreen extends GetView<PosController> {
              color: Colors.white,
              borderRadius: BorderRadius.circular(12.r),
              boxShadow: [
-               BoxShadow(color: Colors.black12, spreadRadius: 2, blurRadius: 10)
+               BoxShadow(color: Colors.black12, spreadRadius: 2.r, blurRadius: 10.r)
              ]),
          child: Column(
            crossAxisAlignment: CrossAxisAlignment.start,
            children: [
-             Text(keySelectServices.tr,style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w700,fontSize: 20),),
-             ListView.builder(
-                 shrinkWrap: true,
-                 padding: EdgeInsets.zero,
-                 physics: NeverScrollableScrollPhysics(),
-                 itemCount: 3,
-                 itemBuilder: _itemList
+             Text(keySelectServices.tr,style:textStyleHeadlineLarge(),),
+             Obx(
+                 () {
+                   controller.selectedServices.length;
+                   controller.serviceList.length;
+                   return ListView.builder(
+                   shrinkWrap: true,
+                   padding: EdgeInsets.zero,
+                   physics: NeverScrollableScrollPhysics(),
+                   itemCount: controller.isInventoryCategoryLoading.value? 3:controller.serviceList.length,
+                   itemBuilder: _itemList
+               );
+                 },
              ),
             SizedBox(height: 20.h,),
              _bottomButton(onClickCallBack: (){
-               Get.toNamed(AppRoutes.routeCartScreen);
+               if(controller.selectedServices.isEmpty){
+                 showToast(message: "Please select at least one service");
+                 return;
+               }
+               Get.toNamed(AppRoutes.routeCartScreen,
+               arguments:{
+                 'cart_list':controller.serviceList,
+                 'selected_cart_list':controller.selectedServices,
+               }
+               );
              }),
-           ],
-         ),
-       );
-     }
-     else if(controller.categoryIndex.value==1){
-       return Container(
-         padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 15.h),
-         decoration: BoxDecoration(
-             color: Colors.white,
-             borderRadius: BorderRadius.circular(12.r),
-             boxShadow: [
-               BoxShadow(color: Colors.black12, spreadRadius: 2, blurRadius: 10)
-             ]),
-         child: Column(
-           crossAxisAlignment: CrossAxisAlignment.start,
-           children: [
-             Text(keySelectMembershipPlan.tr,style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w700,fontSize: 20),),
-             ListView.builder(
-                 shrinkWrap: true,
-                 padding: EdgeInsets.zero,
-                 physics: NeverScrollableScrollPhysics(),
-                 itemCount: 4,
-                 itemBuilder: _agreements
-             ),
-             SizedBox(height: 20.h,),
-             _bottomButton(onClickCallBack: (){}),
            ],
          ),
        );
@@ -167,21 +158,63 @@ class PosScreen extends GetView<PosController> {
              color: Colors.white,
              borderRadius: BorderRadius.circular(12.r),
              boxShadow: [
-               BoxShadow(color: Colors.black12, spreadRadius: 2, blurRadius: 10)
+               BoxShadow(color: Colors.black12, spreadRadius: 2.r, blurRadius: 10.r)
              ]),
          child: Column(
            crossAxisAlignment: CrossAxisAlignment.start,
            children: [
-             Text(keySelectProducts.tr,style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w700,fontSize: 20),),
+             Text(keySelectMembershipPlan.tr,style:textStyleHeadlineLarge()),
              ListView.builder(
                  shrinkWrap: true,
                  padding: EdgeInsets.zero,
                  physics: NeverScrollableScrollPhysics(),
-                 itemCount: 3,
-                 itemBuilder: _itemList
+                 itemCount: controller.isInventoryCategoryLoading.value? 3:controller.inventoryCategoryList.length,
+                 itemBuilder: _agreements
              ),
              SizedBox(height: 20.h,),
              _bottomButton(onClickCallBack: (){}),
+           ],
+         ),
+       );
+     }
+     else if(controller.categoryIndex.value==1){
+       return Container(
+         padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 15.h),
+         decoration: BoxDecoration(
+             color: Colors.white,
+             borderRadius: BorderRadius.circular(12.r),
+             boxShadow: [
+               BoxShadow(color: Colors.black12, spreadRadius: 2.r, blurRadius: 10.r)
+             ]),
+         child: Column(
+           crossAxisAlignment: CrossAxisAlignment.start,
+           children: [
+             Text(keySelectProducts.tr,style:textStyleHeadlineLarge(),),
+             Obx(
+                 () {
+                   controller.selectedProducts.length;
+                   return ListView.builder(
+                   shrinkWrap: true,
+                   padding: EdgeInsets.zero,
+                   physics: NeverScrollableScrollPhysics(),
+                   itemCount: controller.isInventoryCategoryLoading.value? 3:controller.inventoryCategoryList.length,
+                   itemBuilder: _productItemList
+               );
+                 },
+             ),
+             SizedBox(height: 20.h,),
+             _bottomButton(onClickCallBack: (){
+                if(controller.selectedProducts.isEmpty){
+                  showToast(message: "Please select at least one product");
+                  return;
+                }
+               Get.toNamed(AppRoutes.routeCartScreen,
+                   arguments:{
+                     'cart_list':controller.inventoryCategoryList,
+                     'selected_cart_list':controller.selectedProducts,
+                   }
+               );
+             }),
            ],
          ),
        );
@@ -192,71 +225,173 @@ class PosScreen extends GetView<PosController> {
   }
 
   Widget? _itemList(BuildContext context, int index) {
-    return Container(
-      padding: EdgeInsets.all(12),
-      margin: EdgeInsets.symmetric(vertical: 6),
-      decoration: BoxDecoration(
-        border: Border.all(color: AppColors.containerBorderGreyColor),
-        borderRadius: BorderRadius.circular(6.r)
-      ),
-      child: Row(
-        children: [
-          SizedBox(
-            width: 64.w,
-            height: 64.h,
-            child: AssetImageWidget(
-             "assets/images/temp_gym.png",
-              imageHeight: 20.h,
-              radiusAll: 6.r,
-            ),
+    if(controller.isInventoryCategoryLoading.value && controller.inventoryCategoryList.isEmpty){
+      return  ShimmerEffect.inventoryCategoryShimmer();
+    }
+    bool isSelectedService = controller.selectedServices.contains(index);
+
+    return Obx(
+        () {
+          controller.selectedServices.length;
+          return Container(
+          padding: EdgeInsets.all(12),
+          margin: EdgeInsets.symmetric(vertical: 6.h),
+          decoration: BoxDecoration(
+            border: Border.all(color: isSelectedService?AppColors.appColor:AppColors.containerBorderGreyColor),
+            borderRadius: BorderRadius.circular(6.r)
           ),
-          SizedBox(width: 10.w,),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Row(
             children: [
-              Text("Service 1",style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w700,fontSize: 16),),
-              Text("\$56",style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w400),),
+              InkWell(
+                onTap: (){
+                  if(isSelectedService){
+                    controller.selectedServices.remove(index);
+                  }
+                  else{
+                    controller.selectedServices.add(index);
+                  }
+                },
+                child: SizedBox(
+                  width: 64.w,
+                  height: 64.h,
+                  child:NetworkImageWidget(imageUrl: baseUrl+controller.serviceList[index].catalogImage.toString(), imageHeight: 20.h,imageWidth:20.w,radiusAll: 6.r,),
+                ),
+              ),
+              SizedBox(width: 10.w,),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(controller.serviceList[index].name.toString(),maxLines:1,overflow:TextOverflow.ellipsis,style:textStyleHeadlineSmall().copyWith(fontWeight: FontWeight.w700)),
+                    Text("\$${controller.serviceList[index].netPrice}",style:textStyleBodySmall().copyWith(fontWeight: FontWeight.w400,fontSize: 14.sp)),
+                  ],
+                ),
+              ),
+              isSelectedService?Container(
+                padding: EdgeInsets.all(2),
+                margin: EdgeInsets.only(left: 10.w),
+                decoration: BoxDecoration(
+                  color: AppColors.blueBgColor,
+                  borderRadius: BorderRadius.circular(6.r)
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _circleButton(Icons.remove, (){
+                      controller.decreaseServiceQuantity(index);
+                    }),
+                     SizedBox(width: 12.w),
+                    Obx(
+                        ()=>Text(
+                          controller.serviceList[index].defaultQuantity.value.toString(),
+                        style:textStyleDisplayMedium().copyWith(fontSize: 16.sp),
+                      ),
+                    ),
+                     SizedBox(width: 12.w),
+                    _circleButton(Icons.add, (){
+                      controller.increaseServiceQuantity(index);
+                    }),
+                  ],
+                ),
+              ):SizedBox(),
             ],
           ),
-          Expanded(child: SizedBox()),
-          Container(
-            padding: EdgeInsets.all(2),
-            decoration: BoxDecoration(
-              color: AppColors.blueBgColor,
-              borderRadius: BorderRadius.circular(6.r)
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _circleButton(Icons.remove, (){}),
-                const SizedBox(width: 12),
-                Text(
-                  '6',
-                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500,color: AppColors.primaryTextColor),
-                ),
-                const SizedBox(width: 12),
-                _circleButton(Icons.add, (){}),
-              ],
-            ),
-          ),
-        ],
-      ),
+      );
+        },
     );
   }
 
+
+  Widget? _productItemList(BuildContext context, int index) {
+    if(controller.isInventoryCategoryLoading.value && controller.inventoryCategoryList.isEmpty){
+      return  ShimmerEffect.inventoryCategoryShimmer();
+    }
+
+    bool isSelectedService = controller.selectedProducts.contains(index);
+    return Obx(
+          () {
+        controller.selectedProducts.length;
+        return Container(
+          padding: EdgeInsets.all(12),
+          margin: EdgeInsets.symmetric(vertical: 6.h),
+          decoration: BoxDecoration(
+              border: Border.all(color: isSelectedService?AppColors.appColor:AppColors.containerBorderGreyColor),
+              borderRadius: BorderRadius.circular(6.r)
+          ),
+          child: Row(
+            children: [
+              InkWell(
+                onTap: (){
+                  if(isSelectedService){
+                    controller.selectedProducts.remove(index);
+                  }
+                  else{
+                    controller.selectedProducts.add(index);
+                  }
+                },
+                child: SizedBox(
+                  width: 64.w,
+                  height: 64.h,
+                  child:NetworkImageWidget(imageUrl: baseUrl+controller.inventoryCategoryList[index].catalogImage.toString(), imageHeight: 20.h,imageWidth:20.w,radiusAll: 6.r,),
+                ),
+              ),
+              SizedBox(width: 10.w,),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(controller.inventoryCategoryList[index].itemCaption.toString(),maxLines:1,overflow:TextOverflow.ellipsis,style:textStyleHeadlineSmall().copyWith(fontWeight: FontWeight.w700)),
+                    Text("\$${controller.inventoryCategoryList[index].netPrice}",style:textStyleBodySmall().copyWith(fontWeight: FontWeight.w400,fontSize: 14.sp)),
+                  ],
+                ),
+              ),
+              isSelectedService?Container(
+                padding: EdgeInsets.all(2),
+                margin: EdgeInsets.only(left: 10.w),
+                decoration: BoxDecoration(
+                    color: AppColors.blueBgColor,
+                    borderRadius: BorderRadius.circular(6.r)
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _circleButton(Icons.remove, (){
+                      controller.decreaseProductQuantity(index);
+                    }),
+                     SizedBox(width: 12.w),
+                    Obx(
+                        ()=> Text(
+                        controller.inventoryCategoryList[index].defaultQuantity.toString(),
+                        style:textStyleDisplayMedium().copyWith(fontSize: 16.sp),
+                      ),
+                    ),
+                     SizedBox(width: 12.w),
+                    _circleButton(Icons.add, (){
+                      controller.increaseProductQuantity(index);
+                    }),
+                  ],
+                ),
+              ):SizedBox(),
+            ],
+          ),
+        );
+      },
+    );
+  }
    Widget _circleButton(IconData icon, VoidCallback onPressed) {
      return InkWell(
        onTap: onPressed,
-       borderRadius: BorderRadius.circular(24),
+       borderRadius: BorderRadius.circular(24.r),
        child: Container(
-         width: 20,
-         height: 20,
+         width: 20.w,
+         height: 20.h,
          decoration: const BoxDecoration(
            color: AppColors.containerBorderColor, // dark blue like the image
            shape: BoxShape.circle,
          ),
-         child: Icon(icon, color: Colors.white, size: 18),
+         child: Icon(icon, color: Colors.white, size: 18.sp),
        ),
      );
    }
@@ -264,7 +399,7 @@ class PosScreen extends GetView<PosController> {
   Widget? _agreements(BuildContext context, int index) {
     return Container(
       padding: EdgeInsets.all(12),
-      margin: EdgeInsets.symmetric(vertical: 6),
+      margin: EdgeInsets.symmetric(vertical: 6.h),
       decoration: BoxDecoration(
           border: Border.all(color: AppColors.containerBorderGreyColor),
           borderRadius: BorderRadius.circular(6.r)
@@ -275,8 +410,8 @@ class PosScreen extends GetView<PosController> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("IMPACT 1",style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w700,fontSize: 16),),
-              Text("\$56",style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w400),),
+              Text("IMPACT 1",style:textStyleHeadlineSmall().copyWith(fontWeight: FontWeight.w700)),
+              Text("\$56",style:textStyleBodySmall().copyWith(fontWeight: FontWeight.w400,fontSize: 14.sp)),
             ],
           ),
           Expanded(child: SizedBox()),
@@ -291,12 +426,12 @@ class PosScreen extends GetView<PosController> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _circleButton(Icons.remove, (){}),
-                const SizedBox(width: 12),
+                 SizedBox(width: 12.w),
                 Text(
                   '6',
-                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500,color: AppColors.primaryTextColor),
+                  style: textStyleDisplayMedium().copyWith(fontSize: 16.sp),
                 ),
-                const SizedBox(width: 12),
+                 SizedBox(width: 12.w),
                 _circleButton(Icons.add, (){}),
               ],
             ),

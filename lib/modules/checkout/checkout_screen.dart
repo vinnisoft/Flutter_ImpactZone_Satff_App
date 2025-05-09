@@ -22,8 +22,8 @@ class CheckoutScreen extends GetView<CheckOutController> {
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               crossAxisCount: 2,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
+              crossAxisSpacing: 8,
+              mainAxisSpacing: 8,
               childAspectRatio: 1,
               children: controller.checkOutTypeList.map((option) {
                 return Column(
@@ -46,14 +46,14 @@ class CheckoutScreen extends GetView<CheckOutController> {
                         );
                       },
                       child: Container(
-                        height: 130,
-                        width: 130,
+                        height: 120.h,
+                        width: 120.w,
                         decoration: BoxDecoration(
                           color:  Colors.white,
                           border: Border.all(
                             color: AppColors.containerBorderGreyColor,
                           ),
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(12.r),
                         ),
                         child: Center(
                           child: AssetImageWidget(
@@ -64,13 +64,10 @@ class CheckoutScreen extends GetView<CheckOutController> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 8),
+                    SizedBox(height: 8.h),
                     Text(
                       option['title'].toString(),
-                      style: TextStyle(
-                        color: Color(0xFF1B1E36),
-                        fontWeight: FontWeight.w500,
-                      ),
+                      style: textStyleHeadlineSmall().copyWith(fontSize: 12.sp)
                     )
                   ],
                 );
@@ -86,7 +83,7 @@ class CheckoutScreen extends GetView<CheckOutController> {
                   },
                   child: Container(
                     padding: EdgeInsets.all(30),
-                  height: 130,
+                  height: 130.h,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.r),
@@ -99,13 +96,10 @@ class CheckoutScreen extends GetView<CheckOutController> {
                 ),
                 Text(
                  keyPayLater.tr,
-                  style: TextStyle(
-                    color: AppColors.primaryTextColor,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style:textStyleHeadlineSmall().copyWith(fontSize: 12.sp)
                 )
               ],
-            ).paddingOnly(bottom: 20)
+            ).paddingOnly(bottom: 20.h)
         
           ],
         ),

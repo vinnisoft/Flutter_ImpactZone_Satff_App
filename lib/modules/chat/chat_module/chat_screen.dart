@@ -70,8 +70,8 @@ class ChatScreen extends GetView<ChatController> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Jhon Abraham",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 16),),
-                  Text(keyActiveNow.tr,style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 12),),
+                  Text("Jhon Abraham",style:textStyleBodyMedium().copyWith(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 16.sp),),
+                  Text(keyActiveNow.tr,style: textStyleBodyMedium().copyWith(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 12.sp),),
                 ],
               )
 
@@ -92,7 +92,7 @@ class ChatScreen extends GetView<ChatController> {
               color: Color(0xFFF8FBFA),
               borderRadius: BorderRadius.circular(6),
             ),
-            child: Text(keyToday.tr, style: TextStyle(color: Color(0xff000E08),fontSize: 12,fontWeight: FontWeight.w500)),
+            child: Text(keyToday.tr, style:textStyleBodySmall().copyWith(color: Color(0xff000E08),fontSize: 12.sp,fontWeight: FontWeight.w500)),
           ),
         ),
         Align(
@@ -123,9 +123,8 @@ class ChatScreen extends GetView<ChatController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('Jhon Abraham',
-                      style: TextStyle(
-                        color: AppColors.appColor,
-                          fontWeight: FontWeight.bold, fontSize: 14)),
+                      style:textStyleBodyMedium().copyWith(color: AppColors.appColor,
+                    fontWeight: FontWeight.bold, fontSize: 14.sp)),
                   CustomChatWidget(
                     message: 'Hello ! Nazrul How are you?',
                     isSender: false,
@@ -159,11 +158,11 @@ class ChatScreen extends GetView<ChatController> {
               onTap: (){
                _choseMediaType();
               },
-                child: AssetImageWidget(AppImages.iconsAttachmentIcon,).paddingOnly(right: 20)
+                child: AssetImageWidget(AppImages.iconsAttachmentIcon,).paddingOnly(right: 20.w)
             ),
             Expanded(
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                padding: EdgeInsets.symmetric(horizontal: 10.w),
                 decoration:BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     color: Color(0xFFF3F6F6)
@@ -171,20 +170,14 @@ class ChatScreen extends GetView<ChatController> {
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
+
                     Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: keyWriteYourMessage.tr,
-                          isCollapsed: true,
-                          hintStyle: TextStyle(
-                              color:AppColors.secondaryTextColor,
-                              fontWeight: FontWeight.w500
-                          ),
-                          border: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          disabledBorder: InputBorder.none,
-                        ),
+                      child: TextFieldWidget(
+                        textController: controller.chatTextController,
+                      contentPadding: EdgeInsets.zero,
+                        hint: keyWriteYourMessage.tr,
+                        decoration: InputBorder.none,
+                        hintStyle:textStyleLabelMedium().copyWith( color:AppColors.secondaryTextColor,fontWeight: FontWeight.w500),
                       ),
                     ),
                     AssetImageWidget(AppImages.iconsSendIcon,),
@@ -215,7 +208,7 @@ class ChatScreen extends GetView<ChatController> {
                   color: AppColors.bottomSheetBarColor,
                   borderRadius: BorderRadius.circular(15.r)),
             ),
-               Text(keyShare.tr,style: TextStyle(fontWeight: FontWeight.w700,fontSize:20,color: AppColors.primaryTextColor,)).paddingSymmetric(vertical: 20.h),
+               Text(keyShare.tr,style:textStyleHeadlineLarge()).paddingSymmetric(vertical: 20.h),
             _mediaItems(title: keyCamera.tr,icons: AppImages.iconsCameraIcon,callback: ()async{
               bool permissionGranted = await Helper.checkCameraPermission();
               if (!permissionGranted) {
@@ -274,8 +267,8 @@ class ChatScreen extends GetView<ChatController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(title,style: TextStyle(fontWeight: FontWeight.w700,fontSize: 14,color: AppColors.primaryTextColor),),
-                subTitle.isNotEmpty?Text(subTitle,style: TextStyle(fontWeight: FontWeight.w400,fontSize: 12,color: AppColors.secondaryTextColor),):SizedBox(),
+                Text(title,style:textStyleHeadlineMedium()),
+                subTitle.isNotEmpty?Text(subTitle,style:textStyleBodySmall()):SizedBox(),
               ],
             ),
           ],

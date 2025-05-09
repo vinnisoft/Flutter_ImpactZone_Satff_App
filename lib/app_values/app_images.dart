@@ -74,6 +74,17 @@ class AppImages {
   static const String iconsTimeSheetIcon= 'assets/icons/time_sheet.png';
   static const String iconsSalesReportIcon= 'assets/icons/sales_report.png';
   static const String iconsTransactionReportIcon= 'assets/icons/transaction_report.png';
+  static const String iconsProfileCameraIcon= 'assets/icons/profile_camera.png';
+  static const String iconsBarCodeIcon= 'assets/icons/bar_code.png';
+  static const String iconsAccessCodeIcon= 'assets/icons/access_code.png';
+  static const String iconsCallIcon= 'assets/icons/call.png';
+  static const String iconsClockIcon= 'assets/icons/clock.png';
+
+  static const String iconsEventResourceIcon= 'assets/icons/event_resourcse.png';
+  static const String iconsEventIcon= 'assets/icons/event.png';
+  static const String iconsEventTypeIcon= 'assets/icons/event_type.png';
+  static const String iconsEventTimeIcon= 'assets/icons/event_time.png';
+  static const String iconsMemberIcon= 'assets/icons/member.png';
 
 
   static const String imagesAuthBg = 'assets/images/auth_bg.png';

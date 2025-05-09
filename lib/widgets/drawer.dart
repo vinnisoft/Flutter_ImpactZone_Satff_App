@@ -1,8 +1,8 @@
 import 'package:impact_zone/export.dart';
 
 class DrawerWidget extends StatelessWidget {
-  const DrawerWidget({super.key});
-
+   DrawerWidget({super.key});
+  final LocalStorage _localStorage = Get.find<LocalStorage>();
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -73,7 +73,10 @@ class DrawerWidget extends StatelessWidget {
                     icon: AppImages.iconsReport,
                     label: keyReports.tr),
                 _drawerItem(
-                    onPress: () {},
+                    onPress: () {
+                       _localStorage.clearLoginData();
+                      Get.offAllNamed(AppRoutes.routeLogin);
+                    },
                     icon: AppImages.iconsLogOut,
                     label: keyLogout.tr),
               ],

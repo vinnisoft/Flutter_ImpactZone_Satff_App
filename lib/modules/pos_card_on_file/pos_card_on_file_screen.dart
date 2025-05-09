@@ -7,14 +7,13 @@ class PosCardOnFileScreen extends GetView<PosCardOnFileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(appBarTitleText:keyCardOnFile.tr ,),
+      appBar: CustomAppBar(appBarTitleText:keyCardOnFile.tr,),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // topBanner(title: "Card on File"),
             _amountDetails(),
-            Text(keyCreditDebitCards.tr,style: TextStyle(color:AppColors.primaryTextColor,fontSize: 20,fontWeight: FontWeight.w700),).paddingSymmetric(horizontal: 25),
+            Text(keyCreditDebitCards.tr,style:textStyleHeadlineLarge(),).paddingSymmetric(horizontal: 25),
             _cardOptions(),
             _addNewCard()
           ],
@@ -30,7 +29,7 @@ class PosCardOnFileScreen extends GetView<PosCardOnFileController> {
           color: Colors.white,
           borderRadius: BorderRadius.circular(12.r),
           boxShadow: [
-            BoxShadow(color: Colors.black12, spreadRadius: 2, blurRadius: 10)
+            BoxShadow(color: Colors.black12, spreadRadius: 2.r, blurRadius: 10.r)
           ]),
       child: Container(
         padding: EdgeInsets.all(20.h),
@@ -41,7 +40,7 @@ class PosCardOnFileScreen extends GetView<PosCardOnFileController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(keyDetails.tr,style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w700,fontSize: 20),),
+            Text(keyDetails.tr,style:textStyleHeadlineLarge()),
             _itemDetails(keyDiscounts.tr),
             _itemDetails(keyTax.tr),
             _itemDetails(keyTotal.tr),
@@ -55,8 +54,8 @@ class PosCardOnFileScreen extends GetView<PosCardOnFileController> {
     return   Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(title,style: TextStyle(color: AppColors.secondaryTextColor,fontWeight: FontWeight.w500,fontSize: 14)),
-        Text("\$2.00",style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w700,fontSize: 14)),
+        Text(title,style:textStyleBodySmall().copyWith(fontSize: 14.sp)),
+        Text("\$2.00",style:textStyleHeadlineSmall()),
       ],
     ).paddingSymmetric(vertical: 10.h);
   }
@@ -69,7 +68,7 @@ class PosCardOnFileScreen extends GetView<PosCardOnFileController> {
           color: Colors.white,
           borderRadius: BorderRadius.circular(12.r),
           boxShadow: [
-            BoxShadow(color: Colors.black12, spreadRadius: 2, blurRadius: 10)
+            BoxShadow(color: Colors.black12, spreadRadius: 2.r, blurRadius: 10.r)
           ]),
          child: Obx(
              () {
@@ -89,8 +88,8 @@ class PosCardOnFileScreen extends GetView<PosCardOnFileController> {
       children: [
         Row(
           children: [
-            AssetImageWidget(AppImages.iconsVisaIcon).paddingOnly(right: 10),
-          Expanded(child: Text("**** **** **** 4567",style: TextStyle(color: AppColors.secondaryTextColor,fontWeight: FontWeight.w500,fontSize: 16),)),
+            AssetImageWidget(AppImages.iconsVisaIcon).paddingOnly(right: 10.w),
+          Expanded(child: Text("**** **** **** 4567",style:textStyleBodyMedium().copyWith(fontSize: 16.sp))),
           InkWell(
              onTap: ()=>controller.selectPaymentMethod(index),
               child:  controller.selectedIndex.value==index?AssetImageWidget(AppImages.iconsCompleteTodo):AssetImageWidget(AppImages.iconsUnCheckTodo)),
@@ -100,21 +99,21 @@ class PosCardOnFileScreen extends GetView<PosCardOnFileController> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+              padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(10.r),
                 border: Border.all(color: AppColors.appColor)
               ),
-              child:Text("CVV",style: TextStyle(color: AppColors.secondaryTextColor,fontSize: 14,fontWeight: FontWeight.w400),)
-            ).paddingSymmetric(horizontal: 10),
+              child:Text("CVV",style:textStyleBodyMedium())
+            ).paddingSymmetric(horizontal: 10.w),
             Container(
-                padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(10.r),
                     border: Border.all(color: AppColors.containerGreyColor),
                    color:AppColors.appColor
                 ),
-                child:Text("Pay \$200",style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.w700),)
+                child:Text("Pay \$200",style: textStyleHeadlineMedium().copyWith(fontSize:16.sp,color: Colors.white),)
             ),
           ],
         ):SizedBox(),
@@ -133,12 +132,12 @@ class PosCardOnFileScreen extends GetView<PosCardOnFileController> {
             color: Colors.white,
             borderRadius: BorderRadius.circular(12.r),
             boxShadow: [
-              BoxShadow(color: Colors.black12, spreadRadius: 2, blurRadius: 10)
+              BoxShadow(color: Colors.black12, spreadRadius: 2.r, blurRadius: 10.r)
             ]),
         child:Row(
           children: [
-            AssetImageWidget(AppImages.iconsAddNewCardIcon).paddingOnly(right: 10),
-            Text(keyAddNewCard.tr,style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w500,fontSize: 16),)
+            AssetImageWidget(AppImages.iconsAddNewCardIcon).paddingOnly(right: 10.w),
+            Text(keyAddNewCard.tr,style: textStyleHeadlineMedium())
           ],
         ) ,
       ),

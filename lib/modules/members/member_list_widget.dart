@@ -27,11 +27,9 @@ class MemberListWidget extends StatelessWidget {
         Expanded(
           child: Text(
               memberName,
-              style:TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 18,
-                color: Color(0xff1F1F21)
-              )),
+              style:textStyleHeadlineLarge().copyWith(
+                fontWeight: FontWeight.w700,)
+              )
         ),
       ],
     );

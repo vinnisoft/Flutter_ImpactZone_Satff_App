@@ -1,5 +1,3 @@
-import 'package:impact_zone/modules/chat/chat_module/chat_controller.dart';
-
 import '../export.dart';
 
 class CustomChatWidget extends GetView<ChatController> {
@@ -33,13 +31,17 @@ class CustomChatWidget extends GetView<ChatController> {
               children: [
                 Container(
                   width: Get.width*0.6,
-                  margin: EdgeInsets.symmetric(vertical: 6),
-                  padding: EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                  margin: EdgeInsets.symmetric(vertical: 6.h),
+                  padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
                   decoration: BoxDecoration(
                     color: backgroundColor,
-                    borderRadius: isSender?BorderRadius.only(bottomRight: Radius.circular(15),bottomLeft: Radius.circular(15),topLeft: Radius.circular(15)):BorderRadius.only(bottomRight: Radius.circular(15),bottomLeft: Radius.circular(15),topRight: Radius.circular(15)),
+                    borderRadius: isSender?BorderRadius.only(bottomRight: Radius.circular(15),bottomLeft: Radius.circular(15.r),topLeft: Radius.circular(15.r)):BorderRadius.only(bottomRight: Radius.circular(15.r),bottomLeft: Radius.circular(15.r),topRight: Radius.circular(15.r)),
                   ),
-                  child: Text(message, style: TextStyle(color: textColor,fontWeight: FontWeight.w400,fontSize: 12)),
+                  child: Text(message, style: textStyleBodyMedium().copyWith(
+                      color: textColor,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12.sp
+                  )),
                 ),
                 isSender?SizedBox():AssetImageWidget(AppImages.iconsThreeDotIcon,imageHeight: 15.h,)
               ],
@@ -51,21 +53,21 @@ class CustomChatWidget extends GetView<ChatController> {
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         color: AppColors.containerBorderColor,
-                        borderRadius:isSender?BorderRadius.only(bottomRight: Radius.circular(15),bottomLeft: Radius.circular(15),topLeft: Radius.circular(15)):BorderRadius.only(bottomRight: Radius.circular(15),bottomLeft: Radius.circular(15),topRight: Radius.circular(15)),
+                        borderRadius:isSender?BorderRadius.only(bottomRight: Radius.circular(15.r),bottomLeft: Radius.circular(15.r),topLeft: Radius.circular(15.r)):BorderRadius.only(bottomRight: Radius.circular(15.r),bottomLeft: Radius.circular(15.r),topRight: Radius.circular(15.r)),
                       ),
                       child: Column(
                       mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           AssetImageWidget(AppImages.iconsPdfIcon,),
-                          Text("Report.png",style: TextStyle(color: Colors.white,fontSize:12,fontWeight: FontWeight.w400 ),)
+                          Text("Report.png",style: textStyleBodySmall().copyWith(color: Colors.white,fontSize: 12.sp,fontWeight: FontWeight.w400),)
                         ],
                       )
                   ):ClipRRect(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(12.r),
                 child: Image.file(
-                  width: 192,
-                  height: 122,
+                  width: 192.w,
+                  height: 122.h,
                   controller.pickedFile.value!,
                   fit: BoxFit.cover,
                 ),
@@ -73,11 +75,11 @@ class CustomChatWidget extends GetView<ChatController> {
             ),
             Text(
               time,
-              style: TextStyle(color: AppColors.secondaryTextColor, fontSize: 10,fontWeight: FontWeight.w500),
-            ).paddingOnly(right: 10),
+              style: textStyleBodySmall()
+            ).paddingOnly(right: 10.w),
           ],
         )
       ],
-    ).paddingOnly(bottom: 10);
+    ).paddingOnly(bottom: 10.h);
   }
 }

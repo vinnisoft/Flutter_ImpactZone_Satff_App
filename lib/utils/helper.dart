@@ -70,4 +70,24 @@ class Helper{
     }
   }
 
+
+
+
+
+
+  static String addMinutesToTime(String timeString, int minutesToAdd) {
+    try {
+      final format = DateFormat("h:mm a");
+      final parsedTime = format.parse(timeString);
+      final newTime = parsedTime.add(Duration(minutes: minutesToAdd));
+
+      return format.format(newTime);
+    } catch (e) {
+      print("Error parsing or adding time: $e");
+      return timeString; // Return original string if error occurs
+    }
+  }
+
+
+
 }

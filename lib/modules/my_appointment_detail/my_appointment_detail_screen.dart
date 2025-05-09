@@ -57,8 +57,8 @@ class MyAppointmentDetailScreen extends GetView<MyAppointmentDetailController> {
                       boxShadow: [
                         BoxShadow(
                             color: Colors.black12,
-                            spreadRadius: 1,
-                            blurRadius: 20)
+                            spreadRadius: 1.r,
+                            blurRadius: 20.r)
                       ]),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

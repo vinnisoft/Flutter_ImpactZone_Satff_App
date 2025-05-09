@@ -57,8 +57,10 @@ class NotificationScreen extends GetView<NotificationController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Lorem Ipsum is simply dummy text of the printing.",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500,color: AppColors.primaryTextColor),),
-                    Text("5 min ago",style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: AppColors.secondaryTextColor),).paddingOnly(top: 5),
+                    Text("Lorem Ipsum is simply dummy text of the printing.",style:textStyleHeadlineMedium().copyWith(
+                        fontSize: 16.sp,fontWeight: FontWeight.w500
+                    )),
+                    Text("5 min ago",style:textStyleBodySmall()).paddingOnly(top: 5),
                   ],
                 ),
               )

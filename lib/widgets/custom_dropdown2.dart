@@ -40,35 +40,55 @@ class CustomDropdown2<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButtonFormField2(
+    return DropdownButtonFormField2<T>(
       decoration: inputDecoration(context),
       onChanged: onChanged,
       focusNode: focusNode,
       isExpanded: true,
       value: dropdownValue,
       isDense: true,
-      hint: Row(
-    children: [
-
-      AssetImageWidget(
-      'assets/icons/member.png', // Replace with your placeholder icon
-      imageWidth: 20.h,
-      imageHeight: 20.w,
-    ),
-    const SizedBox(width: 10),
-    Text(
-    hint ?? keySelect.tr,
-    style: hintStyle ??
-    textStyleBodyMedium().copyWith(
-    color: AppColors.secondaryTextColor,
-    ),
-    ),
-    ],
-    ),
-
-    autovalidateMode: AutovalidateMode.onUserInteraction,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       style: Theme.of(context).textTheme.bodyMedium,
       validator: validate,
+
+      hint: Row(
+        children: [
+          prefixIcon ??
+              AssetImageWidget(
+                'assets/icons/member.png',
+                imageWidth: 20.h,
+                imageHeight: 20.w,
+              ),
+          const SizedBox(width: 10),
+          Text(
+            hint ?? keySelect.tr,
+            style: hintStyle ??
+                textStyleBodyMedium().copyWith(
+                  color: AppColors.secondaryTextColor,
+                ),
+          ),
+        ],
+      ),
+
+      // Custom render for selected item (no divider here)
+      selectedItemBuilder: (BuildContext context) {
+        return dropdownItems.map((value) {
+          return Row(
+            children: [
+              Text(
+                value.toString(),
+                style: textStyleBodyMedium().copyWith(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14.sp,
+                ),
+                maxLines: 2,
+              ),
+            ],
+          );
+        }).toList();
+      },
+
+      // Dropdown list items with dividers
       items: dropdownItemsValues ??
           dropdownItems.asMap().entries.map<DropdownMenuItem<T>>((entry) {
             final index = entry.key;
@@ -78,96 +98,90 @@ class CustomDropdown2<T> extends StatelessWidget {
             return DropdownMenuItem<T>(
               value: value,
               child: Column(
+                mainAxisSize: MainAxisSize.min, // <-- Add this line
                 children: [
                   Row(
                     children: [
-                      AssetImageWidget(
-                        AppImages.iconsProfileImage,
-                        imageWidth: 20.h,
-                        imageHeight: 20.w,
-                      ).paddingOnly(right: 10.w),
                       Text(
-                        "Alex Linderson",
-                        style: TextStyle(
-                          color: AppColors.primaryTextColor,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 12,
+                        value.toString(),
+                        style: textStyleBodyMedium().copyWith(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14.sp,
                         ),
                         maxLines: 2,
                       ),
                     ],
                   ),
                   if (!isLastItem)
-                    Divider(color: AppColors.containerGreyColor)
-                        .paddingOnly(top: 10.h),
+                    Divider(color: AppColors.containerGreyColor).paddingOnly(top: 10.h),
                 ],
               ),
             );
           }).toList(),
-
     );
   }
 
-  inputDecoration(context) => InputDecoration(
+  InputDecoration inputDecoration(BuildContext context) => InputDecoration(
     errorMaxLines: 2,
     filled: true,
     isCollapsed: true,
     isDense: true,
     counterText: '',
     contentPadding: contentPadding ??
-        EdgeInsets.only(
-            top: 10.w,
-            bottom: 10.w,
-            right: 8.w,
-            left: 0.w),
-    prefixIcon: prefixIcon,
+        EdgeInsets.only(top: 10.w, bottom: 10.w, right: 8.w, left: 0.w),
     suffixIcon: suffixIcon,
     hintText: hint,
     hintStyle: hintStyle ??
-        textStyleBodyMedium()
-            .copyWith(color: AppColors.secondaryTextColor,),
+        textStyleBodyMedium().copyWith(
+          color: AppColors.secondaryTextColor,
+        ),
     floatingLabelBehavior: FloatingLabelBehavior.always,
     fillColor: fillColor ?? Colors.transparent,
     border: decoration ??
         OutlineInputBorder(
-            borderSide: BorderSide(
-              color: AppColors.primaryTextColor,
-              width: 1.w,
-            ),
-            borderRadius: BorderRadius.circular(radius ?? 20.r)),
+          borderSide: BorderSide(
+            color: AppColors.primaryTextColor,
+            width: 1.w,
+          ),
+          borderRadius: BorderRadius.circular(radius ?? 10.r),
+        ),
     enabledBorder: decoration ??
         OutlineInputBorder(
-            borderSide: BorderSide(
-              color: AppColors.containerGreyColor,
-              width: 1.w,
-            ),
-            borderRadius: BorderRadius.circular(radius ?? 20.r)),
+          borderSide: BorderSide(
+            color: AppColors.containerGreyColor,
+            width: 1.w,
+          ),
+          borderRadius: BorderRadius.circular(radius ?? 10.r),
+        ),
     disabledBorder: decoration ??
         OutlineInputBorder(
-            borderSide: BorderSide(
-              color: AppColors.containerGreyColor,
-              width: 1.w,
-            ),
-            borderRadius: BorderRadius.circular(radius ?? 20.r)),
+          borderSide: BorderSide(
+            color: AppColors.containerGreyColor,
+            width: 1.w,
+          ),
+          borderRadius: BorderRadius.circular(radius ?? 10.r),
+        ),
     focusedBorder: decoration ??
         OutlineInputBorder(
-            borderSide: BorderSide(
-              color: AppColors.containerGreyColor,
-              width: 1.w,
-            ),
-            borderRadius: BorderRadius.circular(radius ?? 20.r)),
-    focusedErrorBorder:  OutlineInputBorder(
-        borderSide: BorderSide(
-          color: Colors.red,
-          width: 1.w,
+          borderSide: BorderSide(
+            color: AppColors.containerGreyColor,
+            width: 1.w,
+          ),
+          borderRadius: BorderRadius.circular(radius ?? 10.r),
         ),
-        borderRadius: BorderRadius.circular(radius ?? 20.r)),
-    errorBorder:  OutlineInputBorder(
-        borderSide: BorderSide(
-          color: Colors.red,
-          width: 1.w,
-        ),
-        borderRadius: BorderRadius.circular(radius ?? 20.r)
+    focusedErrorBorder: OutlineInputBorder(
+      borderSide: BorderSide(
+        color: Colors.red,
+        width: 1.w,
+      ),
+      borderRadius: BorderRadius.circular(radius ?? 10.r),
+    ),
+    errorBorder: OutlineInputBorder(
+      borderSide: BorderSide(
+        color: Colors.red,
+        width: 1.w,
+      ),
+      borderRadius: BorderRadius.circular(radius ?? 10.r),
     ),
   );
 }

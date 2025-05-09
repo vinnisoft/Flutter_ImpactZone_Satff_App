@@ -129,6 +129,7 @@ const String keyCVV = 'keyCVV';
 const String keyCardNumber = 'keyCardNumber';
 const String keyNameOnCard = 'keyNameOnCard';
 const String keyOtpSendMessage="keyOtpSendMessage";
+const String keyName="keyName";
 
 const String keyCongratulation="keyCongratulation";
 const String keyPaymentConfirmMessage="keyPaymentConfirmMessage";
@@ -168,10 +169,63 @@ const String keyNoBillingAvailable="keyNoBillingAvailable";
 const String keyNoPosHistoryAvailable="keyNoPosHistoryAvailable";
 const String keyEnter="keyEnter";
 
+const String keyProfile="keyProfile";
+const String keyBarCode="keyBarCode";
+const String keyAccessCode="keyAccessCode";
+const String keyPhoneNo="keyPhoneNo";
+const String keyHireDate="keyHireDate";
+const String keyStreetAddress="keyStreetAddress";
+const String keyCity="keyCity";
+const String keyState="keyState";
+const String keyZipCode="keyZipCode";
+const String keyChangePassword="keyChangePassword";
+const String keyEdit="keyEdit";
+const String keyEditDetails="keyEditDetails";
+
+const String keyOldPassword="keyOldPassword";
+const String keySaveChanges="keySaveChanges";
+
 
 const String keyConfirmPayment = 'keyConfirmPayment';
 
+const String keyTimeSheet = 'keyTimeSheet';
+const String keyCommission = 'keyCommission';
+const String keyDailySalesReport = 'keyDailySalesReport';
+const String keyTransactionsReport = 'keyTransactionsReport';
 
+const String keySelectDate = 'keySelectDate';
+
+const String keyPasswordAndConfirmPasswordDoesNotMatch = 'keyPasswordAndConfirmPasswordDoesNotMatch';
+const String keyCalender = 'keyCalender';
+
+const String keyBookEvent = 'keyBookEvent';
+const String keyBook = 'keyBook';
+const String keyEvent = 'keyEvent';
+const String keyEventDate = 'keyEventDate';
+const String keyEventTime = 'keyEventTime';
+const String keyEventType = 'keyEventType';
+
+const String keySearchMember = 'searchMember';
+const String selectTime = 'selectTime';
+const String keyEndTime = 'keyEndTime';
+const String keyStartTime = 'keyStartTime';
+const String keyLocation = 'keyLocation';
+const String keyDuration = 'keyDuration';
+const String keyEditEvent = 'keyEditEvent';
+const String keyViewEvent = 'keyViewEvent';
+const String keyTime = 'keyTime';
+const String keyStaff = 'keyStaff';
+const String keyOff = 'keyOff';
+const String keyNo = 'keyNo';
+const String keyYes = 'keyYes';
+const String keyTaxWaive = 'keyTaxWaive';
+const String keyTaxWaived = 'keyTaxWaived';
+const String keyNetTotal = 'keyNetTotal';
+const String keyPromoDiscount = 'keyPromoDiscount';
+const String keyApplyTaxMessage = 'keyApplyTaxMessage';
+const String keyWaiveTaxMessage = 'keyWaiveTaxMessage';
+const String keyApplied = 'keyApplied';
+const String keyPromo = 'keyPromo';
 
 
 

@@ -130,7 +130,7 @@ class MemberDetailScreen extends GetView<MemberDetailController> {
                 borderRadius: BorderRadius.circular(10.r),
                 boxShadow: [
                   BoxShadow(
-                      color: Colors.black12, spreadRadius: 2, blurRadius: 10)
+                      color: Colors.black12, spreadRadius: 2.r, blurRadius: 10.r)
                 ]),
             child: (controller.memberData.value.billingHistory?.length ?? 0) <=
                     0
@@ -225,7 +225,7 @@ class MemberDetailScreen extends GetView<MemberDetailController> {
                 borderRadius: BorderRadius.circular(10.r),
                 boxShadow: [
                   BoxShadow(
-                      color: Colors.black12, spreadRadius: 2, blurRadius: 10)
+                      color: Colors.black12, spreadRadius: 2.r, blurRadius: 10.r)
                 ]),
             child: (controller.memberData.value.posHistory?.length ?? 0) <= 0
                 ? Container(
@@ -374,7 +374,7 @@ class MemberDetailScreen extends GetView<MemberDetailController> {
                   borderRadius: BorderRadius.circular(10.r),
                   boxShadow: [
                     BoxShadow(
-                        color: Colors.black12, spreadRadius: 2, blurRadius: 10)
+                        color: Colors.black12, spreadRadius: 2.r, blurRadius: 10.r)
                   ]),
               child: ListView.separated(
                 itemCount: 2,
@@ -433,7 +433,7 @@ class MemberDetailScreen extends GetView<MemberDetailController> {
                   borderRadius: BorderRadius.circular(10.r),
                   boxShadow: [
                     BoxShadow(
-                        color: Colors.black12, spreadRadius: 2, blurRadius: 10)
+                        color: Colors.black12, spreadRadius: 2.r, blurRadius: 10.r)
                   ]),
               child: ListView.separated(
                 itemCount: 4,

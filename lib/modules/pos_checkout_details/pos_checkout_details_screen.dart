@@ -33,7 +33,7 @@ class PosCheckoutDetailsScreen extends GetView<PosCheckOutDetailsController> {
             color: Colors.white,
             borderRadius: BorderRadius.circular(12.r),
             boxShadow: [
-              BoxShadow(color: Colors.black12, spreadRadius: 2, blurRadius: 10)
+              BoxShadow(color: Colors.black12, spreadRadius: 2.r, blurRadius: 10.r)
             ]),
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -41,7 +41,7 @@ class PosCheckoutDetailsScreen extends GetView<PosCheckOutDetailsController> {
           children: [
             _detailsContainer(),
             controller.title.value=="Check"?Divider(color: AppColors.containerGreyColor,).paddingSymmetric(vertical: 20.h):SizedBox(),
-            controller.title.value=="Check"?Text(keyCheck.tr,style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w500,fontSize: 16),):SizedBox(),
+            controller.title.value=="Check"?Text(keyCheck.tr,style: textStyleHeadlineMedium(),):SizedBox(),
             controller.title.value=="Check"?_checkTextField():SizedBox(),
             Expanded(child: SizedBox()),
             PrimaryBottomButton(callBack: (){
@@ -56,7 +56,7 @@ class PosCheckoutDetailsScreen extends GetView<PosCheckOutDetailsController> {
   _confirmPaymentSheet() => Get.bottomSheet(
       Container(
         width: Get.width,
-        padding: EdgeInsets.only(left: 20,right: 20,top: 5,bottom: 20),
+        padding: EdgeInsets.only(left: 20.w,right: 20.w,top: 5.h,bottom: 20.h),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -70,18 +70,18 @@ class PosCheckoutDetailsScreen extends GetView<PosCheckOutDetailsController> {
             ),
             Text(
               keyConfirmPayment.tr,
-              style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w700,fontSize: 18),
+              style: textStyleHeadlineLarge(),
             ).paddingOnly(top: 15.h,),
             Text(
               keyOtpSendMessage.tr,
               textAlign: TextAlign.center,
-              style:TextStyle(color: AppColors.secondaryTextColor,fontWeight: FontWeight.w400,fontSize: 14),
+              style:textStyleBodyMedium()
             ).paddingOnly(top: 15.h, bottom: 30.h),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _form(),
-                Text(keyResendCode.tr+keyIN.tr,style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w700),).paddingOnly(bottom: 20.h,top: 10.h),
+                Text(keyResendCode.tr+keyIN.tr,style: textStyleHeadlineMedium()).paddingOnly(bottom: 20.h,top: 10.h),
               ],
             ),
             PrimaryBottomButton(callBack: (){
@@ -103,7 +103,7 @@ class PosCheckoutDetailsScreen extends GetView<PosCheckOutDetailsController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(keyDetails.tr,style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w700,fontSize: 20),),
+          Text(keyDetails.tr,style:textStyleHeadlineLarge()),
           _itemDetails(keyDiscounts.tr),
           _itemDetails(keyTax.tr),
           _itemDetails(keyTotal.tr),
@@ -116,8 +116,8 @@ class PosCheckoutDetailsScreen extends GetView<PosCheckOutDetailsController> {
     return   Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(title,style: TextStyle(color: AppColors.secondaryTextColor,fontWeight: FontWeight.w500,fontSize: 14)),
-        Text("\$2.00",style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w700,fontSize: 14)),
+        Text(title,style:textStyleBodyMedium().copyWith(fontSize: 14.sp)),
+        Text("\$2.00",style:textStyleHeadlineSmall()),
       ],
     ).paddingSymmetric(vertical: 10.h);
   }
@@ -177,7 +177,7 @@ class PosCheckoutDetailsScreen extends GetView<PosCheckOutDetailsController> {
   _congratulationSheet() => Get.bottomSheet(
       Container(
         width: Get.width,
-        padding: EdgeInsets.only(left: 20,right: 20,top: 5,bottom: 20),
+        padding: EdgeInsets.only(left: 20.w,right: 20.w,top: 5.h,bottom: 20.h),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -191,12 +191,12 @@ class PosCheckoutDetailsScreen extends GetView<PosCheckOutDetailsController> {
             ),
             Text(
               keyCongratulation.tr,
-              style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w700,fontSize: 18),
+              style:textStyleHeadlineLarge(),
             ).paddingOnly(top: 15.h,),
             Text(
               keyPaymentConfirmMessage.tr,
               textAlign: TextAlign.center,
-              style:TextStyle(color: AppColors.secondaryTextColor,fontWeight: FontWeight.w400,fontSize: 14),
+              style:textStyleBodyMedium().copyWith(fontSize: 14.sp),
             ).paddingOnly(top: 15.h, bottom: 30.h),
 
             PrimaryBottomButton(callBack: ()=> Get.back()

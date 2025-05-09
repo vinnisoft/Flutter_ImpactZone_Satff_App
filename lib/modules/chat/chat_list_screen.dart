@@ -14,7 +14,7 @@ class ChatListScreen extends GetView<ChatListController> {
         child:  Column(
           crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _topBanner(),
+              TopBannerWidget(scaffoldKey: _scaffoldKey,title: keyChat.tr,),
               _searchBar(),
               _chatList()
             ],
@@ -27,7 +27,7 @@ class ChatListScreen extends GetView<ChatListController> {
      return  Padding(
        padding: const EdgeInsets.only(left: 16,right: 16,top: 16), // adjust as needed
        child: Container(
-         padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 8),
+         padding: const EdgeInsets.symmetric(horizontal: 12),
          decoration: BoxDecoration(
            color: Colors.white,
            borderRadius: BorderRadius.circular(12),
@@ -38,74 +38,31 @@ class ChatListScreen extends GetView<ChatListController> {
          child: Row(
            children: [
              AssetImageWidget(AppImages.iconsSearch,imageWidth: 20.w,),
-             SizedBox(width: 8),
+             SizedBox(width: 8.w),
              Expanded(
-               child: TextField(
-                 controller: controller.searchTextController,
-                 decoration: InputDecoration(
-                   hintText: keySelect.tr,
-                   isCollapsed: true,
-                   hintStyle: TextStyle(
-                       color: Color(0xff969696),
-                       fontWeight: FontWeight.w400
-                   ),
-                   border: InputBorder.none,
-                   focusedBorder: InputBorder.none,
-                   enabledBorder: InputBorder.none,
-                   disabledBorder: InputBorder.none,
+               child: TextFieldWidget(
+                 textController: controller.searchTextController,
+                 decoration: InputBorder.none,
+                 contentPadding: EdgeInsets.zero,
+                 hint: keySearch.tr,
+                 hintStyle: textStyleBodySmall().copyWith(
+                     color: Color(0xff969696),
+                     fontWeight: FontWeight.w400
                  ),
                ),
              ),
-
            ],
          ),
        ),
      );
    }
 
-  _topBanner() => Stack(
-    children: [
-      AssetImageWidget(
-        AppImages.iconsHomeBg,
-        imageHeight: 80.h,
-        imageWidth: Get.width,
-        imageFitType: BoxFit.cover,
-        radiusBottomLeft: 15.r,
-        radiusBottomRight: 15.r,
-      ),
-      Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              InkWell(
-                onTap: () {
-                  _scaffoldKey.currentState?.openDrawer();
-                },
-                child: AssetImageWidget(
-                  AppImages.iconsMenu,
-                  imageHeight: 20.h,
-                ),
-              ),
-              Text(keyChat.tr,style: TextStyle(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 22),),
-              InkWell(
-                onTap: ()=>Get.toNamed(AppRoutes.routeNotificationScreen),
-                child: AssetImageWidget(
-                  AppImages.iconsNotification,
-                  imageHeight: 20.h,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ).paddingOnly(top: 40.h, left: 12.h, right: 12.h)
-    ],
-  );
+
 
 
    Widget _chatList() {
      return Padding(
-         padding: const EdgeInsets.symmetric(horizontal: 20),
+         padding:  EdgeInsets.symmetric(horizontal: 20.w),
          child: ListView.separated(
            shrinkWrap: true,
            physics: NeverScrollableScrollPhysics(),
@@ -117,7 +74,7 @@ class ChatListScreen extends GetView<ChatListController> {
              onTap: () {
               Get.toNamed(AppRoutes.routeChatScreen,);
              },
-             child: _chatItem()
+             child: _chatItem(index)
            ),
            separatorBuilder: (BuildContext context, int index) =>
                SizedBox(
@@ -127,7 +84,7 @@ class ChatListScreen extends GetView<ChatListController> {
      );
    }
 
-  _chatItem() {
+  _chatItem(int index) {
      return Row(
        mainAxisAlignment: MainAxisAlignment.start,
        children: [
@@ -141,24 +98,26 @@ class ChatListScreen extends GetView<ChatListController> {
            child: Column(
              crossAxisAlignment: CrossAxisAlignment.start,
              children: [
-               Text("Alex Linderson",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w700,color: AppColors.primaryTextColor),),
-               Text("Don’t miss to attend the meeting.",overflow:TextOverflow.ellipsis,maxLines:1,style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: AppColors.secondaryTextColor),)
+               Text("Alex Linderson",style:textStyleBodyMedium().copyWith(fontSize: 18.sp,fontWeight: FontWeight.w700,color: AppColors.primaryTextColor)),
+               Text("Don’t miss to attend the meeting.",overflow:TextOverflow.ellipsis,maxLines:1,style: textStyleBodyMedium().copyWith(
+                   fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.secondaryTextColor
+               ),)
              ],
            ),
          ),
          Column(
            crossAxisAlignment: CrossAxisAlignment.end,
            children: [
-             Text("2 min ago",maxLines:1,style: TextStyle(fontSize: 12,fontWeight: FontWeight.w300,color: AppColors.secondaryTextColor)),
-             Container(
-               width: 20,
-               height: 20,
+             Text("2 min ago",maxLines:1,style:textStyleBodySmall().copyWith()),
+             index==1||index==3||index==5? Container(
+               width: 20.w,
+               height: 20.h,
                decoration: BoxDecoration(
                  color:AppColors.textRedColor,
-                 borderRadius: BorderRadius.circular(30)
+                 borderRadius: BorderRadius.circular(30.r)
                ),
-               child: Center(child: Text("4",textAlign:TextAlign.center,style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 12),)),
-             )
+               child: Center(child: Text(index.toString(),textAlign:TextAlign.center,style:textStyleBodySmall().copyWith(color:Colors.white))),
+             ):SizedBox()
            ],
          ),
        ],

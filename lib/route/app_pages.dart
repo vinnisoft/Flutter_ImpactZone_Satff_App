@@ -1,5 +1,8 @@
 import 'package:impact_zone/export.dart';
 
+import '../modules/book_event/book_event_screen.dart';
+export 'package:impact_zone/modules/edit_booking/edit_booking_screen.dart';
+
 
 class AppPages {
   AppPages();
@@ -206,6 +209,48 @@ class AppPages {
       transitionDuration: const Duration(milliseconds: _transitionDuration),
       page: () => ReportScreen(),
       binding: ReportBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.routeChangePasswordScreen,
+      transition: Transition.rightToLeft,
+      curve: Curves.ease,
+      transitionDuration: const Duration(milliseconds: _transitionDuration),
+      page: () => ChangePasswordScreen(),
+      binding: ChangePasswordBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.routeTimeSheetScreen,
+      transition: Transition.rightToLeft,
+      curve: Curves.ease,
+      transitionDuration: const Duration(milliseconds: _transitionDuration),
+      page: () => TimeSheetScreen(),
+      binding: TimeSheetBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.routeBookEventScreen,
+      transition: Transition.rightToLeft,
+      curve: Curves.ease,
+      transitionDuration: const Duration(milliseconds: _transitionDuration),
+      page: () => BookEventScreen(),
+      binding: BookEventBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.routeViewEventScreen,
+      transition: Transition.rightToLeft,
+      curve: Curves.ease,
+      transitionDuration: const Duration(milliseconds: _transitionDuration),
+      page: () => ViewEventScreen(),
+      binding: ViewEventBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.routeEditEventScreen,
+      transition: Transition.rightToLeft,
+      curve: Curves.ease,
+      transitionDuration: const Duration(milliseconds: _transitionDuration),
+      page: () => EditBookingScreen(),
+      binding: EditBookingBinding(),
     ),
   ];
 }

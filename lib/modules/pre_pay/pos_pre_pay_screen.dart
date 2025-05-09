@@ -28,7 +28,7 @@ class PosPrePayScreen extends GetView<PosPrePayController> {
           color: Colors.white,
           borderRadius: BorderRadius.circular(12.r),
           boxShadow: [
-            BoxShadow(color: Colors.black12, spreadRadius: 2, blurRadius: 10)
+            BoxShadow(color: Colors.black12, spreadRadius: 2.r, blurRadius: 10.r)
           ]),
       child: Column(
         mainAxisSize: MainAxisSize.max,
@@ -45,18 +45,15 @@ class PosPrePayScreen extends GetView<PosPrePayController> {
               ).paddingOnly(right: 10.w),
               Text(
                 "Alex Linderson",
-                style: TextStyle(
-                  color: AppColors.primaryTextColor,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 18,
-                ),
+
+                style: textStyleHeadlineMedium(),
                 maxLines: 2,
               ),
             ],
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            margin: EdgeInsets.symmetric(vertical: 10),
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            margin: EdgeInsets.symmetric(vertical: 10.h),
             height: 46.h,
             width: double.infinity,
             decoration: BoxDecoration(
@@ -67,8 +64,8 @@ class PosPrePayScreen extends GetView<PosPrePayController> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(keyCreditBalance.tr,style: TextStyle(fontWeight: FontWeight.w500,fontSize:18,color: AppColors.primaryTextColor),),
-                Text("\$2.00",style: TextStyle(fontWeight: FontWeight.w700,fontSize:14,color: AppColors.textRedColor),),
+                Text(keyCreditBalance.tr,style:textStyleHeadlineMedium()),
+                Text("\$2.00",style:textStyleHeadlineMedium().copyWith(fontWeight: FontWeight.w700,fontSize:14.sp,color: AppColors.textRedColor),),
               ],
             ),
           ),
@@ -89,7 +86,7 @@ class PosPrePayScreen extends GetView<PosPrePayController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(keyDetails.tr,style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w700,fontSize: 20),),
+          Text(keyDetails.tr,style:textStyleHeadlineLarge()),
           _itemDetails(keyDiscounts.tr),
           _itemDetails(keyTax.tr),
           _itemDetails(keyTotal.tr),
@@ -102,8 +99,8 @@ class PosPrePayScreen extends GetView<PosPrePayController> {
     return   Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(title,style: TextStyle(color: AppColors.secondaryTextColor,fontWeight: FontWeight.w500,fontSize: 14)),
-        Text("\$2.00",style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w700,fontSize: 14)),
+        Text(title,style:textStyleBodyMedium().copyWith(fontSize: 14.sp)),
+        Text("\$2.00",style: textStyleHeadlineMedium().copyWith(fontSize:14.sp,fontWeight: FontWeight.w700)),
       ],
     ).paddingSymmetric(vertical: 10.h);
   }

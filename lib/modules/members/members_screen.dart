@@ -22,7 +22,6 @@ class MembersScreen extends GetView<MembersController> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              // _topBanner(),
               _searchBar(),
               _membersList(),
             ]
@@ -36,12 +35,12 @@ class MembersScreen extends GetView<MembersController> {
 
  Widget  _searchBar(){
     return  Padding(
-      padding: const EdgeInsets.only(left: 16,right: 16,top: 16), // adjust as needed
+      padding:  EdgeInsets.only(left: 16.w,right: 16.w,top: 16.h), // adjust as needed
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 8),
+        padding:  EdgeInsets.symmetric(horizontal: 12.w),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(12.r),
           border: Border.all(color: Color(0xffE9E9E9)),
 
         ),
@@ -49,22 +48,16 @@ class MembersScreen extends GetView<MembersController> {
         child: Row(
           children: [
             AssetImageWidget(AppImages.iconsSearch,imageWidth: 20.w,),
-            SizedBox(width: 8),
+            SizedBox(width: 8.w),
             Expanded(
-              child: TextField(
-                controller: controller.searchTextController,
-                decoration: InputDecoration(
-                  hintText: keySearch.tr,
-                  isCollapsed: true,
-                  hintStyle: TextStyle(
-                    color: Color(0xff969696),
-                    fontWeight: FontWeight.w400
-                  ),
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                ),
+              child: TextFieldWidget(
+                textController: controller.searchTextController,
+                    decoration:InputBorder.none,
+                contentPadding: EdgeInsets.zero,
+                hint: keySearch.tr,
+                      hintStyle: textStyleBodySmall().copyWith(
+                        fontWeight: FontWeight.w400,
+                      ),
               ),
             ),
           ],
@@ -76,7 +69,7 @@ class MembersScreen extends GetView<MembersController> {
   Widget _membersList() {
    return Obx(
          () =>Padding(
-       padding: const EdgeInsets.symmetric(horizontal: 20),
+       padding:  EdgeInsets.symmetric(horizontal: 20.w),
        child: ListView.separated(
          shrinkWrap: true,
          physics: NeverScrollableScrollPhysics(),

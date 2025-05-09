@@ -15,11 +15,18 @@ class HomeScreen extends GetView<HomeController> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _topBanner(),
-          _myAppointmentsHeading(),
-          _appointmentData(),
-          _todoListHeading(),
-          _todoTasks()
+          TopBannerWidget(scaffoldKey: _scaffoldKey,isHomeScreen: true,),
+          Expanded(
+            child: Column(
+              children: [
+                _myAppointmentsHeading(),
+                _appointmentData(),
+                _todoListHeading(),
+                _todoTasks()
+              ],
+            ),
+          )
+         
         ],
       ).paddingOnly(bottom: 30.h),
     );
@@ -79,70 +86,7 @@ class HomeScreen extends GetView<HomeController> {
       barrierColor: Colors.black26,
       backgroundColor: Colors.white);
 
-  _topBanner() => Stack(
-        children: [
-          AssetImageWidget(
-            AppImages.iconsHomeBg,
-            imageHeight: 140.h,
-            imageWidth: Get.width,
-            imageFitType: BoxFit.cover,
-            radiusBottomLeft: 15.r,
-            radiusBottomRight: 15.r,
-          ),
-          Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      _scaffoldKey.currentState?.openDrawer();
-                    },
-                    child: AssetImageWidget(
-                      AppImages.iconsMenu,
-                      imageHeight: 20.h,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: (){
-                      Get.toNamed(AppRoutes.routeNotificationScreen);
-                    },
-                    child: AssetImageWidget(
-                      AppImages.iconsNotification,
-                      imageHeight: 20.h,
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  AssetImageWidget(
-                    AppImages.iconsProfileImage,
-                    imageHeight: 42.h,
-                  ).paddingOnly(right: 8.w),
-                  Obx(
-                    () => Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          keyWelcome.tr,
-                          style: textStyleBodyMedium()
-                              .copyWith(color: Colors.white),
-                        ).paddingOnly(bottom: 2.h),
-                        Text(
-                          '${Get.find<DashboardController>().userData.value.firstName} ${Get.find<DashboardController>().userData.value.lastName}',
-                          style: textStyleHeadlineMedium().copyWith(
-                              color: Colors.white, fontWeight: FontWeight.w700),
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ).paddingOnly(top: 15.h)
-            ],
-          ).paddingOnly(top: 40.h, left: 12.h, right: 12.h)
-        ],
-      );
+
 
   _myAppointmentsHeading() => Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -162,7 +106,11 @@ class HomeScreen extends GetView<HomeController> {
         ],
       ).paddingOnly(top: 12.h, left: 15.w, right: 15.w, bottom: 15.h);
 
-  _appointmentData() => ListView.separated(
+  _appointmentData() {
+    if(controller.myAppointmentList.isEmpty){
+      return Text("");
+    }
+    return ListView.separated(
         itemCount: controller.isAppointmentLoading.value ? 2 : (controller.myAppointmentList.length > 2 ? 2 : controller.myAppointmentList.length),
         physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
@@ -180,11 +128,10 @@ class HomeScreen extends GetView<HomeController> {
               child: controller.isAppointmentLoading.value
                   ? ShimmerEffect.shimmerAppointmentListContent()
                   : AppointmentListWidget(
-                      appointmentImage:
-                          controller.myAppointmentList[index].eventType ==
+                      appointmentImage: controller.myAppointmentList.isNotEmpty?controller.myAppointmentList[index].eventType ==
                                   "CLASS"
                               ? AppImages.iconsClassAppointment
-                              : AppImages.iconsAppointment,
+                              : AppImages.iconsAppointment:AppImages.iconsAppointment,
                       appointmentHeading:
                           controller.myAppointmentList[index].event ?? '',
                       appointmentType:
@@ -217,6 +164,7 @@ class HomeScreen extends GetView<HomeController> {
           height: 12.h,
         ),
       );
+  }
 
   _todoListHeading() => Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -245,7 +193,7 @@ class HomeScreen extends GetView<HomeController> {
               color: Colors.white,
               borderRadius: BorderRadius.circular(12.r),
               boxShadow: [
-                BoxShadow(color: Colors.black12, spreadRadius: 2, blurRadius: 10)
+                BoxShadow(color: Colors.black12, spreadRadius: 2.r, blurRadius: 10.r)
               ]),
           child:  ListView.separated(
             itemCount: controller.isTaskLoading.value ? 2 :(controller.myTodoList.isEmpty?1:controller.myTodoList.length),
@@ -266,7 +214,7 @@ class HomeScreen extends GetView<HomeController> {
               },
               child: controller.isTaskLoading.value
                   ? ShimmerEffect.shimmerTaskListContent()
-                  :controller.myTodoList.isEmpty?Center(child: Text(keyTodoListEmpty.tr,style: TextStyle(color: Color(0xff1F1F21),fontWeight: FontWeight.w700),)):  Row(
+                  :controller.myTodoList.isEmpty?Center(child: Text(keyTodoListEmpty.tr,style:textStyleHeadlineMedium().copyWith(fontWeight: FontWeight.w700),)):  Row(
                 children: [
                   Container(
                     decoration: BoxDecoration(

@@ -25,20 +25,20 @@ class PayLaterScreen extends GetView<PayLaterController> {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12.r),
                   boxShadow: [
-                    BoxShadow(color: Colors.black12, spreadRadius: 2, blurRadius: 10)
+                    BoxShadow(color: Colors.black12, spreadRadius: 2.r, blurRadius: 10.r)
                   ]),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(keyDate.tr,style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16,color: AppColors.primaryTextColor),),
+                  Text(keyDate.tr,style:textStyleHeadlineMedium().copyWith(fontSize: 16.sp)),
                   _selectDate(),
                   SizedBox(height: 20.h,),
-                  Text(keySavedCards.tr,style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16,color: AppColors.primaryTextColor),),
+                  Text(keySavedCards.tr,style:textStyleHeadlineMedium().copyWith(fontSize: 16.sp)),
                   _cardOptions(),
-                  PrimaryBottomButton(callBack: (){}, title: keySave.tr).paddingOnly(top: 20)
+                  PrimaryBottomButton(callBack: (){}, title: keySave.tr).paddingOnly(top: 20.h)
                 ],
               ),
-            ).paddingOnly(bottom: 20),
+            ).paddingOnly(bottom: 20.h),
         
           ],
         ),
@@ -52,7 +52,7 @@ class PayLaterScreen extends GetView<PayLaterController> {
           color: Colors.white,
           borderRadius: BorderRadius.circular(12.r),
           boxShadow: [
-            BoxShadow(color: Colors.black12, spreadRadius: 2, blurRadius: 10)
+            BoxShadow(color: Colors.black12, spreadRadius: 2.r, blurRadius: 10.r)
           ]),
       child: Container(
         padding: EdgeInsets.all(20.h),
@@ -63,7 +63,7 @@ class PayLaterScreen extends GetView<PayLaterController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(keyDetails.tr,style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w700,fontSize: 20),),
+            Text(keyDetails.tr,style:textStyleHeadlineLarge()),
             _itemDetails(keyDiscounts.tr),
             _itemDetails(keyTax.tr),
             _itemDetails(keyTotal.tr),
@@ -77,8 +77,8 @@ class PayLaterScreen extends GetView<PayLaterController> {
     return   Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(title,style: TextStyle(color: AppColors.secondaryTextColor,fontWeight: FontWeight.w500,fontSize: 14)),
-        Text("\$2.00",style: TextStyle(color: AppColors.primaryTextColor,fontWeight: FontWeight.w700,fontSize: 14)),
+        Text(title,style:textStyleBodySmall().copyWith(fontSize: 14.sp)),
+        Text("\$2.00",style: textStyleHeadlineSmall()),
       ],
     ).paddingSymmetric(vertical: 10.h);
   }
@@ -94,7 +94,7 @@ class PayLaterScreen extends GetView<PayLaterController> {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12.r),
                 boxShadow: [
-                  BoxShadow(color: Colors.black12, spreadRadius: 2, blurRadius: 10)
+                  BoxShadow(color: Colors.black12, spreadRadius: 2.r, blurRadius: 10.r)
                 ]),
             child: Obx(
                   () {
@@ -119,8 +119,8 @@ class PayLaterScreen extends GetView<PayLaterController> {
       children: [
         Row(
           children: [
-            AssetImageWidget(AppImages.iconsVisaIcon).paddingOnly(right: 10),
-            Expanded(child: Text("**** **** **** 4567",style: TextStyle(color: AppColors.secondaryTextColor,fontWeight: FontWeight.w500,fontSize: 16),)),
+            AssetImageWidget(AppImages.iconsVisaIcon).paddingOnly(right: 10.w),
+            Expanded(child: Text("**** **** **** 4567",style:textStyleBodyMedium().copyWith(fontSize: 16.sp))),
             InkWell(
                 onTap: ()=>controller.selectPaymentMethod(index),
                 child:AssetImageWidget(AppImages.iconsUnCheckTodo)),
@@ -133,7 +133,7 @@ class PayLaterScreen extends GetView<PayLaterController> {
 
   _selectDate() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      padding: EdgeInsets.symmetric(horizontal: 10.w),
       decoration: BoxDecoration(
           border: Border.all(color: AppColors.containerGreyColor),
           borderRadius: BorderRadius.circular(12.r)
@@ -142,23 +142,10 @@ class PayLaterScreen extends GetView<PayLaterController> {
         children: [
           AssetImageWidget(AppImages.iconsDate,imageWidth: 25.w,),
           Expanded(
-            child: TextField(
-              decoration: InputDecoration(
-                  hintText: keySelect.tr,
-                  contentPadding: EdgeInsets.symmetric(vertical: 14, horizontal: 12),
-                  filled: true,
-                  isDense: true,
-                  fillColor: Colors.white,
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  errorBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  hintStyle: TextStyle(color: AppColors.secondaryTextColor)
-              ),
-              onTap: () {
-                // open your modal, popup, or dropdown logic here
-              },
+            child: TextFieldWidget(
+              decoration: InputBorder.none,
+             contentPadding: EdgeInsets.only(left: 5.w),
+              hint: keySearch.tr,
             ),
           ),
         ],

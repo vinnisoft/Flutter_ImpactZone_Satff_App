@@ -175,7 +175,61 @@ Map<String, String> en_US = {
   keySearch:"Search",
   keyEnter:"Enter",
 
-  keyConfirmPayment:"Confirm Payment"
+  keyProfile: "Profile",
+  keyBarCode: "Bar Code",
+  keyAccessCode: "Access Code",
+  keyPhoneNo: "Phone N0.",
+  keyHireDate: "Hire Date",
+  keyStreetAddress: "Street Address",
+  keyCity: "City",
+  keyState: "State",
+  keyZipCode: "Zip Code",
+  keyChangePassword: "Change Password",
+  keyEdit: "Edit",
+
+  keyOldPassword: "Old Password",
+  keySaveChanges: "Save Changes",
+  keyName: "Name",
+  keyEditDetails: "Edit details",
+
+  keyConfirmPayment:"Confirm Payment",
+
+  keyTimeSheet:"TimesSheet",
+  keyCommission:"Commission",
+  keyDailySalesReport:"Daily Sales Report",
+  keyTransactionsReport:"Transactions Report",
+  keySelectDate:"Select Date",
+  keyPasswordAndConfirmPasswordDoesNotMatch:"Password and confirm password does not match",
+
+  keyCalender:"Calender",
+  keyBookEvent:"Book Event",
+ keyEvent:"Event",
+keyEventDate:"Event Date",
+  keyBook:"Book",
+  keyEventTime:"Event Time",
+keyEventType:"Event Type",
+
+  keySearchMember:"Search member",
+  selectTime:"Select Time",
+  keyEndTime:"End Time",
+  keyStartTime:"Start Time",
+  keyLocation:"Location",
+  keyDuration:"Duration",
+  keyEditEvent:"Edit Event",
+  keyViewEvent: "View Event",
+  keyTime: "Time",
+  keyStaff: "Staff",
+  keyOff: "OFF",
+  keyNo:"No",
+  keyYes:"Yes",
+  keyTaxWaive:"%Waive Tax",
+  keyTaxWaived:"Tax Waived",
+  keyNetTotal:"Net Total",
+  keyPromoDiscount:"Promo Discount",
+  keyApplyTaxMessage:"Do you want to apply tax on this item?",
+  keyWaiveTaxMessage:"Do you want to waive tax on this item?",
+  keyApplied:"Applied",
+  keyPromo:"Promo"
 
 
 };

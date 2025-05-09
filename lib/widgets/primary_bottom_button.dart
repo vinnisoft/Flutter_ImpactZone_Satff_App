@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:impact_zone/app_values/text_styles.dart';
 import '../app_values/app_colors.dart';
 
 class PrimaryBottomButton extends StatelessWidget {
@@ -24,7 +25,7 @@ class PrimaryBottomButton extends StatelessWidget {
               color:disable?AppColors.containerGreyColor:AppColors.appColor,
               borderRadius: BorderRadius.circular(5.r)
           ),
-          child: Center(child: Text(title.tr,style: TextStyle(color: Colors.white,fontSize:16,fontWeight: FontWeight.w700),)),
+          child: Center(child: Text(title.tr,style:textStyleHeadlineMedium().copyWith(color: Colors.white,fontSize:16,fontWeight: FontWeight.w700),)),
         ),
     );
   }

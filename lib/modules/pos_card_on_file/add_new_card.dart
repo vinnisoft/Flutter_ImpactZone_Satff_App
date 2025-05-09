@@ -27,9 +27,9 @@ class AddNewCardScreen extends GetView<PosCardOnFileController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                   Text(keyNameOnCard.tr,style: TextStyle(color: AppColors.primaryTextColor,fontSize: 16,fontWeight: FontWeight.w500),),
+                   Text(keyNameOnCard.tr,style: textStyleHeadlineMedium(),),
                   _cardForm(hintText: "Aycan Doganlar",icon: AppImages.iconsSingleUserIcon),
-                  Text(keyCardNumber.tr,style: TextStyle(color: AppColors.primaryTextColor,fontSize: 16,fontWeight: FontWeight.w500),),
+                  Text(keyCardNumber.tr,style:textStyleHeadlineMedium().copyWith(fontSize: 16.sp),),
                   _cardForm(icon:AppImages.iconsCardIcon ,hintText:"1234 4567 7890 1234" ),
         
                   Row(
@@ -40,7 +40,7 @@ class AddNewCardScreen extends GetView<PosCardOnFileController> {
                         child: Column(
                           crossAxisAlignment:  CrossAxisAlignment.start,
                           children: [
-                            Text(keyExpiry.tr,style: TextStyle(color: AppColors.primaryTextColor,fontSize: 16,fontWeight: FontWeight.w500),),
+                            Text(keyExpiry.tr,style:textStyleHeadlineMedium().copyWith(fontSize: 16.sp)),
                             _cardForm(icon:AppImages.iconsDate ,hintText:"02/24" ),
                           ],
                         ),
@@ -50,7 +50,7 @@ class AddNewCardScreen extends GetView<PosCardOnFileController> {
                         child: Column(
                           crossAxisAlignment:  CrossAxisAlignment.start,
                           children: [
-                            Text(keyCVV.tr,style: TextStyle(color: AppColors.primaryTextColor,fontSize: 16,fontWeight: FontWeight.w500),),
+                            Text(keyCVV.tr,style:textStyleHeadlineMedium().copyWith(fontSize: 16.sp),),
                             _cardForm(hintText:"•••" ,icon:AppImages.iconsCvvIcon ),
                           ],
                         ),

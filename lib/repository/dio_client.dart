@@ -71,7 +71,7 @@ class DioClient {
         var token = _localStorage.getAuthToken();
         debugPrint("token $token");
         if (token != null) {
-          options = Options(headers: {"Authorization": "Bearer $token"});
+          options = Options(headers: {"Authorization": "Bearer $token","club":"674d80074e1753eb473bb230"});
         }
       }
 
@@ -106,7 +106,7 @@ class DioClient {
         var token = _localStorage.getAuthToken();
         debugPrint("authorization============ $token");
         if (token != null) {
-          options ??= Options(headers: {"Authorization": "Bearer $token"});
+          options ??= Options(headers: {"Authorization": "Bearer $token","club":"674d7fd34e1753eb473bb22b"});
         }
       }
       var response = await _dio.post(

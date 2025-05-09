@@ -40,37 +40,37 @@ class ToDoTaskScreen extends GetView<ToDoTaskController>{
             controller.changeTodoHeaderStatus(true);
           },
           child: Container(
-            padding: EdgeInsets.symmetric(vertical: 6),
+            padding: EdgeInsets.symmetric(vertical: 6.h),
             decoration: controller.isCompletedTodo.value?BoxDecoration(
               color: Color(0xff252B42),
-              borderRadius: BorderRadius.circular(6)
+              borderRadius: BorderRadius.circular(6.r)
             ):BoxDecoration(
                 color: Color(0xffFFFFFF),
-                borderRadius: BorderRadius.circular(6),
+                borderRadius: BorderRadius.circular(6.r),
                 border: Border.all(color: Color(0xffE9E9E9),strokeAlign: 1)
             ),
-            child: Text(keyCompletedTODO.tr,textAlign:TextAlign.center,style: TextStyle(color:  controller.isCompletedTodo.value?Color(0xffFFFFFF):Color(0xff969696),fontWeight: FontWeight.w500),),
+            child: Text(keyCompletedTODO.tr,textAlign:TextAlign.center,style:textStyleBodyMedium().copyWith(color:  controller.isCompletedTodo.value?Color(0xffFFFFFF):Color(0xff969696),fontWeight: FontWeight.w500),),
           ),
         ),
       ),
-      SizedBox(width: 20,),
+      SizedBox(width: 20.w,),
       Expanded(
         child: InkWell(
           onTap: (){
             controller.changeTodoHeaderStatus(false);
           },
           child: Container(
-            padding: EdgeInsets.symmetric(vertical: 6),
+            padding: EdgeInsets.symmetric(vertical: 6.h),
             decoration: controller.isCompletedTodo.value?BoxDecoration(
                 color: Color(0xffFFFFFF),
-                borderRadius: BorderRadius.circular(6),
+                borderRadius: BorderRadius.circular(6.r),
                 border: Border.all(color: Color(0xffE9E9E9),strokeAlign: 1)
             ):BoxDecoration(
                 color: Color(0xff252B42),
-                borderRadius: BorderRadius.circular(6)
+                borderRadius: BorderRadius.circular(6.r)
             ),
-            child: Text(keyInCompleteTODO.tr,textAlign:TextAlign.center,style: TextStyle(color:
-            controller.isCompletedTodo.value?Color(0xff969696):Color(0xffFFFFFF),fontWeight: FontWeight.w500)),
+            child: Text(keyInCompleteTODO.tr,textAlign:TextAlign.center,style:textStyleBodyMedium().copyWith(color:
+               controller.isCompletedTodo.value?Color(0xff969696):Color(0xffFFFFFF),fontWeight: FontWeight.w500)),
           ),
         ),
       ),
@@ -81,17 +81,17 @@ class ToDoTaskScreen extends GetView<ToDoTaskController>{
     if(controller.myTodoList.isEmpty && !controller.isTaskLoading.value){
       return Padding(
         padding:  EdgeInsets.symmetric(vertical: Get.height * 0.3),
-        child: Center(child: Text(keyTodoListEmpty.tr,style: TextStyle(color: Color(0xff1F1F21),fontWeight: FontWeight.w700),)),
+        child: Center(child: Text(keyTodoListEmpty.tr,style:textStyleHeadlineMedium().copyWith(fontWeight: FontWeight.w700))),
       );
     }
     return Container(
-    padding: EdgeInsets.symmetric(horizontal: 20,vertical: 20),
-    margin: EdgeInsets.symmetric(vertical: 20),
+    padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.h),
+    margin: EdgeInsets.symmetric(vertical: 20.h),
     decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12.r),
         boxShadow: [
-          BoxShadow(color: Colors.black12, spreadRadius: 2, blurRadius: 10)
+          BoxShadow(color: Colors.black12, spreadRadius: 2.r, blurRadius: 10.r)
         ]),
     child: ListView.builder(
         shrinkWrap: true,
@@ -136,7 +136,7 @@ class ToDoTaskScreen extends GetView<ToDoTaskController>{
             children: [
               Container(
                 padding: EdgeInsets.all(15),
-                margin: EdgeInsets.only(right: 20,left: 0),
+                margin: EdgeInsets.only(right: 20.w,left: 0.w),
                 decoration: BoxDecoration(
                     color: Color(0xffF0F3FF),
                     borderRadius: BorderRadius.circular(4)
@@ -147,8 +147,8 @@ class ToDoTaskScreen extends GetView<ToDoTaskController>{
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(controller.myTodoList[index].taskTitle.toString(),maxLines:1,overflow:TextOverflow.ellipsis,style: TextStyle(fontWeight: FontWeight.w700,fontSize: 17,color: Color(0xff1F1F21),height: 0),),
-                    Text(controller.myTodoList[index].taskType.toString().toLowerCase(),maxLines:1,overflow:TextOverflow.ellipsis,style: TextStyle(fontWeight: FontWeight.w400,fontSize: 14,color: Color(0xff848484),height: 0,),)
+                    Text(controller.myTodoList[index].taskTitle.toString(),maxLines:1,overflow:TextOverflow.ellipsis,style:textStyleHeadlineMedium().copyWith(fontWeight: FontWeight.w700)),
+                    Text(controller.myTodoList[index].taskType.toString().toLowerCase(),maxLines:1,overflow:TextOverflow.ellipsis,style:textStyleBodyMedium().copyWith(fontWeight: FontWeight.w400,fontSize: 14.sp))
                   ],
                 ),
               ),
@@ -157,8 +157,8 @@ class ToDoTaskScreen extends GetView<ToDoTaskController>{
             ],
           ),
           if(index!=controller.myTodoList.length-1)Container(
-            padding: EdgeInsets.only(left: 25),
-            height: 30,
+            padding: EdgeInsets.only(left: 25.w),
+            height: 30.h,
             child: DottedLine(
               direction: Axis.vertical,
               dashColor: Color(0xffD7D7D7),
@@ -185,10 +185,10 @@ class ToDoTaskScreen extends GetView<ToDoTaskController>{
             children: [
               Container(
                 padding: EdgeInsets.all(15),
-                margin: EdgeInsets.only(right: 20,left: 0),
+                margin: EdgeInsets.only(right: 20.w,left: 0.w),
                 decoration: BoxDecoration(
                     color: Color(0xffF0F3FF),
-                    borderRadius: BorderRadius.circular(4)
+                    borderRadius: BorderRadius.circular(4.r)
                 ),
                 child: AssetImageWidget(AppImages.iconsAppLogo,imageWidth: 20.w,),
               ),
@@ -196,8 +196,8 @@ class ToDoTaskScreen extends GetView<ToDoTaskController>{
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(controller.myTodoList[index].taskTitle.toString(),maxLines:1,overflow:TextOverflow.ellipsis,style: TextStyle(fontWeight: FontWeight.w700,fontSize: 17,color: Color(0xff1F1F21),height: 0),),
-                    Text(controller.myTodoList[index].taskType.toString().toLowerCase(),maxLines:1,overflow:TextOverflow.ellipsis,style: TextStyle(fontWeight: FontWeight.w400,fontSize: 14,color: Color(0xff848484),height: 0,),)
+                    Text(controller.myTodoList[index].taskTitle.toString(),maxLines:1,overflow:TextOverflow.ellipsis,style: textStyleHeadlineMedium().copyWith(fontWeight: FontWeight.w700)),
+                    Text(controller.myTodoList[index].taskType.toString().toLowerCase(),maxLines:1,overflow:TextOverflow.ellipsis,style: textStyleBodyMedium().copyWith(fontWeight: FontWeight.w400,fontSize: 14.sp),)
                   ],
                 ),
               ),
@@ -206,12 +206,12 @@ class ToDoTaskScreen extends GetView<ToDoTaskController>{
                 onTap: (){
                   controller.updateBookMarkStatus(controller.myTodoList[index].id.toString(),false);
                 },
-                  child: AssetImageWidget(AppImages.iconsBookmark,imageWidth: 20.w,)):
+                  child: AssetImageWidget(AppImages.iconsBookmark,imageWidth: 15.w,)):
               InkWell(
                 onTap: (){
                   controller.updateBookMarkStatus(controller.myTodoList[index].id.toString(),true);
                 },
-                  child: AssetImageWidget(AppImages.iconsEmptyBookmark,imageWidth: 20.w,)),
+                  child: AssetImageWidget(AppImages.iconsEmptyBookmark,imageWidth: 15.w,)),
               SizedBox(width: 5,),
               controller.myTodoList[index].status=="COMPLETED"?AssetImageWidget(AppImages.iconsCompleteTodo,imageWidth: 20.w,):
               InkWell(
@@ -223,7 +223,7 @@ class ToDoTaskScreen extends GetView<ToDoTaskController>{
             ],
           ),
           if(index!=controller.myTodoList.length-1)Container(
-              padding: EdgeInsets.only(left: 25),
+              padding: EdgeInsets.only(left: 25.w),
               height: 27,
               child: DottedLine(
               direction: Axis.vertical,
